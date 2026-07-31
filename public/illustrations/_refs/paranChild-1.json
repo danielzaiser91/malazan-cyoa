@@ -1,10 +1,12 @@
 {
-  "prompt": "Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast, volumetric haze, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge. a twelve-year-old noble boy, dark hair cut short, fine but travel-worn tunic, thin shoulders, standing very straight because he has decided to. a three-quarter view portrait from the chest up, head turned slightly away, plain flat background. even soft light, no strong shadows on the background. single figure, centred, the whole figure inside the frame.",
+  "prompt": "Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast. a twelve-year-old noble boy, dark hair cut short, fine but travel-worn tunic, thin shoulders, standing very straight because he has decided to. a three-quarter view portrait from the chest up, head turned slightly away, plain flat background. even soft light, the background a single unbroken tone. single figure, centred, the whole figure inside the frame.",
   "width": 1344,
   "height": 768,
   "seed": 390020399,
   "disable_pup": true,
   "output_format": "png",
   "_char": "paranChild",
-  "_view": 1
+  "_view": 1,
+  "_polling": "https://api.eu2.bfl.ai/v1/get_result?id=69788a38-c92c-43c0-9d8b-f07f79c769de",
+  "_cost": 3
 }

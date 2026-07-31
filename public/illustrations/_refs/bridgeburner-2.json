@@ -1,10 +1,12 @@
 {
-  "prompt": "Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast, volumetric haze, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge. a scarred human soldier in plain dark-grey Malazan leather and mail, no insignia, grey-shot beard, one long burn scar down the jaw, helmet under the arm. a full figure standing at ease, seen from the front at a slight distance, plain flat background. even soft light, no strong shadows on the background. single figure, centred, the whole figure inside the frame.",
+  "prompt": "Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast. a weathered human soldier in plain dark-grey Malazan leather and mail, no insignia, grey-shot beard, an old healed mark along one side of the jaw, helmet under the arm. a full figure standing at ease, seen from the front at a slight distance, plain flat background. even soft light, the background a single unbroken tone. single figure, centred, the whole figure inside the frame.",
   "width": 1344,
   "height": 768,
   "seed": 1357405535,
   "disable_pup": true,
   "output_format": "png",
   "_char": "bridgeburner",
-  "_view": 2
+  "_view": 2,
+  "_polling": "https://api.us4.bfl.ai/v1/get_result?id=48eb96d5-2f77-4968-b504-7b024640c7c9",
+  "_cost": 3
 }
