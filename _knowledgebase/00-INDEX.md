@@ -28,6 +28,12 @@ see `90-research-gaps.md` for what the implementing agent must still fill in.
 | `50-gotm-chapter-map.md` | `#spoiler:gotm` | Beat-by-beat map of Gardens of the Moon — the game's spine |
 | `60-themes-and-analysis.md` | `#spoiler:series` | Erikson's themes, critical reception, fan analysis, `[theory]` section |
 | `70-style-and-voice.md` | `#spoiler:none` | How to write in this world without sounding like generic fantasy |
+| `11-timeline.md` | `#spoiler:gotm` | Burns Schlaf, die Jahreszahlen von Prolog/Kap. 1/Hauptteil, die Sieben-Jahre-Luecke (R7) |
+| `21-deck-of-dragons-cards.md` | `#spoiler:gotm` | Haeuser und Kartenrollen des Decks, Sammelkarten des Spiels (R6) |
+| `31-darujhistan-and-geography.md` | `#spoiler:gotm` | Genabackis, Reisearten, Darujhistans Bezirke und Orte (R2, R3) |
+| `41-bridgeburners-and-munitions.md` | `#spoiler:gotm` | Trupp-Besetzung, Zahlenlage nach Pale, Moranth-Munition (R4, R5) |
+| `51-gotm-scene-detail.md` | `#spoiler:gotm` | Wer wo ist und in welcher Reihenfolge, Prolog bis Epilog (R1) |
+| `72-names-and-pronunciation.md` | `#spoiler:none` | Aussprache und Namensmuster (R9) |
 | `90-research-gaps.md` | — | Open research tasks for the implementing agent |
 
 ## Source hygiene (learned the hard way — read before researching)

@@ -13,7 +13,7 @@ Roughly 209,000 words.
 - **Surly** takes the Claw and the throne; from here she is **Empress Laseen**.
 
 ## Book One — Pale (Ch. 1–4)
-1. Two years later, Itko Kan. **Cotillion** and **Shadowthrone** possess a fisher girl; the Hounds
+1. **Seven** years later (1161 Burn's Sleep, corrected — see `11-timeline.md`), Itko Kan. **Cotillion** and **Shadowthrone** possess a fisher girl; the Hounds
    butcher a cavalry troop as cover. **Adjunct Lorn** and Lieutenant Paran investigate; Lorn admits
    the massacre was a screen. The girl, now calling herself **Sorry**, enlists for Genabackis.
 2. Genabackis, after the **Siege of Pale**. The assault on **Moon's Spawn** failed; **Tayschrenn**'s

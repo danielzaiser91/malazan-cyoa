@@ -293,7 +293,7 @@ export const de_b1_c00: Record<string, string> = {
     'Er dachte nicht daran, dass er Soldat werden wollte. Das war entschieden und brauchte keinen Gedanken mehr.\n\n' +
     'Er dachte an die Leute auf der Mauer.\n\n' +
     'Sein Vater las den Brief, sagte, das sei erfreulich, und fragte nichts weiter. Ganoes war dankbar dafür und wusste zugleich, dass er es einem Menschen hätte erzählen müssen, und dass es dafür jetzt zu spät war.\n\n' +
-    'Zwei Jahre später trug er eine Uniform, und die erste Aufgabe, die man ihm gab, war eine, bei der man ihm nicht sagte, worum es ging.',
+    'Sieben Jahre später trug er die Uniform eines Leutnants der Achten Kavallerie, und die erste Aufgabe, die man ihm gab, war eine, bei der man ihm nicht sagte, worum es ging.',
   'b1.c00.s05.p06.alt':
     'Ein Segelschiff verlässt bei Tagesanbruch einen Hafen. Vom Heck aus gesehen schrumpft eine Inselfestung im Dunst.',
 

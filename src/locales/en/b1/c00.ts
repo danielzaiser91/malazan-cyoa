@@ -293,7 +293,7 @@ export const en_b1_c00: Record<string, string> = {
     'He did not think about wanting to be a soldier. That was settled and needed no more thinking.\n\n' +
     'He thought about the people on the wall.\n\n' +
     'His father read the letter, said that was pleasant to hear, and asked nothing further. Ganoes was grateful for it and knew at the same time that he should have told somebody, and that it was now too late to.\n\n' +
-    'Two years later he was wearing a uniform, and the first task he was given was one where nobody told him what it was about.',
+    'Seven years later he was wearing the uniform of a lieutenant of the Eighth Cavalry, and the first task he was given was one where nobody told him what it was about.',
   'b1.c00.s05.p06.alt':
     'A sailing ship leaves a harbour at dawn. Seen from the stern, an island fortress shrinks into the haze.',
 
