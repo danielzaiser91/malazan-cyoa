@@ -47,6 +47,23 @@ remembered line, rewrite it.
 - Duzen/Siezen: system text duzt den Spieler. In-world dialogue follows the character's rank and
   relationship.
 
+## Der Spielcharakter im Fliesstext (Entscheidung 31.07.2026)
+
+Die Register-Regel oben verlangt **dritte Person Praeteritum** fuer Szenenprosa. Der Rekrut hat
+aber einen frei gewaehlten Namen und eine von drei Anreden, und deutsche Neutral-Pronomen gibt es
+nicht in brauchbarer Form. Vier Fassungen jeder Seite waeren die Alternative.
+
+**Regel:** Der Rekrut wird im Fliesstext **ausschliesslich beim Namen** genannt — Platzhalter
+`{name}` — und **nie mit einem Pronomen**. Wo ein Pronomen unvermeidlich schiene, wird der Satz
+umgebaut. Das geht in kurzen Seiten muehelos und liest sich als bewusste Distanz, die zum Ton passt.
+
+Beispiel statt „Er stand seit dem Vormittag an, und ihm fielen die Saetze nicht mehr ein":
+> „{name} stand seit dem Vormittag in dieser Schlange. Zwei Plaetze vor dem Tisch war Schluss mit
+> den zurechtgelegten Saetzen."
+
+Fuer **Kanon-Figuren** gilt die Einschraenkung nicht — Paran ist „er", Lorn ist „sie", Sorry ist
+„sie". Nur der Spielcharakter bleibt pronomenfrei.
+
 ## Content warnings
 
 The source material contains massacre, torture, slavery, sexual violence (mostly off-page),
