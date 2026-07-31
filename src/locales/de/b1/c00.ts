@@ -299,14 +299,14 @@ export const de_b1_c00: Record<string, string> = {
 
   // ------------------------------------------------------------------ 0.E
   // Temporäres Entwicklungs-Ende. Fällt weg, sobald Kapitel 1 steht.
-  'b1.c00.s99.title': 'Die Auslegung bricht ab',
-  'b1.c00.s99.summary':
+  'b1.wip.title': 'Die Auslegung bricht ab',
+  'b1.wip.summary':
     'Kruppe hat die Karten für das Folgende noch nicht gelegt. Er behauptet, das sei Absicht.',
-  'b1.c00.s99.p01.body':
+  'b1.wip.body':
     'An dieser Stelle hält Kruppe inne, betrachtet die Reihe vor sich und stellt mit einigem Wohlwollen fest, dass sie unvollständig ist.\n\n' +
     '„Die nächsten Karten", sagt Kruppe, „liegen noch beim Kartenleger. Kruppe verhandelt bereits. Kruppe verhandelt hart."\n\n' +
     'Er schiebt einen leeren Platz auf dem Tisch zurecht, damit er ordentlich leer aussieht, wischt einen Fleck daneben weg und legt die Hände darauf.\n\n' +
     '„Bis dahin", sagt Kruppe, „darf man ruhig noch einmal von vorn legen. Kruppe hat Zeit. Kruppe hat immer Zeit."',
-  'b1.c00.s99.p01.alt':
+  'b1.wip.alt':
     'Ein kleiner runder Mann legt Karten auf einen fleckigen Wirtshaustisch. Ein Platz in der Auslegung ist noch leer.',
 }

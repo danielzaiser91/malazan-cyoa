@@ -237,4 +237,62 @@ export const de_common: Record<string, string> = {
   'codex.cat.history': 'Geschichte',
   'codex.cat.words': 'Begriffe',
 
+
+  // --- Kapitel 1: Codex ----------------------------------------------------
+  'codex.itko-kan.title': 'Itko Kan',
+  'codex.itko-kan.body':
+    'Provinz an der Südküste von Quon Tali, Fischerei und Ackerbau, zwei schlechte Jahre hintereinander. Der Hafen von Kan ist groß genug für Truppentransporter und klein genug, dass jeder weiß, wessen Sohn gerade unterschrieben hat. Das Reich hebt hier gern aus: Die Leute sind zäh, und sie rechnen nach.',
+  'codex.genabackis.title': 'Genabackis',
+  'codex.genabackis.body':
+    'Ein großer, schmaler Kontinent jenseits der Suchertiefe. Warme Südküste, kalte Nordküste, weite Ebenen in der Mitte. Dort liegen die Freien Städte, die das Reich eine nach der anderen schluckt — bis Pale. Sechs Wochen Überfahrt, wenn das Wetter mitspielt.',
+  'codex.rhivi.title': 'Die Rhivi',
+  'codex.rhivi.body':
+    'Nomaden der Ebenen von Genabackis. Sie ziehen mit den Bhederin-Herden, die Herden ziehen mit dem Gras, das Gras zieht mit dem Regen. Verbündet mit dem Kriegsherrn Caladan Brood, misstrauisch gegen jeden, der Mauern baut. Ihre Kinder werden im Zug geboren und im Zug begraben.',
+  'codex.sorry.title': 'Sorry',
+  'codex.sorry.body':
+    'Eine Fischerstochter aus einem Küstendorf bei Itko Kan, die sich zur selben Aushebung meldet wie du. Sie hat kein Gepäck, keine Familie und keinen Namen, den sie vorher getragen hätte. Sie blinzelt nicht. Erfahrene Soldaten weichen ihr aus, ohne sagen zu können, warum.',
+  'codex.hounds-of-shadow.title': 'Die Hunde des Schattens',
+  'codex.hounds-of-shadow.body':
+    'Keine Tiere. Etwas Älteres in der Form von etwas Vierbeinigem, gebunden an das Haus des Schattens und größer als jedes Pferd. Sie werden nicht gehetzt, sie werden losgelassen. Was sie tun, sieht hinterher nie nach einem Kampf aus, weil es keiner war.',
+  'codex.shadowthrone-cotillion.title': 'Zwei auf einem Kamm',
+  'codex.shadowthrone-cotillion.body':
+    'Zwei Gestalten, die streiten wie alte Teilhaber und dabei Landstriche unbrauchbar machen. Der eine geht am Stock, der andere steht still. Namen haben sie mehrere, und keinen davon nennen sie in Hörweite. Was für sie eine unordentliche Arbeit ist, ist für alle anderen ein Massengrab.',
+  'codex.lorn.title': 'Adjunktin Lorn',
+  'codex.lorn.body':
+    'Die persönliche Klinge der Kaiserin. Trägt ein Otataral-Schwert, weshalb keine Zauberei sie berührt und keine ihr gehorcht. Sie zählt Abstände statt Tote, sie wartet genau so lange, dass man es merkt, und sie glaubt von sich, dass außerhalb ihres Amtes nichts mehr von ihr übrig ist.',
+  'codex.adjunct.title': 'Das Amt der Adjunktin',
+  'codex.adjunct.body':
+    'Kein militärischer Rang, sondern ein Werkzeug: eine Person, die überall im Reich im Namen der Kaiserin handeln darf und der keine Magie etwas anhaben kann. Es gibt immer nur eine. Wer das Amt annimmt, gibt seinen Namen nicht ab, aber alles, was daran hing.',
+  'codex.otataral.title': 'Otataral',
+  'codex.otataral.body':
+    'Ein rostrotes Erz aus Sieben Städte, in dessen Nähe Zauberei erstirbt — die eigene genauso wie die des Gegners. Es lässt sich nicht ein- und ausschalten. Wer eine Otataral-Klinge trägt, ist gegen jede Magie geschützt und von jeder Heilung ausgeschlossen.',
+  'codex.paran.title': 'Ganoes Paran',
+  'codex.paran.body':
+    'Leutnant der Achten Kavallerie, Sohn eines Gutsbesitzers aus Unta, Absolvent der Offiziersausbildung. Hätte ein Gut erben können und hat sich dagegen entschieden. Will wissen, was passiert ist — eine erheblich unbequemere Eigenschaft als der Wunsch nach einer Geschichte.',
+
+  // --- Kapitel 1: Karten ---------------------------------------------------
+  'card.oponn.title': 'Oponn',
+  'card.oponn.body':
+    'Unverbündet. Die Zwillinge des Zufalls: die Dame, die zieht, und der Herr, der schiebt. Sie stehen Rücken an Rücken, und sie sind sich nie einig. Wer sie hält, sieht zwei Nachbarkarten der Auslegung — und wird beim Hinsehen gesehen.',
+  'card.hound.title': 'Hund des Schattens',
+  'card.hound.body':
+    'Haus des Schattens. Ein Wissen, das man nicht mehr los wird: wie groß der Abdruck war und wie ruhig die Stimmen darüber. Wer sie hält, erkennt in der Auslegung eine Karte mehr — und schläft danach schlechter.',
+
+  // --- Kapitel 1: Erfolge --------------------------------------------------
+  'ach.no-lesson.title': 'Keine Lehre',
+  'ach.no-lesson.body': 'Du bist bei jemandem geblieben, für den nichts mehr zu tun war, und es hat nichts gebracht. Genau das war der Punkt.',
+  'ach.shipped-out.title': 'Eingeschifft',
+  'ach.shipped-out.body': 'Du hast Quon Tali verlassen. Von hier aus gibt es kein Zurück, das kürzer wäre als sechs Wochen.',
+
+  'sheet.lorn.title': 'Adjunktin Lorn',
+
+  // --- Kapitel 1: Flags im Klartext ---------------------------------------
+  'flag.recruit.knows.destination': 'Du weißt, wohin das Schiff fährt: Genabackis.',
+  'flag.recruit.noticed.sorry': 'Dir ist das Mädchen aufgefallen, das nicht ansteht.',
+  'flag.recruit.spoke.sorry': 'Du hast mit Sorry geredet. Sie hat nicht nach deinem Namen gefragt.',
+  'flag.recruit.stayed.with.dying': 'Du bist bei einem Sterbenden geblieben, den du nicht kanntest.',
+  'flag.recruit.saw.hound': 'Du hast gesehen, was auf der Küstenstraße war.',
+  'flag.lorn.measured.paran': 'Lorn hat sich den jungen Leutnant gemerkt.',
+  'flag.lorn.admitted.screen': 'Lorn hat ausgesprochen, dass das Massaker eine Verdeckung war.',
+
 }

@@ -237,4 +237,62 @@ export const en_common: Record<string, string> = {
   'codex.cat.history': 'History',
   'codex.cat.words': 'Words',
 
+
+  // --- Chapter 1: Codex ----------------------------------------------------
+  'codex.itko-kan.title': 'Itko Kan',
+  'codex.itko-kan.body':
+    'A province on the southern coast of Quon Tali, fishing and farming, two bad years in a row. The harbour of Kan is large enough for troop transports and small enough that everyone knows whose son has just signed. The empire likes to recruit here: the people are hard-wearing, and they do their arithmetic.',
+  'codex.genabackis.title': 'Genabackis',
+  'codex.genabackis.body':
+    'A large, narrow continent beyond the Seeker’s Deep. Warm southern coast, cold northern one, wide plains between. The Free Cities lie there, and the empire is swallowing them one at a time — until Pale. Six weeks’ crossing if the weather holds.',
+  'codex.rhivi.title': 'The Rhivi',
+  'codex.rhivi.body':
+    'Nomads of the plains of Genabackis. They move with the bhederin herds, the herds move with the grass, the grass moves with the rain. Allied with the warlord Caladan Brood, suspicious of anyone who builds walls. Their children are born on the move and buried on the move.',
+  'codex.sorry.title': 'Sorry',
+  'codex.sorry.body':
+    'A fisher girl from a coastal village near Itko Kan who signs up with the same levy as you. She has no kit, no family and no name she carried before this one. She does not blink. Experienced soldiers step around her without being able to say why.',
+  'codex.hounds-of-shadow.title': 'The Hounds of Shadow',
+  'codex.hounds-of-shadow.body':
+    'Not animals. Something older in the shape of something four-legged, bound to the House of Shadow and bigger than any horse. They are not set on a target, they are let go. What they do never looks like a fight afterwards, because it was not one.',
+  'codex.shadowthrone-cotillion.title': 'Two on a Ridge',
+  'codex.shadowthrone-cotillion.body':
+    'Two figures who argue like old business partners and make stretches of country unusable while doing it. One walks with a cane, the other stands still. They have several names and use none of them within earshot. What is untidy work to them is a mass grave to everyone else.',
+  'codex.lorn.title': 'Adjunct Lorn',
+  'codex.lorn.body':
+    'The Empress’s personal blade. She carries an otataral sword, so no sorcery touches her and none obeys her. She counts distances rather than the dead, she waits exactly long enough for you to notice, and she believes that outside her office there is nothing of her left.',
+  'codex.adjunct.title': 'The Office of the Adjunct',
+  'codex.adjunct.body':
+    'Not a military rank but an instrument: one person permitted to act anywhere in the empire in the Empress’s name, and whom no magic can touch. There is only ever one. Taking the office does not cost you your name, but everything that was attached to it.',
+  'codex.otataral.title': 'Otataral',
+  'codex.otataral.body':
+    'A rust-red ore out of Seven Cities near which sorcery dies — your own exactly as readily as an enemy’s. It cannot be switched on and off. Whoever carries an otataral blade is proof against all magic and excluded from all healing.',
+  'codex.paran.title': 'Ganoes Paran',
+  'codex.paran.body':
+    'Lieutenant of the Eighth Cavalry, son of a landholder out of Unta, graduate of the officer training corps. He could have inherited an estate and decided against it. He wants to know what happened — a considerably less comfortable quality than wanting a story.',
+
+  // --- Chapter 1: Cards ----------------------------------------------------
+  'card.oponn.title': 'Oponn',
+  'card.oponn.body':
+    'Unaligned. The Twins of Chance: the Lady who Pulls and the Lord who Pushes. They stand back to back and they never agree. Whoever holds them sees two neighbouring cards of the reading — and is seen while looking.',
+  'card.hound.title': 'Hound of Shadow',
+  'card.hound.body':
+    'House of Shadow. A piece of knowledge you cannot put down again: how large the print was, and how calm the voices above it. Whoever holds it recognises one more card in the reading — and sleeps worse afterwards.',
+
+  // --- Chapter 1: Achievements --------------------------------------------
+  'ach.no-lesson.title': 'No Lesson',
+  'ach.no-lesson.body': 'You stayed with somebody there was nothing left to do for, and it achieved nothing. That was precisely the point.',
+  'ach.shipped-out.title': 'Shipped Out',
+  'ach.shipped-out.body': 'You have left Quon Tali. From here there is no way back shorter than six weeks.',
+
+  'sheet.lorn.title': 'Adjunct Lorn',
+
+  // --- Chapter 1: Flags in plain language ---------------------------------
+  'flag.recruit.knows.destination': 'You know where the ship is going: Genabackis.',
+  'flag.recruit.noticed.sorry': 'You noticed the girl who does not queue.',
+  'flag.recruit.spoke.sorry': 'You talked to Sorry. She never asked your name.',
+  'flag.recruit.stayed.with.dying': 'You stayed with a dying man you did not know.',
+  'flag.recruit.saw.hound': 'You saw what was on the coast road.',
+  'flag.lorn.measured.paran': 'Lorn has taken note of the young lieutenant.',
+  'flag.lorn.admitted.screen': 'Lorn said out loud that the massacre was a screen.',
+
 }

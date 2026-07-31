@@ -299,14 +299,14 @@ export const en_b1_c00: Record<string, string> = {
 
   // ------------------------------------------------------------------ 0.E
   // Temporary development ending. Removed once Chapter 1 lands.
-  'b1.c00.s99.title': 'The Reading Breaks Off',
-  'b1.c00.s99.summary':
+  'b1.wip.title': 'The Reading Breaks Off',
+  'b1.wip.summary':
     'Kruppe has not yet laid the cards for what follows. He maintains this is deliberate.',
-  'b1.c00.s99.p01.body':
+  'b1.wip.body':
     'At this point Kruppe pauses, considers the row in front of him, and observes with some satisfaction that it is incomplete.\n\n' +
     '"The next cards," says Kruppe, "are still with the card-maker. Kruppe is negotiating. Kruppe is negotiating hard."\n\n' +
     'He straightens an empty place on the table so that it looks tidily empty, wipes away a mark beside it, and lays both hands over it.\n\n' +
     '"Until then," says Kruppe, "one may certainly lay it all out again. Kruppe has time. Kruppe always has time."',
-  'b1.c00.s99.p01.alt':
+  'b1.wip.alt':
     'A small round man lays cards on a stained tavern table. One place in the layout is still empty.',
 }

@@ -383,31 +383,7 @@ export const chapter00: Chapter = {
           effects: [{ achievement: 'prologue-done' }],
         },
       ],
-      exit: { type: 'goto', to: `${C}.s99` },
-    },
-
-    // --------------------------------------------------------------- 0.E
-    // TEMPORAERES ENTWICKLUNGS-ENDE. Kruppe sagt in-fiction, dass die Karten
-    // fuer das Folgende noch nicht liegen. Faellt weg, sobald Kapitel 1 steht —
-    // dann zeigt `s05` wieder auf `b1.c01.s01`. Vermerkt in `status.md`.
-    {
-      id: `${C}.s99`,
-      code: '0.E',
-      kind: 'ending',
-      chapter: C,
-      titleKey: `${C}.s99.title`,
-      summaryKey: `${C}.s99.summary`,
-      pov: 'kruppe',
-      spoilerScope: 'gotm',
-      pages: [
-        {
-          id: `${C}.s99.p01`,
-          bodyKey: `${C}.s99.p01.body`,
-          band: 'beat',
-          art: { promptId: `${C}.s99.p01`, altKey: `${C}.s99.p01.alt`, mood: 'dream' },
-        },
-      ],
-      exit: { type: 'ending', endingId: 'wip' },
+      exit: { type: 'goto', to: 'b1.c01.s01' },
     },
   ],
 }

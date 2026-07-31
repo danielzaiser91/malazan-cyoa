@@ -10,8 +10,10 @@ import { de_common } from './de/common.ts'
 import { en_common } from './en/common.ts'
 import { de_b1_c00 } from './de/b1/c00.ts'
 import { en_b1_c00 } from './en/b1/c00.ts'
+import { de_b1_c01 } from './de/b1/c01.ts'
+import { en_b1_c01 } from './en/b1/c01.ts'
 
 export const locales: Record<Lang, Dict> = {
-  de: { ...de_common, ...de_b1_c00 },
-  en: { ...en_common, ...en_b1_c00 },
+  de: { ...de_common, ...de_b1_c00, ...de_b1_c01 },
+  en: { ...en_common, ...en_b1_c00, ...en_b1_c01 },
 }

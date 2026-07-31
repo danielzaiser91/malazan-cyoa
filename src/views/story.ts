@@ -47,6 +47,17 @@ export class StoryView {
     this.root.addEventListener('keydown', e => this.onKey(e))
   }
 
+  /**
+   * Platzhalter, die in Prosa eingesetzt werden. Der Rekrut wird im Text
+   * ausschliesslich beim NAMEN genannt, nie mit einem Pronomen — die
+   * Stilvorgabe verlangt dritte Person, und drei Anreden mal zwei Sprachen
+   * ergaeben sonst vier Fassungen jeder Seite. Ausfuehrlich in
+   * `_knowledgebase/70-style-and-voice.md`.
+   */
+  private vars(): Record<string, string> {
+    return { name: this.host.engine.save.profile.name }
+  }
+
   render(): void {
     const { engine, t } = this.host
     const view = engine.view()
@@ -79,10 +90,10 @@ export class StoryView {
 
     // --- Prosa ------------------------------------------------------------
     clear(this.prose)
-    const body = t.t(page.bodyKey)
+    const body = t.t(page.bodyKey, this.vars())
     this.prose.append(this.markCodex(body))
     for (const insertKey of view.inserts) {
-      this.prose.append(el('div', { class: 'story__insert' }, this.markCodex(t.t(insertKey))))
+      this.prose.append(el('div', { class: 'story__insert' }, this.markCodex(t.t(insertKey, this.vars()))))
     }
     this.pushBacklog(page.id, t.t(scene.titleKey), body)
 
@@ -92,11 +103,11 @@ export class StoryView {
       if (iv.used) {
         this.extras.append(el('div', { class: 'interaction interaction--used' },
           el('p', { class: 'interaction__label', text: t.t(iv.interaction.labelKey) }),
-          paragraphs(t.t(iv.interaction.responseKey), 'interaction__response'),
+          paragraphs(t.t(iv.interaction.responseKey, this.vars()), 'interaction__response'),
         ))
         continue
       }
-      const button = btn(t.t(iv.interaction.labelKey), () => {
+      const button = btn(t.t(iv.interaction.labelKey, this.vars()), () => {
         this.host.dispatch(() => this.host.engine.interact(iv.interaction.id))
         this.render()
       }, {

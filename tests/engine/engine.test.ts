@@ -318,15 +318,19 @@ describe('Terminals', () => {
   })
 
   it('ein Ende wird ins Meta-Wissen geschrieben und schaltet seine Karte frei', () => {
+    // Laeuft die Hauptlinie durch, ohne den Weg fest zu verdrahten — sonst
+    // bricht dieser Test bei jedem neuen Kapitel.
     const e = freshEngine()
-    while (!e.atExit) e.next()
-    e.choose('watch')
-    while (!e.atExit) e.next()
-    e.next() // goto → Konvergenz
-    while (!e.atExit) e.next()
-    e.next() // goto → temporäres Ende
-    while (!e.atExit) e.next()
-    e.next()
+    let guard = 0
+    while (!e.finished && guard++ < 200) {
+      if (e.atExit && e.scene.exit.type === 'choice') {
+        const open = e.choices().filter(c => !c.locked && c.choice.risk !== 'lethal')
+        expect(open.length).toBeGreaterThan(0)
+        e.choose(open[0].choice.id)
+      } else {
+        e.next()
+      }
+    }
     expect(e.finished).toBe('ending')
     expect(e.meta.endings).toContain('wip')
     expect(e.meta.cards).toContain('ending-wip')

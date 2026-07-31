@@ -69,6 +69,13 @@ export function playOnce(
       report.steps += 1
       const before = `${engine.run.scene}#${engine.run.page}`
 
+      // Gespraechsknoten mitnehmen. Ein Spieler tippt sie an, und manche
+      // schalten eine Wahl am Szenenende erst frei — ohne sie wuerde die
+      // Simulation Zweige fuer unerreichbar halten, die es nicht sind.
+      for (const iv of engine.view().interactions) {
+        if (!iv.used && !iv.locked) engine.interact(iv.interaction.id)
+      }
+
       if (engine.atExit && engine.scene.exit.type === 'choice') {
         const options = engine.choices().filter(c => !c.locked)
         if (options.length === 0) { report.finish = 'stuck'; break }

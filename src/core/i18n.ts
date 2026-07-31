@@ -51,9 +51,13 @@ export function interpolate(text: string, vars: Record<string, string | number>)
     name in vars ? String(vars[name]) : all)
 }
 
-/** Wortzahl fuer die Band-Pruefung. Zaehlt Wortgruppen, keine Satzzeichen. */
+/**
+ * Wortzahl fuer die Band-Pruefung. Zaehlt Wortgruppen, keine Satzzeichen.
+ * Ein Platzhalter wie `{name}` zaehlt als EIN Wort — im gelesenen Text steht
+ * dort auch eines. Ihn wegzuwerfen wuerde jede Seite mit Namen zu kurz messen.
+ */
 export function wordCount(text: string): number {
-  const cleaned = text.replace(/\{[^}]*\}/g, ' ').trim()
+  const cleaned = text.replace(/\{[^}]*\}/g, 'X').trim()
   if (!cleaned) return 0
   return cleaned.split(/\s+/).length
 }

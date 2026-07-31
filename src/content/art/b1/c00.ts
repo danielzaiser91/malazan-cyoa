@@ -163,7 +163,7 @@ export const art00: ArtPrompt[] = [
 ]
 
 art00.push({
-  id: 'b1.c00.s99.p01',
+  id: 'b1.wip',
   subject: 'a small round man laying playing cards on a stained tavern table, one place in the layout still empty',
   characters: ['kruppe'],
   place: 'phoenixInn',
