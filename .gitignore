@@ -25,3 +25,6 @@ coverage/
 # Archivierte Vorstudien — Belege, kein Produktionsmaterial
 public/illustrations/_archive/**/*.jpg
 public/illustrations/_archive/**/*.png
+
+# Stilfindung: Master bleiben lokal, die Requests sind der Beleg
+public/illustrations/_style/*.png
