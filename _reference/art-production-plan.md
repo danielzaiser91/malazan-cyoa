@@ -54,11 +54,33 @@ hat keine Negative Prompts, und „no text" erzeugt nachweislich Text.
 
 | # | Richtung | Anker |
 |---|---|---|
-| **A** | Öl auf Leinwand (Stil-Bibel wörtlich) | `Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast, volumetric haze, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.` |
+| **A ✅** | Öl auf Leinwand (Stil-Bibel wörtlich) — **gewählt** | `Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast, volumetric haze, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.` |
 | **B** | Gouache-Buchillustration | `Painted in matte gouache for a printed book plate, flat shapes and soft edges, limited desaturated palette, drawn rather than rendered, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.` |
 | **C** | Kohle und Lavierung | `Drawn in charcoal and ink wash with a single muted colour on top, heavy blacks, grainy paper texture, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.` |
 | **D** | Filmisches Matte Painting | `Painted as a cinematic matte painting, soft atmospheric depth, desaturated and high-contrast, volumetric haze, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.` |
 | **E** | Kolorierte Radierung | `Etched in aquatint and hand-coloured in washes, hard bitten lines, plate grain, restrained palette, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.` |
+
+### Entschieden am 31.07.2026: **A**, mit einer Korrektur
+
+Der letzte Baustein `generous empty margin at the frame edge` hat **genau das Artefakt erzeugt,
+gegen das er schützen sollte**: In sieben von sieben Bildern malte das Modell eine gefälschte
+Künstlersignatur in den leeren Randstreifen — teils bis zu 50 px im Bild, wo kein Schnitt sie
+erwischt. Ein leerer Rand sieht für das Modell aus wie die Stelle, an der ein Maler signiert.
+
+Gegenprobe mit identischem Seed und identischer Szene, nur dieser eine Satz getauscht:
+
+| Variante | Signatur? |
+|---|---|
+| `… generous empty margin at the frame edge.` | ja, in jedem Bild |
+| Satz weggelassen (**X**) | nein |
+| `… paint reaching to every edge of the picture.` (**Y**) | nein |
+
+**Gültig ist Y.** Eine positive Gegenaussage ist robuster als bloßes Weglassen — das Modell
+bekommt eine Anweisung statt einer Lücke. Dasselbe Prinzip, das schon gegen „no text" galt.
+
+Der finale Anker steht als `STYLE_ANCHOR` in `src/content/art/style.ts` und ist durch zwei Tests
+abgesichert: Er muss am Anfang jedes Prompts stehen, und er darf nie wieder einen leeren Bildrand
+anfordern.
 
 Gemeinsam in allen fünf, weil es Projektregeln sind, nicht Geschmack:
 `figures small against architecture and sky` (Stil-Bibel: „this world is old and the people in it
@@ -113,7 +135,7 @@ die Referenzen verliert, verliert den Look.
 |---|---|---|
 | Modell | `flux-2-pro` | 3 Credits bis 1 MP. `klein-4b` spart bei 5 Filler-Bildern 8 Credits und kostet Konsistenz — nicht wert. |
 | **Generiert** | **1344×768** | 0,98 MP, beide Kanten durch 16 teilbar, verifiziert 3 Credits |
-| **Ausgeliefert** | **1280×720** (Mittelschnitt) | exaktes 16:9. Der Schnitt entfernt 32 px seitlich und 24 px oben/unten — **genau die Ecken, in denen FLUX Signaturen und Buchstabensalat ablegt.** Kostet nichts, weil beide Auflösungen in derselben Preisstufe liegen. |
+| **Ausgeliefert** | **1280×720** (Mittelschnitt) | exaktes 16:9. ⚠️ **Korrektur 31.07.2026:** Der Schnitt war als Schutz gegen Signaturen gedacht — er greift dafür nicht, die Artefakte saßen bis zu 50 px im Bild. Behoben wurde das an der Ursache (Anker, siehe § 2). Der Schnitt bleibt als Versicherung gegen Artefakte direkt an der Kante und kostet nichts, weil beide Auflösungen in derselben Preisstufe liegen. |
 | `disable_pup` | `true` | sonst schreibt ein LLM jeden Prompt um |
 | `aspect_ratio` | **nie mitschicken** | existiert nicht, wird stumm ignoriert |
 | `negative_prompt` | **nie mitschicken** | existiert nicht, wird stumm ignoriert |

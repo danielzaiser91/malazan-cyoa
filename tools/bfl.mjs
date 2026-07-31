@@ -16,7 +16,15 @@ import { join } from 'node:path'
 
 const ROOT = join(import.meta.dirname, '..')
 
-/** Generiert wird groesser als ausgeliefert — siehe `_reference/art-production-plan.md` § 5. */
+/**
+ * Generiert wird groesser als ausgeliefert: 1344x768 -> Mittelschnitt 1280x720.
+ *
+ * ⚠️ Das ist VERSICHERUNG, keine Loesung. Die Signaturen, gegen die der Schnitt
+ * gedacht war, sassen bis zu 50 px INNEN — dort greift er nicht. Behoben wurden
+ * sie an der Ursache, im Anker. Der Schnitt bleibt, weil er nichts kostet
+ * (beide Aufloesungen liegen in derselben Preisstufe) und gelegentliche
+ * Artefakte direkt an der Kante wegnimmt.
+ */
 export const GEN_W = 1344
 export const GEN_H = 768
 export const OUT_W = 1280
@@ -40,6 +48,14 @@ export const STYLE_ANCHORS = {
   C: 'Drawn in charcoal and ink wash with a single muted colour on top, heavy blacks, grainy paper texture, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.',
   D: 'Painted as a cinematic matte painting, soft atmospheric depth, desaturated and high-contrast, volumetric haze, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.',
   E: 'Etched in aquatint and hand-coloured in washes, hard bitten lines, plate grain, restrained palette, figures small against architecture and sky, plain unmarked surfaces and bare stone, generous empty margin at the frame edge.',
+
+  // --- Rand-Experiment, 31.07.2026 -----------------------------------------
+  // Verdacht: `generous empty margin at the frame edge` erzeugt genau den
+  // leeren Randstreifen, in den ein Maler signiert — der Anker verursacht das
+  // Artefakt, gegen das er schuetzen sollte. X laesst den Satz weg, Y ersetzt
+  // ihn durch die Gegenaussage. Beide sonst wortgleich mit A.
+  X: 'Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast, volumetric haze, figures small against architecture and sky, plain unmarked surfaces and bare stone.',
+  Y: 'Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast, volumetric haze, figures small against architecture and sky, plain unmarked surfaces and bare stone, paint reaching to every edge of the picture.',
 }
 
 /** Schluessel aus `.env.local` — nie aus dem Repo, nie im Klartext im Code. */

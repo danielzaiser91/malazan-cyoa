@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest'
 import { artPrompts } from '../../src/content/index.ts'
 import { buildPrompt, promptHash, COMPOSITION } from '../../src/content/art/prompt.ts'
-import { CHARACTER_SHEETS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, STYLE_ANCHOR } from '../../src/content/art/style.ts'
+import { CHARACTER_SHEETS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STYLE_ANCHOR } from '../../src/content/art/style.ts'
 import { ART_MOODS } from '../../src/model/types.ts'
 
 describe('Stil-Anker', () => {
@@ -26,8 +26,30 @@ describe('Stil-Anker', () => {
     for (const rule of [
       'figures small against architecture and sky',
       'plain unmarked surfaces and bare stone',
-      'generous empty margin at the frame edge',
+      'paint reaching to every edge of the picture',
     ]) expect(STYLE_ANCHOR).toContain(rule)
+  })
+
+  it('fordert nie wieder einen leeren Bildrand an', () => {
+    // Regression zu einem gemessenen Befund (31.07.2026): Die Formulierung
+    // `generous empty margin at the frame edge` hat die Signatur-Attrappen
+    // ERZEUGT, gegen die sie schuetzen sollte — ein leerer Randstreifen sieht
+    // aus wie die Stelle, an der ein Maler signiert. Nach dem Austausch gegen
+    // die Gegenaussage trat sie in keinem Bild mehr auf.
+    for (const anchor of [STYLE_ANCHOR, REFERENCE_ANCHOR]) {
+      expect(anchor).not.toMatch(/empty margin|blank border|empty border/i)
+    }
+  })
+
+  it('kein Charakterblatt traegt ein Reizwort der Content-Moderation', () => {
+    // Gemessen: "a scarred human soldier … one long burn scar down the jaw"
+    // wurde als Violence abgelehnt. Dieselbe Figur ohne die Reizwoerter kam
+    // durch. Der Filter sieht das Wort, nicht die Absicht.
+    const trigger = /(scar|scarred|wound|wounded|blood|bloody|mutilat\w*|corpse)/i
+    const bad = Object.entries(CHARACTER_SHEETS)
+      .filter(([, sheet]) => trigger.test(sheet))
+      .map(([id]) => id)
+    expect(bad).toEqual([])
   })
 })
 

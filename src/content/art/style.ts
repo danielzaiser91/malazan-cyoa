@@ -25,8 +25,12 @@ import type { ArtMood } from '../../model/types.ts'
  *  - `figures small against architecture and sky` — Stil-Bibel: die Menschen
  *    sind nicht das Groesste im Bild
  *  - `plain unmarked surfaces and bare stone` — gegen Text-Artefakte
- *  - `generous empty margin at the frame edge` — fuer den Sicherheitsschnitt
- *    von 1344x768 auf 1280x720
+ *  - `paint reaching to every edge of the picture` — gegen Signaturen. Die
+ *    urspruengliche Fassung sagte `generous empty margin at the frame edge`
+ *    und hat damit GENAU das Artefakt erzeugt, gegen das der Anker schuetzen
+ *    sollte: Ein leerer Randstreifen sieht aus wie die Stelle, an der ein
+ *    Maler signiert, und das Modell hat pflichtschuldig signiert. Gemessen am
+ *    31.07.2026 an sieben Bildern; nach dem Austausch in keinem mehr
  *
  * Ihn zu aendern ist eine projektweite Entscheidung mit Neu-Render-Budget,
  * kein stiller Edit.
@@ -35,7 +39,7 @@ export const STYLE_ANCHOR =
   'Painted in thick oil on rough canvas, visible brush strokes and ' +
   'palette-knife texture, desaturated and high-contrast, volumetric haze, ' +
   'figures small against architecture and sky, plain unmarked surfaces and ' +
-  'bare stone, generous empty margin at the frame edge.'
+  'bare stone, paint reaching to every edge of the picture.'
 
 /**
  * Anker fuer Referenzbilder: derselbe Malstil, aber ohne die
@@ -110,11 +114,14 @@ export const CHARACTER_SHEETS: Record<string, string> = {
   paranChild:
     'a twelve-year-old noble boy, dark hair cut short, fine but travel-worn tunic, ' +
     'thin shoulders, standing very straight because he has decided to',
+  // "scarred" und "burn scar" haben die Content-Moderation ausgeloest
+  // (Violence, 31.07.2026). Dieselbe Figur, ohne die Reizwoerter: eine alte,
+  // laengst verheilte Stelle ist genauso sichtbar und beschreibt keine Tat.
   bridgeburner:
-    'a scarred human soldier in plain dark-grey Malazan leather and mail, no insignia, ' +
-    'grey-shot beard, one long burn scar down the jaw, helmet under the arm',
+    'a weathered human soldier in plain dark-grey Malazan leather and mail, no insignia, ' +
+    'grey-shot beard, an old healed mark along one side of the jaw, helmet under the arm',
   whiskeyjack:
-    'a grey-bearded human man in his fifties, cropped grey hair, weathered face, scarred hands, ' +
+    'a grey-bearded human man in his fifties, cropped grey hair, weathered face, hands marked by work, ' +
     'plain dark-grey Malazan leather and mail, no insignia, longsword at the hip, ' +
     'stands like someone who has been standing a long time',
   quickben:
