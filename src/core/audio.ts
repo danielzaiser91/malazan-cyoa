@@ -52,6 +52,31 @@ const VOICES: Record<Sfx, Voice> = {
   ending: { notes: [262, 330, 392, 523], step: 0.22, type: 'triangle', gain: 0.13 },
 }
 
+/**
+ * Klangteppich je Stimmung. `drones` sind Grundtoene in Hz, `noise` die
+ * Beimischung von gefiltertem Rauschen, `cutoff` dessen Tiefpass — hoher
+ * Cutoff klingt nach Wind und Feuer, niedriger nach Raum und Erde.
+ */
+interface AmbienceBed {
+  drones: number[]
+  noise: number
+  cutoff: number
+  level: number
+}
+
+export const AMBIENCE: Record<string, AmbienceBed> = {
+  siege: { drones: [55, 82.5], noise: 0.35, cutoff: 900, level: 0.08 },
+  'street-night': { drones: [98, 147], noise: 0.12, cutoff: 400, level: 0.05 },
+  warren: { drones: [61.7, 92.5, 123.5], noise: 0.2, cutoff: 250, level: 0.07 },
+  dream: { drones: [65.4, 98, 130.8], noise: 0.06, cutoff: 300, level: 0.05 },
+  council: { drones: [73.4, 110], noise: 0.05, cutoff: 220, level: 0.04 },
+  march: { drones: [65.4, 98], noise: 0.22, cutoff: 700, level: 0.05 },
+  ruin: { drones: [49, 73.4], noise: 0.18, cutoff: 500, level: 0.06 },
+  duel: { drones: [87.3, 130.8], noise: 0.08, cutoff: 600, level: 0.06 },
+  divine: { drones: [41.2, 61.7, 82.4], noise: 0.1, cutoff: 180, level: 0.09 },
+  aftermath: { drones: [58.3, 87.3], noise: 0.14, cutoff: 350, level: 0.05 },
+}
+
 export interface AudioSettings {
   muted: boolean
   volume: number
@@ -60,6 +85,9 @@ export interface AudioSettings {
 export class AudioEngine {
   private ctx: AudioContext | undefined
   private master: GainNode | undefined
+  private ambienceGain: GainNode | undefined
+  private ambienceNodes: AudioScheduledSourceNode[] = []
+  private currentMood: string | undefined
   private settings: AudioSettings = { muted: false, volume: 0.5 }
   /** Im Dev-Build erst nach bewusster Freigabe durch den Nutzer. */
   private allowed: boolean
@@ -81,6 +109,7 @@ export class AudioEngine {
     if (this.master && this.ctx) {
       this.master.gain.setTargetAtTime(this.settings.muted ? 0 : this.settings.volume, this.ctx.currentTime, 0.01)
     }
+    if (this.settings.muted || this.settings.volume <= 0) this.stopAmbience()
   }
 
   /** Wird der Ton gerade vom Preview-Schutz zurueckgehalten? */
@@ -123,6 +152,83 @@ export class AudioEngine {
     src.buffer = buffer
     src.connect(gain).connect(this.master!)
     src.start()
+  }
+
+  // -- Umgebungsklang --------------------------------------------------------
+
+  /**
+   * Ein leiser Klangteppich je Stimmung. Kein Loop einer Datei, sondern zwei
+   * Oszillatoren plus gefiltertes Rauschen — das kostet null Bytes im Bundle und
+   * laesst sich stufenlos ueberblenden. Wechselt die Stimmung, blendet der alte
+   * Teppich in zwei Sekunden aus und der neue ein.
+   */
+  ambience(mood: string): void {
+    if (!this.allowed || this.settings.muted || this.settings.volume <= 0) {
+      this.stopAmbience()
+      return
+    }
+    if (this.currentMood === mood && this.ambienceGain) return
+    const ctx = this.context()
+    if (!ctx || !this.master) return
+    this.stopAmbience()
+    this.currentMood = mood
+
+    const bed = AMBIENCE[mood] ?? AMBIENCE.march
+    const gain = ctx.createGain()
+    gain.gain.setValueAtTime(0, ctx.currentTime)
+    gain.gain.linearRampToValueAtTime(bed.level, ctx.currentTime + 2)
+    gain.connect(this.master)
+
+    const nodes: AudioScheduledSourceNode[] = []
+    for (const freq of bed.drones) {
+      const osc = ctx.createOscillator()
+      osc.type = 'sine'
+      osc.frequency.value = freq
+      const shaper = ctx.createGain()
+      shaper.gain.value = 0.5
+      osc.connect(shaper).connect(gain)
+      osc.start()
+      nodes.push(osc)
+    }
+    if (bed.noise > 0) {
+      const seconds = 4
+      const buffer = ctx.createBuffer(1, ctx.sampleRate * seconds, ctx.sampleRate)
+      const data = buffer.getChannelData(0)
+      let s = 12345
+      for (let i = 0; i < data.length; i++) {
+        s = (s * 16807) % 2147483647
+        data[i] = s / 1073741823 - 1
+      }
+      const src = ctx.createBufferSource()
+      src.buffer = buffer
+      src.loop = true
+      const filter = ctx.createBiquadFilter()
+      filter.type = 'lowpass'
+      filter.frequency.value = bed.cutoff
+      const noiseGain = ctx.createGain()
+      noiseGain.gain.value = bed.noise
+      src.connect(filter).connect(noiseGain).connect(gain)
+      src.start()
+      nodes.push(src)
+    }
+    this.ambienceGain = gain
+    this.ambienceNodes = nodes
+  }
+
+  stopAmbience(): void {
+    const ctx = this.ctx
+    const gain = this.ambienceGain
+    const nodes = this.ambienceNodes
+    this.ambienceGain = undefined
+    this.ambienceNodes = []
+    this.currentMood = undefined
+    if (!ctx || !gain) return
+    gain.gain.cancelScheduledValues(ctx.currentTime)
+    gain.gain.setValueAtTime(gain.gain.value, ctx.currentTime)
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 1.5)
+    for (const n of nodes) {
+      try { n.stop(ctx.currentTime + 1.6) } catch { /* schon gestoppt */ }
+    }
   }
 
   private context(): AudioContext | undefined {

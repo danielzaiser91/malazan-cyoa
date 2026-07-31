@@ -21,6 +21,8 @@ export interface StoryHost {
   dispatch(action: () => EngineEvent[]): void
   openCodex(id: string): void
   openReading(): void
+  /** Stimmung der aktuellen Seite — die Schale legt den Klangteppich danach. */
+  setMood(mood: string): void
   reduceMotion: boolean
 }
 
@@ -73,6 +75,7 @@ export class StoryView {
     })
     this.img.alt = t.t(page.art.altKey)
     this.figure.dataset.mood = page.art.mood
+    this.host.setMood(page.art.mood)
     this.figure.classList.remove('story__figure--in')
     if (!this.host.reduceMotion) requestAnimationFrame(() => this.figure.classList.add('story__figure--in'))
 

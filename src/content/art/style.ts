@@ -8,10 +8,20 @@
 
 import type { ArtMood } from '../../model/types.ts'
 
+/**
+ * ⚠️ Kein „no text", kein „no watermark".
+ *
+ * Gemessen am 31.07.2026 mit FLUX.1-schnell: Die Verneinung erzeugt genau das,
+ * was sie verbieten soll — vier von sechs Testbildern trugen erfundene
+ * Beschriftungen und eine Wasserzeichen-Attrappe. Dasselbe Motiv ohne die
+ * Verneinung und stattdessen mit einer positiven Beschreibung leerer Flaechen
+ * kam sauber heraus. Diffusionsmodelle konditionieren auf Begriffe, nicht auf
+ * deren Negation; „no text" ist fuer sie schlicht „text".
+ */
 export const STYLE_SUFFIX =
-  'painterly digital oil, desaturated high-contrast, textured brushwork, ' +
-  'cinematic wide shot, volumetric haze, grim epic fantasy, ' +
-  'no text, no watermark, no modern objects, 16:9'
+  'painterly digital oil on canvas, visible brush strokes, desaturated ' +
+  'high-contrast, cinematic wide shot, volumetric haze, grim epic fantasy, ' +
+  'plain unmarked surfaces, bare stone, clean empty margins, 16:9'
 
 export type PaletteId = 'ash-rust' | 'blue-fire' | 'moons-spawn' | 'bone-dust' | 'hoods-grey'
 

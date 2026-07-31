@@ -71,6 +71,7 @@ export class App {
   // -- Startbildschirm -------------------------------------------------------
 
   private showTitle(): void {
+    this.audio.stopAmbience()
     this.engine = undefined
     this.title = new TitleView({
       t: this.t,
@@ -162,6 +163,7 @@ export class App {
       dispatch: action => this.dispatch(action),
       openCodex: id => this.openCodex(id),
       openReading: () => this.showReading(),
+      setMood: mood => this.audio.ambience(mood),
     })
 
     const shell = el('div', { class: 'shell' }, this.toolbar(), this.story.root)
@@ -192,6 +194,7 @@ export class App {
   private showReading(): void {
     const engine = this.engine
     if (!engine) return
+    this.audio.stopAmbience()
     this.reading = new ReadingView({
       t: this.t,
       reduceMotion: engine.save.settings.reduceMotion,

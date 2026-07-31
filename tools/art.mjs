@@ -15,7 +15,7 @@
  *  - Schluessel kommen aus der Umgebung, nie aus dem Repo
  */
 
-import { mkdirSync, existsSync, readFileSync, writeFileSync, statSync, readdirSync } from 'node:fs'
+import { mkdirSync, existsSync, readFileSync, writeFileSync, renameSync, statSync, readdirSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { createInterface } from 'node:readline/promises'
 import { content, artById } from '../src/content/index.ts'
@@ -38,6 +38,22 @@ const flag = name => argv.includes(`--${name}`)
 
 const reg = new Registry(content)
 
+/** Master-Aufloesung. 16:9 ist in der Stil-Bibel gesperrt. */
+const MASTER_W = 1280
+const MASTER_H = 720
+
+/**
+ * Endung aus den Magic Bytes bestimmen. Anbieter liefern nicht das, was ihre
+ * Dokumentation behauptet — Cloudflare gibt JPEG zurueck, obwohl nichts davon
+ * die Rede war. Eine `.png`, die ein JPEG ist, faellt erst beim Optimieren auf.
+ */
+function extensionOf(bytes) {
+  if (bytes[0] === 0xff && bytes[1] === 0xd8) return 'jpg'
+  if (bytes[0] === 0x89 && bytes[1] === 0x50) return 'png'
+  if (bytes.slice(8, 12).toString('latin1') === 'WEBP') return 'webp'
+  return 'bin'
+}
+
 /** Kostenschaetzung je Anbieter in Euro pro Bild — grob, aber ehrlich. */
 const COST = { hf: 0, cloudflare: 0, replicate: 0.003, gemini: 0.04, leonardo: 0.02, openai: 0.19 }
 /** Ab dieser Summe wird gefragt, statt loszulegen. */
@@ -51,10 +67,12 @@ function loadManifest() {
 function saveManifest(m) {
   mkdirSync(dirname(MANIFEST), { recursive: true })
   // Atomar: erst daneben schreiben, dann umbenennen — ein abgebrochener Lauf
-  // darf das Manifest nie halb beschrieben zuruecklassen.
+  // darf das Manifest nie halb beschrieben zuruecklassen. `rename` ist auf
+  // demselben Dateisystem atomar; die Zwischendatei darf NICHT liegen bleiben,
+  // sonst landet sie im naechsten `git add -A`.
   const tmp = MANIFEST + '.tmp'
   writeFileSync(tmp, JSON.stringify(m, null, 2) + '\n')
-  writeFileSync(MANIFEST, readFileSync(tmp))
+  renameSync(tmp, MANIFEST)
 }
 
 /** Alle Seiten mit ihrem Prompt, gefiltert nach --chapter / --id. */
@@ -147,10 +165,12 @@ async function gen() {
     const text = buildPrompt(prompt)
     try {
       const bytes = await callProvider(provider, key, text, Number(arg('n', '1')))
-      writeFileSync(join(RAW, `${page.id}.png`), bytes)
+      const ext = extensionOf(bytes)
+      writeFileSync(join(RAW, `${page.id}.${ext}`), bytes)
       m.images[prompt.id] = {
         provider, model: MODEL[provider], promptHash: promptHash(prompt),
-        tier: prompt.tier, generatedAt: new Date().toISOString(), raw: `_raw/${page.id}.png`,
+        tier: prompt.tier, generatedAt: new Date().toISOString(),
+        raw: `_raw/${page.id}.${ext}`, size: `${MASTER_W}x${MASTER_H}`,
       }
       saveManifest(m)
       done++
@@ -203,7 +223,9 @@ async function callProvider(provider, key, prompt) {
       {
         method: 'POST',
         headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, steps: 8 }),
+        // 1280x720 ist Pflicht: die Stil-Bibel schreibt 16:9 vor, und ohne
+        // width/height liefert der Anbieter stillschweigend 1:1 zurueck.
+        body: JSON.stringify({ prompt, steps: 8, width: MASTER_W, height: MASTER_H }),
       },
     )
     if (!res.ok) throw new Error(`HTTP ${res.status} ${await res.text()}`)
@@ -227,7 +249,7 @@ async function optimise() {
   // schwere Build-Abhaengigkeit. Solange keine Rohbilder existieren, ist hier
   // nichts zu tun; sobald welche da sind, uebernimmt das System-Werkzeug.
   if (!existsSync(RAW)) { console.log('  Keine Rohbilder — nichts zu optimieren.'); return }
-  const files = readdirSync(RAW).filter(f => f.endsWith('.png'))
+  const files = readdirSync(RAW).filter(f => /\.(png|jpg|webp)$/.test(f))
   console.log(`  ${files.length} Rohbilder gefunden.`)
   console.log('  Umwandlung nach webp erfolgt ueber das System-Werkzeug (cwebp).')
   console.log('  Beispiel: cwebp -q 82 -resize 1280 0 in.png -o out.webp')

@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "images": {
+    "b1.c00.s01.p01": {
+      "provider": "cloudflare",
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "promptHash": "cc9342a9",
+      "tier": "hero",
+      "generatedAt": "2026-07-31T17:59:37.085Z",
+      "raw": "_raw/b1.c00.s01.p01.jpg",
+      "size": "1280x720"
+    },
+    "b1.c00.s04.p03": {
+      "provider": "cloudflare",
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "promptHash": "d0ed81b9",
+      "tier": "hero",
+      "generatedAt": "2026-07-31T17:59:39.051Z",
+      "raw": "_raw/b1.c00.s04.p03.jpg",
+      "size": "1280x720"
+    },
+    "b1.c00.s05.p01": {
+      "provider": "cloudflare",
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "promptHash": "2f6e10b6",
+      "tier": "hero",
+      "generatedAt": "2026-07-31T17:59:40.548Z",
+      "raw": "_raw/b1.c00.s05.p01.jpg",
+      "size": "1280x720"
+    },
+    "b1.c01.s01.p01": {
+      "provider": "cloudflare",
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "promptHash": "a1d9e306",
+      "tier": "hero",
+      "generatedAt": "2026-07-31T17:59:42.041Z",
+      "raw": "_raw/b1.c01.s01.p01.jpg",
+      "size": "1280x720"
+    },
+    "b1.c01.s02.p02": {
+      "provider": "cloudflare",
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "promptHash": "6e13f449",
+      "tier": "hero",
+      "generatedAt": "2026-07-31T17:59:43.529Z",
+      "raw": "_raw/b1.c01.s02.p02.jpg",
+      "size": "1280x720"
+    },
+    "b1.c01.s08.p02": {
+      "provider": "cloudflare",
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "promptHash": "c5aa7ea0",
+      "tier": "hero",
+      "generatedAt": "2026-07-31T17:59:45.016Z",
+      "raw": "_raw/b1.c01.s08.p02.jpg",
+      "size": "1280x720"
+    }
+  }
+}
