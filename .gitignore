@@ -21,3 +21,7 @@ coverage/
 
 # Zwischendateien der Bild-Pipeline
 *.tmp
+
+# Archivierte Vorstudien — Belege, kein Produktionsmaterial
+public/illustrations/_archive/**/*.jpg
+public/illustrations/_archive/**/*.png
