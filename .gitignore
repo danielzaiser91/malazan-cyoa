@@ -28,3 +28,6 @@ public/illustrations/_archive/**/*.png
 
 # Stilfindung: Master bleiben lokal, die Requests sind der Beleg
 public/illustrations/_style/*.png
+
+# Referenzen: Master lokal, Requests als Beleg committet
+public/illustrations/_refs/*.png

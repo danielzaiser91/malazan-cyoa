@@ -23,15 +23,6 @@ export const OUT_W = 1280
 export const OUT_H = 720
 
 /**
- * Kompositionsvorgabe je Stufe. Der vierte Block der Prompt-Vorlage.
- */
-export const COMPOSITION = {
-  hero: 'wide establishing shot, deep space, low horizon',
-  standard: 'medium wide shot, one clear focal point, readable at thumbnail size',
-  filler: 'tight simple shot, one object or gesture',
-}
-
-/**
  * Die fuenf Stil-Anker der Stilfindung. Nach der Entscheidung bleibt genau
  * einer uebrig und wandert als Konstante nach `src/content/art/style.ts`.
  *
@@ -75,6 +66,11 @@ export async function credits(key) {
   return (await res.json()).credits
 }
 
+/**
+ * Schickt ab und gibt {cost, polling_url} zurueck. Der Aufrufer MUSS die
+ * polling_url sofort wegschreiben: Stirbt der Prozess dazwischen, ist das Bild
+ * bezahlt und nicht mehr abholbar.
+ */
 export async function submit(key, model, request) {
   // Sicherung gegen die beiden stillen Fallen: beide Parameter existieren nicht
   // und wuerden kommentarlos verschluckt — das Bild kaeme trotzdem und kostete

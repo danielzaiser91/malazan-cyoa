@@ -19,7 +19,8 @@ import { content, artById } from '../src/content/index.ts'
 import { Registry } from '../src/model/registry.ts'
 import { CHARACTER_SHEETS, MOOD_PHRASE, PALETTES, PLACE_SHEETS } from '../src/content/art/style.ts'
 import { seedFrom } from '../src/core/rng.ts'
-import { STYLE_ANCHORS, COMPOSITION, GEN_W, GEN_H, loadKey, submit, awaitResult, download } from './bfl.mjs'
+import { STYLE_ANCHORS, GEN_W, GEN_H, loadKey, submit, awaitResult, download } from './bfl.mjs'
+import { COMPOSITION } from '../src/content/art/prompt.ts'
 
 const argv = process.argv.slice(2)
 const arg = (n, d) => { const i = argv.indexOf(`--${n}`); return i >= 0 && argv[i + 1] ? argv[i + 1] : d }

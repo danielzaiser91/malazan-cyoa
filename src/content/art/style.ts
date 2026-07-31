@@ -1,27 +1,53 @@
 /**
  * Die Stil-Bibel. Gesperrt, bevor ein einziges Bild erzeugt wird.
  *
- * `STYLE_SUFFIX` haengt an JEDEM Prompt. Ihn zu aendern ist eine
- * projektweite Entscheidung mit Neu-Render-Budget, kein stiller Edit.
- * (`_reference/04-illustration-pipeline.md` § 4)
+ * `STYLE_ANCHOR` steht wortgleich am Anfang JEDES Prompts.
+ * (`_reference/04-illustration-pipeline.md` § 4, `art-production-plan.md` § 2)
  */
 
 import type { ArtMood } from '../../model/types.ts'
 
 /**
- * ⚠️ Kein „no text", kein „no watermark".
+ * Der Stil-Anker. Steht **wortgleich am Anfang** jedes Prompts — vorn, nicht
+ * hinten: Diffusionsmodelle gewichten die ersten Tokens am staerksten fuer den
+ * Look.
  *
- * Gemessen am 31.07.2026 mit FLUX.1-schnell: Die Verneinung erzeugt genau das,
- * was sie verbieten soll — vier von sechs Testbildern trugen erfundene
- * Beschriftungen und eine Wasserzeichen-Attrappe. Dasselbe Motiv ohne die
- * Verneinung und stattdessen mit einer positiven Beschreibung leerer Flaechen
- * kam sauber heraus. Diffusionsmodelle konditionieren auf Begriffe, nicht auf
- * deren Negation; „no text" ist fuer sie schlicht „text".
+ * Gewaehlt am 31.07.2026 aus fuenf Varianten (Oel, Gouache, Kohle, Matte
+ * Painting, Radierung), erzeugt mit identischem Seed auf `flux-2-pro`, damit
+ * nur der Stil variiert. Die Belege liegen in `public/illustrations/_style/`.
+ *
+ * ⚠️ **Keine einzige Verneinung.** FLUX.2 hat keine Negative Prompts, und
+ * "no text" erzeugt nachweislich Text — vier von sechs Bildern der Vorstudie
+ * trugen erfundene Beschriftungen. Deshalb steht hier positiv, was leer sein
+ * soll: `plain unmarked surfaces and bare stone`.
+ *
+ * Drei Bausteine sind Projektregeln, nicht Geschmack, und bleiben stehen:
+ *  - `figures small against architecture and sky` — Stil-Bibel: die Menschen
+ *    sind nicht das Groesste im Bild
+ *  - `plain unmarked surfaces and bare stone` — gegen Text-Artefakte
+ *  - `generous empty margin at the frame edge` — fuer den Sicherheitsschnitt
+ *    von 1344x768 auf 1280x720
+ *
+ * Ihn zu aendern ist eine projektweite Entscheidung mit Neu-Render-Budget,
+ * kein stiller Edit.
  */
-export const STYLE_SUFFIX =
-  'painterly digital oil on canvas, visible brush strokes, desaturated ' +
-  'high-contrast, cinematic wide shot, volumetric haze, grim epic fantasy, ' +
-  'plain unmarked surfaces, bare stone, clean empty margins, 16:9'
+export const STYLE_ANCHOR =
+  'Painted in thick oil on rough canvas, visible brush strokes and ' +
+  'palette-knife texture, desaturated and high-contrast, volumetric haze, ' +
+  'figures small against architecture and sky, plain unmarked surfaces and ' +
+  'bare stone, generous empty margin at the frame edge.'
+
+/**
+ * Anker fuer Referenzbilder: derselbe Malstil, aber ohne die
+ * Kompositionsregeln des Szenen-Ankers.
+ *
+ * `figures small against architecture and sky` ist fuer eine Szene richtig und
+ * fuer ein Portraet falsch — es zog im ersten Lauf Mauern in einen
+ * Hintergrund, der einfarbig sein sollte.
+ */
+export const REFERENCE_ANCHOR =
+  'Painted in thick oil on rough canvas, visible brush strokes and ' +
+  'palette-knife texture, desaturated and high-contrast.'
 
 export type PaletteId = 'ash-rust' | 'blue-fire' | 'moons-spawn' | 'bone-dust' | 'hoods-grey'
 
