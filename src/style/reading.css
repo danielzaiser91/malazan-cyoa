@@ -1,0 +1,62 @@
+/* Die Auslegung: SVG-Karte und Textliste. */
+
+.reading { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 1000px) {
+  .reading { grid-template-columns: 1fr 300px; grid-template-areas: 'bar bar' 'canvas detail'; }
+  .reading__bar { grid-area: bar; }
+  .reading__canvas { grid-area: canvas; }
+  .reading__detail { grid-area: detail; }
+}
+
+.reading__bar { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.reading__filters { display: flex; flex-wrap: wrap; gap: .3rem; }
+.reading__coverage { display: flex; flex-wrap: wrap; gap: .1rem 1rem; margin: 0; font-size: .82em; color: var(--fg-quiet); }
+
+.reading__canvas { overflow: auto; border: 1px solid #262640; border-radius: 8px; background: #101020; padding: .5rem; }
+
+.chart { display: block; min-width: 100%; }
+.chart__col { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
+.chart__edge { fill: none; stroke: #3a3a58; stroke-width: 2; }
+.chart__edge--taken { stroke: var(--ember); }
+.chart__edge--known { stroke-dasharray: 5 5; }
+
+.chart__card rect { fill: #1c1c2e; stroke: #3a3a58; stroke-width: 1.5; }
+.chart__card { cursor: pointer; }
+.chart__card:focus-visible rect { stroke: var(--blue-hi); stroke-width: 3; }
+.chart__card--rumoured rect,
+.chart__card--locked rect { fill: #14141f; stroke-dasharray: 4 4; cursor: default; }
+.chart__card--completed rect { stroke: var(--rust); }
+.chart__card--exhausted rect { fill: #191420; stroke: var(--grey-2); }
+.chart__card--convergence rect { fill: #221a18; stroke: var(--ember); stroke-width: 2.5; }
+.chart__card--side rect { stroke: var(--blue); }
+.chart__card--deadend rect { stroke: var(--bad); }
+.chart__card--ending rect { stroke: #d5b45a; }
+
+.chart__code { fill: var(--ember); font-size: 11px; letter-spacing: .08em; }
+.chart__title { fill: var(--fg); font-size: 13px; }
+.chart__badge { font-size: 13px; }
+.chart__back { fill: var(--grey-2); font-size: 18px; }
+
+.reading__detail {
+  border: 1px solid #262640; border-radius: 8px; background: var(--bg-panel);
+  padding: .8rem; min-height: 120px;
+}
+.reading__detail h3 { margin: 0 0 .3rem; display: flex; gap: .5rem; align-items: baseline; }
+.reading__detailCode { color: var(--ember); font-size: .85em; }
+.reading__detailPov { margin: 0; color: var(--moon-3); font-size: .85em; }
+.reading__detailSummary { color: var(--fg); }
+.reading__detailBadge { color: var(--fg-quiet); }
+.reading__detailLocked { color: var(--fg-quiet); font-style: italic; }
+
+.reading__listHead { color: var(--accent, var(--ember)); border-bottom: 1px solid #262640; padding-bottom: .2rem; }
+.reading__listItems { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+.reading__listBtn {
+  width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer;
+  display: grid; grid-template-columns: 3.5rem 1fr auto; gap: .6rem; align-items: baseline;
+  background: #17172a; border: 1px solid #2f2f49; border-radius: var(--radius); padding: .4rem .7rem;
+}
+.reading__listBtn:hover { border-color: var(--moon-2); }
+.reading__listCode { color: var(--ember); font-size: .85em; }
+.reading__listBadge { color: var(--fg-quiet); font-size: .82em; }
+.reading__listUnknown { color: var(--grey-2); font-style: italic; padding: .4rem .7rem; display: block; }
+.reading__listItem--exhausted .reading__listBtn { opacity: .7; }

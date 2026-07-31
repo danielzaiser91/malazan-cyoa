@@ -1,0 +1,23 @@
+{
+  "name": "malazan-cyoa",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Zweisprachiges, illustriertes Choose-your-own-Adventure zu Gardens of the Moon (Fan-Werk)",
+  "scripts": {
+    "dev": "vite",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "sim": "node tools/simulate.mjs",
+    "art": "node tools/art.mjs",
+    "new-scene": "node tools/new-scene.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "typescript": "^5.9.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  }
+}

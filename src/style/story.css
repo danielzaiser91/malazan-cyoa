@@ -1,0 +1,99 @@
+/* Lese-Ansicht. Bild oben auf dem Telefon, daneben auf breiten Schirmen. */
+
+.story {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .story { grid-template-columns: minmax(320px, 44%) 1fr; }
+  .story__figure { position: sticky; top: 4rem; }
+}
+
+.story__figure {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #262640;
+  opacity: 0;
+  transform: scale(1.012);
+  transition: opacity 420ms ease-out, transform 620ms ease-out;
+}
+.story__figure--in { opacity: 1; transform: none; }
+.story__art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+
+.story__body { max-width: var(--line-width); }
+
+.story__meter {
+  display: flex; flex-wrap: wrap; gap: .35rem .9rem;
+  margin: 0 0 .8rem; font-size: .8em; color: var(--fg-quiet);
+  text-transform: uppercase; letter-spacing: .06em;
+}
+.story__code { color: var(--ember); }
+.story__pov { color: var(--moon-3); text-transform: none; letter-spacing: 0; }
+
+.story__prose p { margin: 0 0 1em; }
+.story__prose { outline: none; }
+
+.story__insert {
+  border-left: 2px solid var(--moon-2);
+  padding-left: .9rem;
+  margin: 0 0 1em;
+  color: var(--moon-3);
+}
+
+/* Codex-Verweis im Fliesstext — dezent, aber sichtbar antippbar. */
+.codex-link {
+  font: inherit; color: inherit; cursor: pointer;
+  background: none; border: 0; padding: 0;
+  border-bottom: 1px dotted var(--moon-2);
+}
+.codex-link:hover { color: var(--blue-hi); border-bottom-color: var(--blue-hi); }
+
+/* --- Gespraechsknoten ---------------------------------------------------- */
+
+.story__extras { display: flex; flex-direction: column; gap: .5rem; margin: 1rem 0; }
+.interaction__btn {
+  font: inherit; text-align: left; cursor: pointer;
+  background: #17172a; border: 1px solid #2f2f49; color: var(--fg);
+  border-radius: var(--radius); padding: .5rem .8rem;
+}
+.interaction__btn:hover { border-color: var(--moon-2); }
+.interaction__btn--locked { color: var(--fg-quiet); border-style: dashed; cursor: not-allowed; }
+.interaction { border-left: 2px solid #2f2f49; padding-left: .9rem; }
+.interaction__label { margin: 0; color: var(--fg-quiet); font-style: italic; }
+.interaction__response { margin: .3rem 0 .6rem; }
+
+/* --- Auswahl ------------------------------------------------------------- */
+
+.story__actions { margin-top: 1.4rem; }
+.choices { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .55rem; }
+
+.choice {
+  width: 100%; text-align: left; font: inherit; cursor: pointer;
+  display: flex; flex-direction: column; gap: .3rem;
+  background: linear-gradient(180deg, #1e1e30, #191928);
+  border: 1px solid #33334f; border-left: 3px solid var(--rust);
+  border-radius: var(--radius); color: var(--fg);
+  padding: .7rem .9rem;
+  transition: border-color var(--dur), background var(--dur), transform var(--dur);
+}
+.choice:hover { border-left-color: var(--ember); background: #23233a; transform: translateX(2px); }
+.choice--played { opacity: .62; border-left-color: var(--grey-2); }
+.choice--locked { cursor: not-allowed; border-style: dashed; color: var(--fg-quiet); }
+.choice__label { font-size: 1.02em; }
+.choice__marks { display: flex; flex-wrap: wrap; gap: .3rem .8rem; font-size: .8em; color: var(--fg-quiet); }
+.choice__risk--safe { color: var(--good); }
+.choice__risk--costly { color: #d0b45c; }
+.choice__risk--dangerous { color: var(--ember); }
+.choice__risk--lethal { color: var(--bad); }
+.choice__check { color: var(--blue-hi); }
+.choice__lock { color: var(--moon-3); }
+
+.confirm__text { font-style: italic; }
+.confirm__row { display: flex; gap: .5rem; flex-wrap: wrap; }
+
+.gameover__reason { font-style: italic; color: var(--moon-3); }
+.backlog__body { white-space: pre-line; color: var(--fg-quiet); }

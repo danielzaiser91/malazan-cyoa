@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client", "node"],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": false,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+
+    /*
+     * Relative Imports tragen ihre `.ts`-Endung. Das kostet nichts (Vite und Vitest
+     * loesen sie auf) und kauft eine Menge: Node 24 kann die Quelldateien damit
+     * OHNE Build direkt ausfuehren (natives Type-Stripping). Genau das macht den
+     * headless Simulator in `tools/` moeglich, ohne eine einzige Dependency.
+     * `verbatimModuleSyntax` erzwingt `import type` und haelt den Code damit
+     * "erasable" — Voraussetzung fuer das Type-Stripping.
+     */
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src", "tests", "tools"]
+}

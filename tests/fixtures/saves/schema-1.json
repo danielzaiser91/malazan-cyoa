@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "profile": {
+    "id": "test",
+    "name": "Testlauf",
+    "sigil": "obelisk",
+    "background": "marine",
+    "pronouns": "they",
+    "createdAt": "2026-07-31T00:00:00.000Z",
+    "playedAt": "2026-07-31T00:00:00.000Z"
+  },
+  "settings": {
+    "lang": "de",
+    "fontScale": 1,
+    "lineWidth": "normal",
+    "serif": true,
+    "dyslexic": false,
+    "contrast": "normal",
+    "reduceMotion": false,
+    "textSpeed": "fast",
+    "autoAdvance": false,
+    "muted": false,
+    "volume": 0.5
+  },
+  "meta": {
+    "scenes": {
+      "b1.c00.s01": {
+        "reached": true,
+        "taken": [
+          "talk"
+        ],
+        "outcome": "progress"
+      },
+      "b1.c00.s02": {
+        "reached": true,
+        "taken": []
+      }
+    },
+    "codex": [
+      "malaz-city",
+      "bridgeburners"
+    ],
+    "cards": [],
+    "achievements": [
+      "warned"
+    ],
+    "endings": [],
+    "gameOvers": 0,
+    "pagesRead": [
+      "b1.c00.s01.p01",
+      "b1.c00.s01.p02",
+      "b1.c00.s01.p03",
+      "b1.c00.s02.p01",
+      "b1.c00.s02.p02",
+      "b1.c00.s02.p03"
+    ]
+  },
+  "run": {
+    "book": "b1",
+    "scene": "b1.c00.s02",
+    "page": 2,
+    "stats": {
+      "blade": 3,
+      "will": 1,
+      "cunning": 1,
+      "heart": 2,
+      "standing": 1,
+      "fortune": 1
+    },
+    "sheets": {
+      "paran-child": {
+        "blade": 0,
+        "will": 2,
+        "cunning": 1,
+        "heart": 3,
+        "standing": 2,
+        "fortune": 1
+      }
+    },
+    "xp": 8,
+    "level": 1,
+    "coin": 10,
+    "items": {},
+    "flags": {
+      "paran.met.bridgeburner": true
+    },
+    "talents": [],
+    "attention": 0,
+    "seed": 1234,
+    "rolls": 0,
+    "entered": [
+      "b1.c00.s01",
+      "b1.c00.s02"
+    ],
+    "pagesApplied": [
+      "b1.c00.s01.p01",
+      "b1.c00.s01.p02",
+      "b1.c00.s01.p03",
+      "b1.c00.s02.p01",
+      "b1.c00.s02.p02",
+      "b1.c00.s02.p03"
+    ],
+    "interactionsUsed": [],
+    "playtimeMs": 0
+  },
+  "checkpoints": {
+    "b1.c00.s01": {
+      "schema": 1,
+      "run": {
+        "book": "b1",
+        "scene": "b1.c00.s01",
+        "page": 0,
+        "stats": {
+          "blade": 3,
+          "will": 1,
+          "cunning": 1,
+          "heart": 2,
+          "standing": 1,
+          "fortune": 1
+        },
+        "sheets": {},
+        "xp": 0,
+        "level": 1,
+        "coin": 10,
+        "items": {},
+        "flags": {},
+        "talents": [],
+        "attention": 0,
+        "seed": 1234,
+        "rolls": 0,
+        "entered": [],
+        "pagesApplied": [],
+        "interactionsUsed": [],
+        "playtimeMs": 0
+      }
+    },
+    "b1.c00.s02": {
+      "schema": 1,
+      "run": {
+        "book": "b1",
+        "scene": "b1.c00.s02",
+        "page": 0,
+        "stats": {
+          "blade": 3,
+          "will": 1,
+          "cunning": 1,
+          "heart": 2,
+          "standing": 1,
+          "fortune": 1
+        },
+        "sheets": {
+          "paran-child": {
+            "blade": 0,
+            "will": 2,
+            "cunning": 1,
+            "heart": 3,
+            "standing": 1,
+            "fortune": 1
+          }
+        },
+        "xp": 0,
+        "level": 1,
+        "coin": 10,
+        "items": {},
+        "flags": {},
+        "talents": [],
+        "attention": 0,
+        "seed": 1234,
+        "rolls": 0,
+        "entered": [
+          "b1.c00.s01"
+        ],
+        "pagesApplied": [
+          "b1.c00.s01.p01",
+          "b1.c00.s01.p02",
+          "b1.c00.s01.p03"
+        ],
+        "interactionsUsed": [],
+        "playtimeMs": 0
+      }
+    }
+  },
+  "updatedAt": "2026-07-31T00:00:00.000Z"
+}
