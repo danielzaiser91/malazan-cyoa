@@ -73,11 +73,18 @@ export class AudioEngine {
   enableInDev(): void { this.allowed = true }
 
   update(settings: AudioSettings): void {
-    this.settings = settings
+    // Im Dev-Build (und damit im Browser-Pane) bleibt stumm stumm, bis der
+    // Nutzer den Ton bewusst einschaltet — auch wenn ein geladenes Profil
+    // "nicht stumm" sagt. `play()` haette ohnehin nichts getan, aber so ist
+    // der angezeigte Zustand ehrlich statt nur folgenlos.
+    this.settings = this.allowed ? settings : { ...settings, muted: true }
     if (this.master && this.ctx) {
-      this.master.gain.setTargetAtTime(settings.muted ? 0 : settings.volume, this.ctx.currentTime, 0.01)
+      this.master.gain.setTargetAtTime(this.settings.muted ? 0 : this.settings.volume, this.ctx.currentTime, 0.01)
     }
   }
+
+  /** Wird der Ton gerade vom Preview-Schutz zurueckgehalten? */
+  get blockedByDevGuard(): boolean { return !this.allowed }
 
   play(sfx: Sfx): void {
     if (!this.allowed || this.settings.muted || this.settings.volume <= 0) return
