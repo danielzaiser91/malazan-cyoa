@@ -14,15 +14,35 @@ export const START_STATS: Record<Background, Record<StatId, number>> = {
 
 export const START_COIN = 10
 
-/** Wortbaender aus `_reference/01-…` § 4. Gilt fuer DE und EN getrennt. */
+/**
+ * Wortbaender. Gilt fuer DE und EN getrennt.
+ *
+ * Am 01.08.2026 gesenkt (vorher 60–110 / 120–200 / 220–320). Grund ist kein
+ * Geschmack, sondern eine gerechnete Grenze: **Ab 800 px Fensterhoehe darf eine
+ * Seite nicht scrollen.** Wer scrollt, sieht die Auswahlmoeglichkeiten nicht,
+ * waehrend er den Text liest, und entscheidet damit blind.
+ *
+ * Das Budget (Herleitung in `_reference/ux-befunde.md` § 1): Von 800 px gehen
+ * Kopfzeile, Meta-Zeile, POV-Zeile, Abstand und Auswahl ab. Es bleiben 600 px
+ * fuer eine Seite mit "Weiter" und 480 px am Szenenende mit drei Optionen —
+ * bei 27 px Zeilenhoehe und ~10 Woertern je Zeile also rund 200 beziehungsweise
+ * 160 Woerter.
+ */
 export const WORD_BANDS: Record<Band, { min: number; max: number }> = {
-  beat: { min: 60, max: 110 },
-  standard: { min: 120, max: 200 },
-  long: { min: 220, max: 320 },
+  beat: { min: 50, max: 90 },
+  standard: { min: 90, max: 150 },
+  long: { min: 150, max: 190 },
 }
 
+/**
+ * Obergrenze fuer die LETZTE Seite einer Szene, an der mehr als eine Option
+ * haengt. Dort ist das Hoehenbudget am kleinsten und die Entscheidung am
+ * wichtigsten — genau die Seite darf also nicht die laengste sein.
+ */
+export const WORD_CAP_AT_CHOICE = 150
+
 /** Harte Obergrenze: darueber wird die Seite geteilt, nicht diskutiert. */
-export const WORD_HARD_CAP = 400
+export const WORD_HARD_CAP = 200
 
 /**
  * XP-Schwellen fuer die Ascendancy-Stufen 1–10. Index 0 = Aufstieg auf Stufe 2.

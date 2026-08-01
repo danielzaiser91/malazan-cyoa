@@ -113,7 +113,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s02.p01`,
           bodyKey: `${C}.s02.p01.body`,
-          band: 'standard',
+          band: 'long',
           art: { promptId: `${C}.s02.p01`, altKey: `${C}.s02.p01.alt`, mood: 'aftermath' },
         },
         {
@@ -175,7 +175,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s03.p03`,
           bodyKey: `${C}.s03.p03.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s03.p03`, altKey: `${C}.s03.p03.alt`, mood: 'siege' },
         },
       ],
@@ -224,7 +224,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s04.p02`,
           bodyKey: `${C}.s04.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s04.p02`, altKey: `${C}.s04.p02.alt`, mood: 'siege' },
         },
         {
@@ -253,13 +253,13 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s06.p01`,
           bodyKey: `${C}.s06.p01.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s06.p01`, altKey: `${C}.s06.p01.alt`, mood: 'aftermath' },
         },
         {
           id: `${C}.s06.p02`,
           bodyKey: `${C}.s06.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s06.p02`, altKey: `${C}.s06.p02.alt`, mood: 'aftermath' },
         },
         {
@@ -295,19 +295,19 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s07.p01`,
           bodyKey: `${C}.s07.p01.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s07.p01`, altKey: `${C}.s07.p01.alt`, mood: 'siege' },
         },
         {
           id: `${C}.s07.p02`,
           bodyKey: `${C}.s07.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s07.p02`, altKey: `${C}.s07.p02.alt`, mood: 'aftermath' },
         },
         {
           id: `${C}.s07.p03`,
           bodyKey: `${C}.s07.p03.body`,
-          band: 'standard',
+          band: 'long',
           art: { promptId: `${C}.s07.p03`, altKey: `${C}.s07.p03.alt`, mood: 'aftermath' },
         },
         {
@@ -378,7 +378,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s05.p06`,
           bodyKey: `${C}.s05.p06.body`,
-          band: 'standard',
+          band: 'long',
           art: { promptId: `${C}.s05.p06`, altKey: `${C}.s05.p06.alt`, mood: 'march' },
           effects: [{ achievement: 'prologue-done' }],
         },

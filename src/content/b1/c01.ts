@@ -46,7 +46,7 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s01.p02`,
           bodyKey: `${C}.s01.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s01.p02`, altKey: `${C}.s01.p02.alt`, mood: 'march' },
           interactions: [
             {
@@ -114,7 +114,7 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s03.p02`,
           bodyKey: `${C}.s03.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s03.p02`, altKey: `${C}.s03.p02.alt`, mood: 'street-night' },
           interactions: [
             {
@@ -163,13 +163,13 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s04.p02`,
           bodyKey: `${C}.s04.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s04.p02`, altKey: `${C}.s04.p02.alt`, mood: 'march' },
         },
         {
           id: `${C}.s04.p03`,
           bodyKey: `${C}.s04.p03.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s04.p03`, altKey: `${C}.s04.p03.alt`, mood: 'march' },
           effects: [
             { flag: 'recruit.spoke.sorry', set: true },
@@ -195,7 +195,7 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s02.p01`,
           bodyKey: `${C}.s02.p01.body`,
-          band: 'standard',
+          band: 'long',
           art: { promptId: `${C}.s02.p01`, altKey: `${C}.s02.p01.alt`, mood: 'march' },
         },
         {
@@ -207,7 +207,7 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s02.p03`,
           bodyKey: `${C}.s02.p03.body`,
-          band: 'standard',
+          band: 'long',
           art: { promptId: `${C}.s02.p03`, altKey: `${C}.s02.p03.alt`, mood: 'aftermath' },
           effects: [{ codex: 'hounds-of-shadow' }],
         },
@@ -250,13 +250,13 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s06.p01`,
           bodyKey: `${C}.s06.p01.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s06.p01`, altKey: `${C}.s06.p01.alt`, mood: 'aftermath' },
         },
         {
           id: `${C}.s06.p02`,
           bodyKey: `${C}.s06.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s06.p02`, altKey: `${C}.s06.p02.alt`, mood: 'aftermath' },
         },
         {
@@ -289,13 +289,13 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s08.p01`,
           bodyKey: `${C}.s08.p01.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s08.p01`, altKey: `${C}.s08.p01.alt`, mood: 'aftermath' },
         },
         {
           id: `${C}.s08.p02`,
           bodyKey: `${C}.s08.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s08.p02`, altKey: `${C}.s08.p02.alt`, mood: 'divine' },
         },
         {
@@ -307,7 +307,7 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s08.p04`,
           bodyKey: `${C}.s08.p04.body`,
-          band: 'standard',
+          band: 'long',
           art: { promptId: `${C}.s08.p04`, altKey: `${C}.s08.p04.alt`, mood: 'divine' },
           effects: [{ codex: 'shadowthrone-cotillion' }, { attention: 4 }],
         },
@@ -349,7 +349,7 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s07.p02`,
           bodyKey: `${C}.s07.p02.body`,
-          band: 'beat',
+          band: 'standard',
           art: { promptId: `${C}.s07.p02`, altKey: `${C}.s07.p02.alt`, mood: 'aftermath' },
           interactions: [
             {
@@ -369,7 +369,7 @@ export const chapter01: Chapter = {
         {
           id: `${C}.s07.p03`,
           bodyKey: `${C}.s07.p03.body`,
-          band: 'standard',
+          band: 'long',
           art: { promptId: `${C}.s07.p03`, altKey: `${C}.s07.p03.alt`, mood: 'aftermath' },
         },
         {
