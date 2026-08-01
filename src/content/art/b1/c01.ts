@@ -68,8 +68,12 @@ export const art01: ArtPrompt[] = [
   },
   {
     id: `${C}.s02.p02`,
-    subject: 'the aftermath of a cavalry troop destroyed on an open road, horses and riders scattered, no enemy dead at all',
-    detail: 'the ground churned in wide arcs, gear untouched, nothing looted',
+    // "no enemy dead at all" war der Kern der Szene und zugleich eine
+    // Verneinung. Positiv gesagt trifft es sogar besser: alle tragen dieselben
+    // Farben — dann ist offensichtlich, dass hier nur eine Seite liegt.
+    subject: 'an open road the morning after a cavalry troop was broken, riders and horses lying where they fell, '
+      + 'every one of them in the same colours',
+    detail: 'the ground churned in wide arcs, gear and weapons still where they were dropped',
     mood: 'aftermath', palette: 'ash-rust', tier: 'hero',
   },
   {
@@ -87,17 +91,23 @@ export const art01: ArtPrompt[] = [
   // ------------------------------------------------------------------ 1.2a
   {
     id: `${C}.s06.p01`,
-    subject: 'recruits moving through a field of dead cavalry, lifting cloaks, checking, moving on',
+    subject: 'recruits walking a field of fallen riders in grey morning light, lifting a cloak here and there '
+      + 'to look at a face, then moving on',
     mood: 'aftermath', palette: 'ash-rust', tier: 'standard',
   },
   {
     id: `${C}.s06.p02`,
-    subject: 'a wounded horse lying on its side in dust, a soldier kneeling at its head',
+    // Einziger `Content Moderated`-Fall des Blocks: geprueft wurde das fertige
+    // BILD, nicht der Text. "wounded horse" plus knieender Soldat ergibt einen
+    // Gnadenstoss — den zeigt die Szene gar nicht. Sie bleibt eine gute halbe
+    // Stunde bei dem Tier und redet mit ihm. Genau das steht jetzt da.
+    subject: 'a horse lying on its side in the dust, a soldier kneeling at its head with one hand flat on its neck, '
+      + 'talking to it',
     mood: 'aftermath', palette: 'bone-dust', tier: 'standard',
   },
   {
     id: `${C}.s06.p03`,
-    subject: 'someone sitting in the dirt beside a body, doing nothing, waiting',
+    subject: 'a recruit sitting in the dirt beside a fallen rider, hands loose in the lap, eyes on the horizon',
     mood: 'aftermath', palette: 'hoods-grey', tier: 'standard',
   },
 
@@ -134,7 +144,8 @@ export const art01: ArtPrompt[] = [
   // ------------------------------------------------------------------- 1.3
   {
     id: `${C}.s07.p01`,
-    subject: 'a composed woman in black imperial leathers walking a killing ground, cataloguing rather than mourning',
+    subject: 'a composed woman in black imperial leathers walking the ground where the fighting ended, '
+      + 'reading it like a page rather than mourning it',
     characters: ['lorn'],
     mood: 'aftermath', palette: 'hoods-grey', tier: 'hero',
   },
@@ -143,7 +154,7 @@ export const art01: ArtPrompt[] = [
     // Zwei Figuren, nur eine mit Blatt: dieselbe Konstruktion hat in
     // `b1.c00.s05.p02` die zweite Person verschluckt. Deshalb hier die Anzahl
     // vorweg und je ein eindeutiges Merkmal.
-    subject: 'two people stand over the same body, one on each side of it, looking at different things: '
+    subject: 'two people stand over the same fallen rider, one on each side, looking at different things: '
       + 'a woman in black leathers, and a much younger officer a head taller than her',
     characters: ['lorn'],
     station: ['imperialCommand'],

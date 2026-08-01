@@ -216,6 +216,29 @@ export const FORBIDDEN_PERIOD_MARKERS = [
   'medal', 'gilt', 'brocade', 'cravat', 'powdered wig', 'lace cuff',
 ] as const
 
+/**
+ * Woerter, an denen die Inhaltspruefung dieses Projekts nachweislich schon
+ * abgebrochen hat. Alle stammen aus dem Bildlauf zu Kapitel 1 am 01.08.2026,
+ * bei dem 6 von 26 Requests abgelehnt wurden — ein Kapitel, das nach einer
+ * Schlacht spielt und die Woerter deshalb naheliegend gebraucht hat.
+ *
+ * ⚠️ Ehrlich zur Aussagekraft: WELCHES Wort im Einzelfall gekippt hat, ist
+ * nicht gemessen — sie standen in denselben Saetzen. Die Liste ist bewusst
+ * konservativ und darf Fehlalarm geben. Sie kostet eine Umformulierung; ein
+ * abgelehnter Batch kostet einen halben Lauf.
+ *
+ * Geprueft werden nur Motivtexte, nicht die Bausteine: `MOOD_PHRASE.aftermath`
+ * enthaelt `still bodies` und ist in neun Bildern anstandslos durchgegangen.
+ * Das Wort allein kippt also nichts — die Haeufung tut es.
+ *
+ * Und das Gegenmittel ist ohnehin das bessere Schreiben: `the ground where the
+ * fighting ended` steht naeher an Eriksons Ton als `a killing ground`.
+ */
+export const MODERATION_TRIGGERS = [
+  'dead', 'body', 'bodies', 'corpse', 'killing ground',
+  'wounded', 'destroyed', 'slaughter', 'blood', 'mutilat',
+] as const
+
 /** Wiederkehrende Orte — dieselbe Regel wie bei den Figuren. */
 export const PLACE_SHEETS: Record<string, string> = {
   malazCity:

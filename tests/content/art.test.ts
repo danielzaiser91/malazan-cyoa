@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest'
 import { artPrompts } from '../../src/content/index.ts'
 import { buildPrompt, promptHash, COMPOSITION } from '../../src/content/art/prompt.ts'
-import { CHARACTER_SHEETS, FORBIDDEN_PERIOD_MARKERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR } from '../../src/content/art/style.ts'
+import { CHARACTER_SHEETS, FORBIDDEN_PERIOD_MARKERS, MODERATION_TRIGGERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR } from '../../src/content/art/style.ts'
 import { ART_MOODS } from '../../src/model/types.ts'
 
 describe('Stil-Anker', () => {
@@ -91,6 +91,23 @@ describe('Prompt-Vorlage', () => {
     for (const p of artPrompts) {
       const text = buildPrompt(p).toLowerCase()
       for (const m of FORBIDDEN_PERIOD_MARKERS) if (text.includes(m)) bad.push(`${p.id}: "${m}"`)
+    }
+    expect(bad).toEqual([])
+  })
+
+  // 6 von 26 Requests abgelehnt (01.08.2026, Kapitel 1). Ein Reizwort im
+  // Motivtext kostet den Platz im Batch — und die Umformulierung ist fast
+  // immer die bessere Prosa.
+  it('kein Motivtext traegt ein Wort, an dem die Moderation schon abgebrochen ist', () => {
+    // Wortanfang pruefen, nicht Teilstring: sonst meldet "body" das voellig
+    // harmlose "nobody talking". Kein abschliessendes \b, damit "mutilat" auch
+    // "mutilated" und "mutilation" fasst.
+    const bad: string[] = []
+    for (const p of artPrompts) {
+      const text = `${p.subject} ${p.detail ?? ''}`
+      for (const w of MODERATION_TRIGGERS) {
+        if (new RegExp(`\\b${w}`, 'i').test(text)) bad.push(`${p.id}: "${w}"`)
+      }
     }
     expect(bad).toEqual([])
   })
