@@ -18,7 +18,7 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Task | SP | Stand |
 |---|---|---|---|
-| B2 | **Block 2: Kapitel 1 bebildern.** 26 Bilder in einem Lauf (`b1.c00.s05.p02` neu plus 25 von 31 aus Kapitel 1). Lorn-Referenzblatt vorher ergänzt — sie kam im Prolog nicht vor und wäre über elf Kapitel gedriftet. | 2 | Läuft |
+| — | — | — | — |
 | — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
 
 ### 2 · Queue
@@ -104,6 +104,24 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
     hinten dran und trägt keine Zuordnung — „a woman … looks at a boy" plus das Blatt des Jungen
     ergab eine einzige Figur. Regel: Anzahl vorweg, je ein ausschließendes Merkmal, räumliche
     Beziehung ausgeschrieben.
+
+12. **Der Stil-Anker macht Naheinstellungen unmöglich — deshalb gibt es einen zweiten.**
+    `figures small against architecture and sky` ist eine Projektregel und für jede Szene richtig;
+    bei einem angeschnittenen Motiv liefert sie zuverlässig Kulisse, gegen die das Motiv nicht
+    ankommt (der Schattenhund kam zweimal ganzfigurig zurück, einmal über einer Mauer, einmal über
+    einem Militärlager). `framing: 'close'` tauscht Anker und Komposition. Derselbe Befund und
+    dieselbe Lösung wie beim `REFERENCE_ANCHOR`, den es aus genau diesem Grund schon gab.
+
+13. **`close-quarters` als elfte Stimmung.** Keine der zehn ließ einen Innenraum zu — `march`
+    bringt Tageslicht mit, `street-night` eine Straße. Das Truppendeck unter der Wasserlinie kam
+    deshalb als Hafenszene im Freien zurück. Über elf Kapitel folgen noch Tavernen, Kajüten,
+    Keller und Kasematten.
+
+14. **Bestandsschutz für bezahlte Bilder.** „Fertig" hieß bisher: Datei da **und** Prompt
+    unverändert — ein geänderter Baustein machte damit den gesamten Bestand wieder zu Arbeit.
+    Jetzt getrennt: *fehlt* wird ungefragt erzeugt, *veraltet* nur auf Ansage (`gen --stale`,
+    `--ids`, `--id`). Damit kostet eine Prompt-Verbesserung erst einmal nichts, und die
+    Entscheidung fällt vor dem Lauf statt danach.
 
 ---
 

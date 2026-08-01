@@ -13,7 +13,7 @@
  */
 
 import type { ArtPrompt, ArtTier } from './types.ts'
-import { CHARACTER_SHEETS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, STATION_SHEETS, STYLE_ANCHOR, WORLD_ANCHOR } from './style.ts'
+import { CHARACTER_SHEETS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, STATION_SHEETS, STYLE_ANCHOR, WORLD_ANCHOR, CLOSE_ANCHOR, CLOSE_COMPOSITION } from './style.ts'
 
 /** Vierter Block der Vorlage, aus der Stufe abgeleitet. */
 export const COMPOSITION: Record<ArtTier, string> = {
@@ -54,7 +54,9 @@ export function buildPrompt(p: ArtPrompt): string {
   // Stil, dann Welt, dann Szene. Der Weltanker steht vor der Szene, weil er
   // ihre Requisiten mitbestimmt — steht er hinten, hat das Modell die Epoche
   // laengst gewaehlt. (Warum es ihn gibt: `style.ts`, `WORLD_ANCHOR`.)
-  return [STYLE_ANCHOR, WORLD_ANCHOR, sceneBlock(p) + '.', lightBlock(p) + '.', COMPOSITION[p.tier] + '.']
+  const anchor = p.framing === 'close' ? CLOSE_ANCHOR : STYLE_ANCHOR
+  const frame = p.framing === 'close' ? CLOSE_COMPOSITION : COMPOSITION[p.tier]
+  return [anchor, WORLD_ANCHOR, sceneBlock(p) + '.', lightBlock(p) + '.', frame + '.']
     .join(' ')
     .replace(/\.\.+/g, '.')
 }

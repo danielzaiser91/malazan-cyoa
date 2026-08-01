@@ -7,12 +7,12 @@
 import { describe, expect, it } from 'vitest'
 import { artPrompts } from '../../src/content/index.ts'
 import { buildPrompt, promptHash, COMPOSITION } from '../../src/content/art/prompt.ts'
-import { CHARACTER_SHEETS, FORBIDDEN_PERIOD_MARKERS, MODERATION_TRIGGERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR, WORLD_ANCHOR } from '../../src/content/art/style.ts'
+import { CHARACTER_SHEETS, CLOSE_ANCHOR, CLOSE_COMPOSITION, FORBIDDEN_PERIOD_MARKERS, MODERATION_TRIGGERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR, WORLD_ANCHOR } from '../../src/content/art/style.ts'
 import { ART_MOODS } from '../../src/model/types.ts'
 
 describe('Stil-Anker', () => {
   it('steht wortgleich am Anfang JEDES Prompts', () => {
-    const bad = artPrompts.filter(p => !buildPrompt(p).startsWith(STYLE_ANCHOR)).map(p => p.id)
+    const bad = artPrompts.filter(p => !buildPrompt(p).startsWith(p.framing === 'close' ? CLOSE_ANCHOR : STYLE_ANCHOR)).map(p => p.id)
     expect(bad).toEqual([])
   })
 
@@ -72,7 +72,11 @@ describe('Prompt-Vorlage', () => {
       if (!text.includes(p.subject.trim())) problems.push(`${p.id}: Szene fehlt`)
       if (!text.includes(MOOD_PHRASE[p.mood])) problems.push(`${p.id}: Licht fehlt`)
       if (!text.includes(PALETTES[p.palette].phrase)) problems.push(`${p.id}: Palette fehlt`)
-      if (!text.includes(COMPOSITION[p.tier])) problems.push(`${p.id}: Komposition fehlt`)
+      // Eine Naheinstellung traegt statt der Stufen-Komposition ihre eigene:
+      // `wide establishing shot` und `only shoulder and jaw in frame` sind
+      // nicht beide gleichzeitig erfuellbar, und der Anker gewinnt.
+      const frame = p.framing === 'close' ? CLOSE_COMPOSITION : COMPOSITION[p.tier]
+      if (!text.includes(frame)) problems.push(`${p.id}: Komposition fehlt`)
     }
     expect(problems).toEqual([])
   })

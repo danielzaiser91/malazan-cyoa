@@ -35,4 +35,13 @@ export interface ArtPrompt {
   mood: ArtMood
   palette: PaletteId
   tier: ArtTier
+  /**
+   * Naheinstellung. Tauscht den Stil-Anker gegen `CLOSE_ANCHOR` und die
+   * Stufen-Komposition gegen `CLOSE_COMPOSITION`.
+   *
+   * Nicht kosmetisch: Der normale Anker verlangt `figures small against
+   * architecture and sky` und liefert damit zuverlaessig Kulisse, gegen die
+   * ein angeschnittenes Motiv nicht ankommt. Zweimal bezahlt gelernt.
+   */
+  framing?: 'close'
 }

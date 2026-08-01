@@ -69,6 +69,33 @@ export const WORLD_ANCHOR =
   'everything moved by muscle, hoof and sail.'
 
 /**
+ * Anker fuer NAHEINSTELLUNGEN. Derselbe Malstil, aber ohne die Weite.
+ *
+ * `figures small against architecture and sky` ist eine Projektregel und fuer
+ * jede Szene richtig — und fuer eine Naheinstellung macht sie das Bild
+ * unmoeglich. Sie liefert zuverlaessig Architektur und Himmel, auch wenn das
+ * Motiv ausdruecklich einen angeschnittenen Ausschnitt verlangt.
+ *
+ * Gemessen am 01.08.2026 an `b1.c01.s08.p04`, zweimal: Das Motiv verlangte
+ * "nur Schulter und Kiefer im Bild", zurueck kam beide Male das ganze Tier —
+ * einmal ueber einer Mauer, einmal ueber einem Militaerlager. Der Anker hat
+ * die Kulisse geliefert, gegen die das Motiv nicht ankam.
+ *
+ * Derselbe Befund wie beim `REFERENCE_ANCHOR` und dieselbe Loesung: Wo die
+ * Komposition eine andere ist, gehoert ein anderer Anker hin. Die Regeln gegen
+ * Text-Artefakte und Signaturen bleiben, die Weite faellt weg.
+ */
+export const CLOSE_ANCHOR =
+  'Painted in thick oil on rough canvas, visible brush strokes and ' +
+  'palette-knife texture, desaturated and high-contrast, the subject filling ' +
+  'the frame and running off it on more than one side, plain unmarked ' +
+  'surfaces, paint reaching to every edge of the picture.'
+
+/** Kompositionszeile fuer Naheinstellungen — ersetzt die Stufen-Komposition. */
+export const CLOSE_COMPOSITION =
+  'extreme close view, the subject too near and too large to fit, everything else out of the picture'
+
+/**
  * Anker fuer Referenzbilder: derselbe Malstil, aber ohne die
  * Kompositionsregeln des Szenen-Ankers.
  *

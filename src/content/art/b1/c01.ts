@@ -163,10 +163,11 @@ export const art01: ArtPrompt[] = [
     // arbeitet gegen jede Naheinstellung, und `architecture` im Stil-Anker hat
     // die Mauer geliefert, die im Motiv gar nicht steht. Deshalb `standard`
     // und ein Massstab, den das Modell im Bild selbst hat.
-    subject: 'a view from ground level of one shoulder and one closed jaw of a hound so large that only those two '
-      + 'parts of it fit inside the picture, its eye somewhere above the upper edge, dune grass along the bottom '
-      + 'of the frame for scale',
-    detail: 'coarse wet fur, the animal entirely calm and in no hurry, the sand under it pressed flat and wide',
+    subject: 'the shoulder and closed jaw of an enormous hound, filling the picture from side to side, '
+      + 'seen from the height of the dune grass that runs along the very bottom edge',
+    detail: 'coarse wet fur in single strands, one closed lip, the sand beneath pressed flat, '
+      + 'the animal entirely calm',
+    framing: 'close',
     mood: 'divine', palette: 'hoods-grey', tier: 'standard',
   },
   {
