@@ -18,9 +18,8 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Task | SP | Stand |
 |---|---|---|---|
-| U8 | **Wahldichte: 4 Wahlpunkte auf 63 Seiten sind zu wenig.** Ziel laut `verbesserungsvorschlaege.md` § 1: eine Wahl alle 3–5 Seiten, also 13–20 statt 4. Kleine Wahlen innerhalb einer Szene (`Interaction`, bisher 5× im ganzen Buch) tragen die Strecke, die Verzweigung am Szenenende bleibt für die Wegänderungen. Dazu: sichtbare Kosten, Risiko und Folgen — und je Szene ein Pfad, der etwas kostet und trotzdem gut ist. | 8 | Offen |
-| U9 | **Werte und Herkunft wirksam machen.** Im ganzen Slice entscheiden sie über EINE Probe. Ziel: je Szene eine wertabhängige Option (sichtbar gesperrt oder leichter) und ein Einschub je Herkunft. Beide Strukturen existieren und werden kaum genutzt. | 5 | Offen |
-| U13 | **DOM-Tests für die drei Dialoge.** Alle 122 Tests liegen auf Core und Content; die Darstellungsschicht ist ungetestet — und genau dort lagen die Regressionen dieser Runde. Günstigste Absicherung im Projekt. | 2 | Offen |
+| U8b | **Folgen sichtbar machen.** Die Wahldichte steht (2,2 Seiten je Entscheidung), aber eine Wertänderung wird beim Auslösen nirgends angezeigt — die Ereignis-Schicht `EffectEvent` liefert sie und die Ansicht nutzt sie nur für Klang. Dazu Kosten und Risiko an den Verzweigungen sichtbar machen (`costs`, `risk` existieren und werden kaum genutzt). | 3 | Offen |
+| U9 | **Herkunft im Text wirksam.** Zwei wertabhängige Knoten sind gesetzt; was fehlt, ist der Einschub je Herkunft — ein Sappeur sieht an einer Mauer etwas anderes als ein Kadermagier. `Insert` existiert und wird an vier Stellen genutzt. | 3 | Offen |
 | T6b | **Rest aus `_reference/ux-befunde.md`:** M12 Bild und Text teilen sich die Höhe, M13 Zustandszeile in der Kopfleiste, M14 Zeilenlänge im Zweispalter gegenprüfen. | 3 | Offen |
 | — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
 
