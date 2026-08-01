@@ -87,6 +87,9 @@ export class StoryView {
     this.img.sizes = '(max-width: 760px) 100vw, 640px'
     this.img.src = art.src
     this.img.alt = t.t(page.art.altKey)
+    // Initial nur auf der ERSTEN Seite einer Szene: Es markiert einen Anfang.
+    // Auf jeder Seite waere es Dekoration und keine Information mehr.
+    this.prose.classList.toggle('story__prose--opening', view.index === 0)
     this.figure.dataset.mood = page.art.mood
     this.host.setMood(page.art.mood)
     this.figure.classList.remove('story__figure--in')
@@ -271,9 +274,17 @@ export class StoryView {
     const used = new Set<string>()
 
     const frag = document.createDocumentFragment()
+    let index = 0
     for (const part of text.split(/\n{2,}/)) {
       if (!part.trim()) continue
-      const p = el('p', { class: 'p' })
+      // Dialog erkennt sich selbst am oeffnenden Anfuehrungszeichen — beide
+      // Sprachen, beide Konventionen. Das kostet keine Auszeichnung in der
+      // Prosa und wirkt trotzdem auf jeder Seite: Rede bekommt eine eigene
+      // Farbe und einen Einzug, Erzaehltext bleibt ruhig.
+      const speech = /^["\u201e\u201c\u00ab\u203a]/.test(part.trim())
+      const p = el('p', { class: speech ? 'p p--speech' : 'p' })
+      // Die Staffelung beim Einblenden: jeder Absatz ein Stueck spaeter.
+      p.style.setProperty('--i', String(index++))
       let rest = part.trim()
       let guard = 0
       while (rest && guard++ < 400) {

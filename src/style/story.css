@@ -12,16 +12,30 @@
   .story__figure { position: sticky; top: 4rem; }
 }
 
+/* Der Bildauftritt: Das Bild kommt gross und ein Stueck vorgeschoben herein und
+   setzt sich dann in seinen Rahmen. Es soll die Seite anfuehren, nicht sie
+   begleiten — bei einem Buch, in dem jede Seite ein eigenes Bild hat, ist der
+   Bildwechsel das eigentliche Ereignis beim Umblaettern.
+
+   Bewusst EINE Animation statt Transition plus statischem Transform: Eine
+   Animation, die `transform` anfasst, ueberschreibt jeden separat gesetzten
+   Transform — die beiden zusammen ergeben sonst stumme Fehler. */
 .story__figure {
   margin: 0;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #262640;
   opacity: 0;
-  transform: scale(1.012);
-  transition: opacity 420ms ease-out, transform 620ms ease-out;
 }
-.story__figure--in { opacity: 1; transform: none; }
+.story__figure--in {
+  opacity: 1;
+  animation: art-arrive 720ms cubic-bezier(.16, .84, .3, 1) both;
+}
+@keyframes art-arrive {
+  0%   { opacity: 0; transform: scale(1.09) translateY(-2%); filter: brightness(1.25) saturate(.7); }
+  55%  { opacity: 1; }
+  100% { opacity: 1; transform: none; filter: none; }
+}
 .story__art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 
 .story__body { max-width: var(--line-width); }
@@ -36,6 +50,47 @@
 
 .story__prose p { margin: 0 0 1em; }
 .story__prose { outline: none; }
+
+/* Absaetze laufen gestaffelt ein — nicht als Effekt, sondern als Lesehilfe:
+   Der Blick bekommt einen Anfang statt einer fertigen Wand. */
+.story__prose .p {
+  animation: line-in 380ms ease-out both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+@keyframes line-in {
+  from { opacity: 0; transform: translateY(.35rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Rede bekommt Farbe und Einzug, Erzaehltext bleibt ruhig. Erkannt am
+   oeffnenden Anfuehrungszeichen — kostet keine Auszeichnung in der Prosa. */
+.p--speech {
+  color: var(--moon-3);
+  padding-left: .85rem;
+  border-left: 2px solid color-mix(in srgb, var(--moon-2) 55%, transparent);
+}
+
+/* Initial auf der ersten Seite einer Szene. Ein Buchanfang sieht anders aus
+   als eine Fortsetzung, und genau das soll man sehen. */
+.story__prose--opening .p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--serif, Georgia, serif);
+  font-size: 3.1em;
+  line-height: .82;
+  padding: .06em .12em 0 0;
+  color: var(--ember);
+}
+.story__prose--opening .p--speech:first-of-type::first-letter { float: none; font-size: 1em; color: inherit; }
+
+/* Wer wenig Bewegung will, bekommt keine. Das ist keine Abschwaechung, sondern
+   die Voreinstellung fuer alle, die sie gesetzt haben. */
+:root[data-motion='reduce'] .story__figure--in,
+:root[data-motion='reduce'] .story__prose .p {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .story__figure--in, .story__prose .p { animation: none; }
+}
 
 .story__insert {
   border-left: 2px solid var(--moon-2);
