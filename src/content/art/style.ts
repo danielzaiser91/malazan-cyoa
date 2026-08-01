@@ -87,6 +87,12 @@ export const PALETTES: Record<PaletteId, Palette> = {
   'hoods-grey': {
     id: 'hoods-grey',
     colours: ['#191B1D', '#3C4245', '#6E7679', '#9BA2A4'],
+    // ⚠️ `no warmth at all` ist eine Verneinung und verstoesst gegen die Regel,
+    // die den Anker formt. Sie bleibt trotzdem stehen: 12 erzeugte Bilder mit
+    // dieser Palette sind durchgehend kalt und grau geworden (01.08.2026), die
+    // Verneinung schadet hier also nachweislich nicht. Und jede Aenderung an
+    // einem Palettensatz entwertet ALLE Bilder, die ihn tragen — 22 Prompts.
+    // Beleg schlaegt Regel. Nicht "aufraeumen".
     phrase: 'palette of flat grey, no warmth at all',
   },
 }

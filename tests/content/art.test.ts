@@ -97,6 +97,13 @@ describe('Prompt-Vorlage', () => {
 
   // Rang wird als Material und Machart beschrieben, nie als Etikett. Wer
   // "ornamented officials" schreibt, laesst das Modell den Rest erfinden.
+  //
+  // Geprueft werden bewusst nur `subject` und `detail`, nicht die Blaetter:
+  // `paranChild` beginnt mit "a twelve-year-old noble boy" und ist damit formal
+  // ein Verstoss — aber der Rest des Blattes ist konkret, und die neun bereits
+  // erzeugten Bilder mit dieser Figur sitzen. Das Blatt zu schaerfen wuerde
+  // 11 Prompts und 9 bezahlte Bilder entwerten, um ein Problem zu beheben, das
+  // nachweislich keines ist.
   it('kein Prompt benennt Rang abstrakt statt ihn zu beschreiben', () => {
     const vague = /\b(ornamented|richly dressed|finely dressed|in finery|nobles?|aristocrats?|dignitar\w+)\b/i
     const bad = artPrompts

@@ -140,7 +140,11 @@ export const art01: ArtPrompt[] = [
   },
   {
     id: `${C}.s07.p02`,
-    subject: 'a woman in black leathers and a young officer standing over the same body, looking at different things',
+    // Zwei Figuren, nur eine mit Blatt: dieselbe Konstruktion hat in
+    // `b1.c00.s05.p02` die zweite Person verschluckt. Deshalb hier die Anzahl
+    // vorweg und je ein eindeutiges Merkmal.
+    subject: 'two people stand over the same body, one on each side of it, looking at different things: '
+      + 'a woman in black leathers, and a much younger officer a head taller than her',
     characters: ['lorn'],
     station: ['imperialCommand'],
     mood: 'aftermath', palette: 'hoods-grey', tier: 'standard',

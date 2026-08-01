@@ -140,16 +140,24 @@ export const art00: ArtPrompt[] = [
   },
   {
     id: `${C}.s05.p02`,
-    subject: 'on a bare stone terrace at night, a woman in plain undecorated clothing turns from the parapet '
-      + 'and looks directly at a boy standing where he does not belong',
+    // Zwei Fassungen sind hier bezahlt worden, beide aus Formulierungsfehlern:
+    //
+    // 1. "wearing nothing at all" war als "traegt keinen Schmuck" gemeint und
+    //    wurde als `Request Moderated` abgelehnt — im selben Prompt steht ein
+    //    zwoelfjaehriger Junge. Was fuer einen Leser eindeutig ist, ist es fuer
+    //    einen Klassifizierer nicht.
+    // 2. "a woman ... looks at a boy" plus das Blatt `paranChild` ergab EINE
+    //    Figur: Die Frau fehlte, der Junge trug ihr Kleid. Ein Blatt haengt als
+    //    eigener Satz hinten dran und traegt keine Zuordnung — bei zwei Figuren
+    //    muss der Satz selbst sagen, wie viele Personen im Bild stehen und
+    //    woran man sie auseinanderhaelt.
+    subject: 'two people stand facing each other on a bare stone terrace at night, several paces apart: '
+      + 'a grown woman in plain undyed floor-length clothing with her back to the parapet, looking down at the second person, '
+      + 'and a twelve-year-old boy in a short belted tunic and breeches, looking up at her',
     characters: ['paranChild'],
-    // "wearing nothing at all" war als "traegt keinen Schmuck" gemeint und wurde
-    // vom Moderationsfilter als Request Moderated abgelehnt — im selben Prompt
-    // steht ein zwoelfjaehriger Junge. Eine Redewendung, die fuer einen Leser
-    // eindeutig ist, ist es fuer einen Klassifizierer nicht.
     station: ['imperialCourt'],
-    detail: 'behind her the court officials stand in a close group, every one of them looking away; '
-      + 'she is the plainest figure in the frame',
+    detail: 'further back the court officials stand in a close group, every one of them looking away; '
+      + 'the woman and the boy are the two plainest figures in the frame',
     mood: 'council', palette: 'hoods-grey', tier: 'standard',
   },
   {
