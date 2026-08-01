@@ -49,7 +49,6 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Thema |
 |---|---|
-| **F1a** | **GitHub Pages im Web-UI aktivieren** — https://github.com/danielzaiser91/malazan-cyoa/settings/pages, Source auf „GitHub Actions". Ein Klick. Das Repo steht, der Push ist durch, der Build-Job ist grün; nur der Deploy-Schritt bricht mit 404 ab, weil Pages für ein neues Repo erst freigeschaltet werden muss. Der API-Weg dorthin wurde mir verwehrt. |
 | **F2** | **Testrunde Vertical Slice** (Prolog + Kapitel 1) auf http://localhost:5176 — die Abnahme, an der § A9 Kapitel 2 aufhängt. |
 
 ---
@@ -129,6 +128,8 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | Datum | Was |
 |---|---|
+| 01.08.2026 | **Live.** Repo `danielzaiser91/malazan-cyoa` öffentlich angelegt, 30 Commits gepusht, Pages über den Actions-Workflow deployt. https://danielzaiser91.github.io/malazan-cyoa/ antwortet mit 200, Assets und Illustrationen laden unter dem Sub-Pfad, Startbildschirm rendert, keine Konsolenfehler. |
+| 01.08.2026 | **Kapitel 1 vollständig bebildert** (31 Bilder), Prolog ebenso (25). Dabei drei strukturelle Lücken der Pipeline geschlossen: Weltanker gegen Epochen-Drift, Standesblätter statt abstrakter Rangwörter, eigener Anker für Naheinstellungen. Dazu Bestandsschutz (`fehlt` vs. `veraltet`), Kontaktbogen-Werkzeug und die Stimmung `close-quarters`. Rund 170 Credits. |
 | 31.07.2026 | **Outline für Band 1 komplett.** `_reference/outline-b1.md`: alle elf Kapitel als Teilgraph mit Szenen, Kanten, POV, Konvergenzen, Nebenwegen, Sackgassen, Proben und Wortbudget (115 Szenen, 436 Seiten, ~72 000 Wörter je Sprache). Die fünf Enden mit ihren Bedingungsstrukturen entworfen, bevor der Weg dorthin geschrieben wird. Epilog-Absatz je Beziehungs-Flag statt fünf getrennter Enden. |
 | 31.07.2026 | **Bild-Testlauf, Umgebungsklang, Barrierefreiheits-Nachweis.** Sechs Bilder über Cloudflare (0 €); drei Anbieter-Fallen gefunden und behoben (1:1 statt 16:9, JPEG statt PNG, Verneinung erzeugt Text). Klangteppich je Stimmung, synthetisiert. Im Browser nachgewiesen: 0 AudioContexts im Dev-Build, Kontrast 12,9:1 bis 5,4:1 (über WCAG AA), Tastaturbedienung vollständig, kein Knopf ohne zugänglichen Namen. `public/CREDITS.md`. |
 | 31.07.2026 | **Kapitel 1 „Die Küste von Itko Kan"** vollständig in DE und EN. Neun Szenen, 30 Seiten: Spine-Wahl mit drei Wegen, Lore-Nebenweg mit der Oponn-Karte, Gnadenumweg ohne Belohnung außer Herz, tödliche Sackgasse mit fünf Seiten Auszahlung, Lorn-Interlude mit eigener Tafel, Konvergenz mit vier zustandsabhängigen Einschüben. |
