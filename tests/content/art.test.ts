@@ -150,6 +150,27 @@ describe('Prompt-Vorlage', () => {
     for (const m of ART_MOODS) expect(MOOD_PHRASE[m]).toBeTruthy()
     for (const t of ['hero', 'standard', 'filler'] as const) expect(COMPOSITION[t]).toBeTruthy()
   })
+
+  // Dreimal derselbe Konstruktionsfehler, dreimal teuer: `council` enthielt
+  // `candlelit interior` und zwang jede Ratsszene nach drinnen, `march` eine
+  // `wide plain` und machte aus einer Musterung auf dem Stadtplatz eine
+  // Marschkolonne in der Steppe, `aftermath` ein `still bodies` und liess
+  // einen Prompt zweimal an der Moderation scheitern, in dessen MOTIV kein
+  // Reizwort mehr stand.
+  //
+  // Ein Stimmungsbaustein beschreibt Licht und Bildgeometrie. Ort, Motiv und
+  // Requisiten gehoeren ins Motiv, sonst kann das Motiv sie nicht ueberschreiben
+  // — und niemand sucht die Ursache dort, wo sie steht.
+  //
+  // Ausgenommen sind die drei Stimmungen, die ihren Ort im NAMEN tragen: bei
+  // `street-night`, `siege` und `ruin` ist er die Stimmung.
+  it('kein Stimmungsbaustein schreibt einen Ort vor', () => {
+    const place = /\b(interior|indoors|plain|field|room|hall|street|chamber|courtyard|tavern)\b/i
+    const bad = ART_MOODS
+      .filter(m => !['street-night', 'siege', 'ruin'].includes(m))
+      .filter(m => place.test(MOOD_PHRASE[m]))
+    expect(bad).toEqual([])
+  })
 })
 
 describe('Reproduzierbarkeit', () => {

@@ -135,11 +135,24 @@ export const MOOD_PHRASE: Record<ArtMood, string> = {
   // Ratsszene nach drinnen gezwungen — die naechtliche Festungsterrasse kam
   // als gepflegte Abendgesellschaft heraus. Der Ort gehoert ins `subject`.
   council: 'formal light and heavy shadow, figures arranged by rank rather than by conversation, faces turned away from the light',
-  march: 'wide plain under an enormous sky, a column of figures reduced to specks',
+  // Dieselbe Falle wie bei `council`: Die alte Fassung lautete 'wide plain
+  // under an enormous sky, a column of figures reduced to specks' und schrieb
+  // damit ORT und MOTIV vor. Die Musterungsszene auf einem Stadtplatz wurde
+  // dadurch zur Marschkolonne in der Steppe. Ein Stimmungsbaustein beschreibt
+  // Licht und Bildgeometrie — sonst nichts.
+  march: 'harsh flat daylight, figures repeating into the distance until they stop being people, '
+    + 'the scale of the thing doing the work',
   ruin: 'collapsed stone, grass growing through, weather doing the work of centuries',
   duel: 'two figures, cleared ground, hard rim light, everything else out of focus',
   divine: 'scale wrong on purpose, a presence too large for the frame, light with no source',
-  aftermath: 'flat grey daylight, still bodies, someone kneeling, nothing being said',
+  // Die alte Fassung lautete 'flat grey daylight, still bodies, someone
+  // kneeling, nothing being said'. Drei Fehler auf einmal: ein Reizwort der
+  // Moderation, eine Motiv-Vorgabe und eine Verneinung. `b1.c01.s02.p02` wurde
+  // zweimal abgelehnt, obwohl im MOTIV kein einziges Reizwort mehr stand — es
+  // kam aus diesem Baustein. Wer nur das Motiv liest, sucht an der falschen
+  // Stelle; entscheidend ist immer der zusammengesetzte Prompt.
+  aftermath: 'flat grey daylight, figures standing very still and looking down, '
+    + 'the quiet of a place where everything has already happened',
 }
 
 /**
@@ -222,6 +235,16 @@ export const STATION_SHEETS: Record<string, string> = {
     'deep sleeves that cover the hands, thick collars of dark fur, ' +
     'broad flat necklaces of dull silver lying on the chest, rings on every finger, ' +
     'hair oiled and pinned, standing very still',
+  /**
+   * Die Mannschaften. Das mit Abstand wichtigste Blatt des Buches, weil es in
+   * jedem Feldkapitel vorkommt — und dasjenige, dessen Fehlen am teuersten war:
+   * `recruits`, `soldiers`, `a column` ohne Ausruestungsangabe wurden im
+   * Kapitel-1-Lauf zu Stahlhelmen und Khaki.
+   */
+  imperialRanks:
+    'ordinary Malazan soldiers in undyed wool tunics under short mail shirts, ' +
+    'boiled leather at shoulder and shin, plain conical iron helms with a nose bar, ' +
+    'round shields slung across the back, every piece issued and a size wrong',
   /** Malazanische Offiziere ab Hauptmann aufwaerts. */
   imperialCommand:
     'senior Malazan officers in dark lacquered scale over grey leather, ' +

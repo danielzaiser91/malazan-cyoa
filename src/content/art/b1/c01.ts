@@ -6,20 +6,24 @@ export const art01: ArtPrompt[] = [
   // ------------------------------------------------------------------- 1.1
   {
     id: `${C}.s01.p01`,
-    subject: 'a recruiting table under an awning in a dusty coastal town square, a queue of ordinary people waiting to sign',
-    detail: 'a clerk with a ledger, a bored sergeant, farm tools leaned against a wall, the sea a grey line beyond the roofs',
+    subject: 'a trestle table under a canvas awning in a dusty coastal town square, a queue of fishers and farm folk '
+      + 'in undyed wool waiting to put a mark on a list',
+    station: ['imperialRanks'],
+    detail: 'a clerk with a bound ledger and a reed pen, nets and farm tools leaned against a stone wall, '
+      + 'the sea a grey line beyond the tile roofs',
     mood: 'march', palette: 'bone-dust', tier: 'hero',
   },
   {
     id: `${C}.s01.p02`,
-    subject: 'a sergeant looking up from a ledger at someone who has just given their name',
-    detail: 'ink-stained fingers, a stack of imperial silver, a wax seal half pressed',
+    subject: 'a soldier looking up from a bound ledger on a trestle table at someone who has just given their name',
+    station: ['imperialRanks'],
+    detail: 'ink-stained fingers, a small stack of imperial silver coin, a wax seal half pressed',
     mood: 'march', palette: 'bone-dust', tier: 'standard',
   },
   {
     id: `${C}.s01.p03`,
     subject: 'a young woman standing perfectly still in a moving queue, everyone else shifting their weight, she does not',
-    detail: 'plain fisher clothes, no bundle, no belongings at all, eyes on nothing',
+    detail: 'plain undyed fisher clothes, empty hands, eyes fixed on the middle distance',
     mood: 'march', palette: 'hoods-grey', tier: 'standard',
   },
 
@@ -44,26 +48,32 @@ export const art01: ArtPrompt[] = [
   // ------------------------------------------------------------------ 1.1b
   {
     id: `${C}.s04.p01`,
-    subject: 'a recruit sitting down beside a silent young woman on a barracks bench, a hand-span of empty bench between them',
+    subject: 'a young soldier sitting down beside a silent young woman on a rough timber bench outside a low barrack hall '
+      + 'of stone and thatch, a hand-span of empty bench between them',
+    station: ['imperialRanks'],
     mood: 'march', palette: 'hoods-grey', tier: 'standard',
   },
   {
     id: `${C}.s04.p02`,
-    subject: 'a young woman looking directly at the viewer with no expression whatsoever, out of focus behind her a busy yard',
-    detail: 'the stillness is the subject, nothing else in the frame moves either',
+    subject: 'a young woman looking directly at the viewer with an absolutely level gaze, '
+      + 'out of focus behind her a drill yard of packed earth',
+    detail: 'the stillness is the subject; everything around her is held just as still',
     mood: 'march', palette: 'hoods-grey', tier: 'hero',
   },
   {
     id: `${C}.s04.p03`,
-    subject: 'two figures walking away from each other across a parade ground at dusk',
+    subject: 'two figures walking away from each other across a drill yard of packed earth at dusk, '
+      + 'timber barrack halls on either side',
     mood: 'march', palette: 'hoods-grey', tier: 'filler',
   },
 
   // ------------------------------------------------------------------- 1.2
   {
     id: `${C}.s02.p01`,
-    subject: 'a column of new recruits marching along a coastal road above cliffs, sea on one side, dry hills on the other',
-    detail: 'ill-fitting kit, blisters, a supply cart, nobody talking',
+    subject: 'a column of new soldiers marching along a packed earth track above sea cliffs, water on one side, '
+      + 'dry hills on the other',
+    station: ['imperialRanks'],
+    detail: 'blisters, a mule-drawn cart of provisions, the whole column silent',
     mood: 'march', palette: 'bone-dust', tier: 'hero',
   },
   {
@@ -71,9 +81,10 @@ export const art01: ArtPrompt[] = [
     // "no enemy dead at all" war der Kern der Szene und zugleich eine
     // Verneinung. Positiv gesagt trifft es sogar besser: alle tragen dieselben
     // Farben — dann ist offensichtlich, dass hier nur eine Seite liegt.
-    subject: 'an open road the morning after a cavalry troop was broken, riders and horses lying where they fell, '
-      + 'every one of them in the same colours',
-    detail: 'the ground churned in wide arcs, gear and weapons still where they were dropped',
+    subject: 'an empty stretch of packed earth track at first light, the surface torn up in wide sweeping arcs, '
+      + 'a riderless horse standing at the edge of it with its head down',
+    detail: 'saddles, spears and shields scattered across the ground and left exactly where they came to rest, '
+      + 'a single boot upright in the dirt, and the whole place absolutely quiet',
     mood: 'aftermath', palette: 'ash-rust', tier: 'hero',
   },
   {
@@ -91,8 +102,9 @@ export const art01: ArtPrompt[] = [
   // ------------------------------------------------------------------ 1.2a
   {
     id: `${C}.s06.p01`,
-    subject: 'recruits walking a field of fallen riders in grey morning light, lifting a cloak here and there '
-      + 'to look at a face, then moving on',
+    subject: 'young soldiers walking a wide field in grey morning light, stopping at each shape on the ground '
+      + 'to lift a cloak, look, and move on',
+    station: ['imperialRanks'],
     mood: 'aftermath', palette: 'ash-rust', tier: 'standard',
   },
   {
@@ -101,13 +113,16 @@ export const art01: ArtPrompt[] = [
     // BILD, nicht der Text. "wounded horse" plus knieender Soldat ergibt einen
     // Gnadenstoss — den zeigt die Szene gar nicht. Sie bleibt eine gute halbe
     // Stunde bei dem Tier und redet mit ihm. Genau das steht jetzt da.
-    subject: 'a horse lying on its side in the dust, a soldier kneeling at its head with one hand flat on its neck, '
-      + 'talking to it',
+    subject: 'a soldier sitting in the dust with his back to us, one arm around the neck of a horse that has its head '
+      + 'in his lap, the two of them alone in a wide empty field',
+    station: ['imperialRanks'],
     mood: 'aftermath', palette: 'bone-dust', tier: 'standard',
   },
   {
     id: `${C}.s06.p03`,
-    subject: 'a recruit sitting in the dirt beside a fallen rider, hands loose in the lap, eyes on the horizon',
+    subject: 'a young soldier sitting in the dirt beside a cloak-covered shape, hands loose in the lap, '
+      + 'eyes on the horizon',
+    station: ['imperialRanks'],
     mood: 'aftermath', palette: 'hoods-grey', tier: 'standard',
   },
 
@@ -144,8 +159,8 @@ export const art01: ArtPrompt[] = [
   // ------------------------------------------------------------------- 1.3
   {
     id: `${C}.s07.p01`,
-    subject: 'a composed woman in black imperial leathers walking the ground where the fighting ended, '
-      + 'reading it like a page rather than mourning it',
+    subject: 'a composed woman in black imperial leathers crouched down on open ground with one gloved hand flat '
+      + 'in the churned earth, reading the marks in it like a page, the field around her out of focus and almost empty',
     characters: ['lorn'],
     mood: 'aftermath', palette: 'hoods-grey', tier: 'hero',
   },
@@ -167,7 +182,7 @@ export const art01: ArtPrompt[] = [
   },
   {
     id: `${C}.s07.p04`,
-    subject: 'a woman standing alone on a cliff road at dusk with her back to the sea',
+    subject: 'a woman standing alone at dusk on a cliff track of packed earth and cut stone, her back to the sea',
     characters: ['lorn'],
     mood: 'aftermath', palette: 'hoods-grey', tier: 'standard',
   },
@@ -175,8 +190,10 @@ export const art01: ArtPrompt[] = [
   // ------------------------------------------------------------------- 1.4
   {
     id: `${C}.s09.p01`,
-    subject: 'a crowded imperial quay at dawn, transports loading, ranks of recruits waiting with their kit on the stone',
-    detail: 'quartermasters shouting, gulls, a long grey swell beyond the harbour mouth',
+    subject: 'a crowded imperial quay at dawn, wide-bellied sailing transports taking on stores, '
+      + 'ranks of soldiers waiting on the stone with their packs at their feet',
+    station: ['imperialRanks'],
+    detail: 'gulls, rope and barrels, a long grey swell beyond the harbour mouth',
     mood: 'march', palette: 'blue-fire', tier: 'hero',
   },
   {
@@ -191,12 +208,14 @@ export const art01: ArtPrompt[] = [
   },
   {
     id: `${C}.s09.p04`,
-    subject: 'a hand closing around a worn metal token at a ship rail',
+    subject: 'a soldier at a ship rail seen from behind and a little to one side, closing one hand around '
+      + 'a worn metal token',
     mood: 'march', palette: 'bone-dust', tier: 'filler',
   },
   {
     id: `${C}.s09.p05`,
-    subject: 'open ocean at night from a transport deck, no land in any direction, a lamp swinging',
+    subject: 'open ocean at night from the deck of a sailing transport, empty horizon all the way round, '
+      + 'a single lamp swinging on its hook',
     mood: 'march', palette: 'blue-fire', tier: 'hero',
   },
 ]
