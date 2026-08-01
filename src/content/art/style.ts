@@ -97,7 +97,11 @@ export const MOOD_PHRASE: Record<ArtMood, string> = {
   'street-night': 'narrow lamplit street at night, wet stone, long shadows',
   warren: 'impossible geometry, light from the wrong direction, air like standing water',
   dream: 'soft edges, dissolving horizon, objects half-remembered',
-  council: 'candlelit interior, heavy furniture, faces turned away from the light',
+  // Beschreibt LICHT und soziale Geometrie, nicht den Ort. Die alte Fassung
+  // lautete 'candlelit interior, heavy furniture, …' und hat damit jede
+  // Ratsszene nach drinnen gezwungen — die naechtliche Festungsterrasse kam
+  // als gepflegte Abendgesellschaft heraus. Der Ort gehoert ins `subject`.
+  council: 'formal light and heavy shadow, figures arranged by rank rather than by conversation, faces turned away from the light',
   march: 'wide plain under an enormous sky, a column of figures reduced to specks',
   ruin: 'collapsed stone, grass growing through, weather doing the work of centuries',
   duel: 'two figures, cleared ground, hard rim light, everything else out of focus',

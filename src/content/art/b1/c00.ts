@@ -47,8 +47,13 @@ export const art00: ArtPrompt[] = [
 
   {
     id: `${C}.s03.p01`,
-    subject: 'a narrow stepped street descending into smoke, shutters closed on every window',
-    place: 'malazCity',
+    // Ohne `place`: Das Ortsblatt beschreibt die Stadt VON AUSSEN ("climbing
+    // from a harbour, a round fortress on an island offshore") und erzwingt
+    // damit eine Totale. Hier steht man mitten drin, zwischen zwei Wänden.
+    // Ortsblaetter gehoeren an Establishing Shots, nicht an Naheinstellungen.
+    subject: 'a very narrow stepped alley between tall windowless walls, seen from inside it at eye level, '
+      + 'the steps dropping steeply away into thick smoke, every shutter closed and barred, barely any sky',
+    detail: 'the walls close enough on both sides to touch, one lantern out of reach above',
     mood: 'siege', palette: 'ash-rust', tier: 'standard',
   },
   {
@@ -126,15 +131,23 @@ export const art00: ArtPrompt[] = [
 
   {
     id: `${C}.s05.p01`,
-    subject: 'a terrace of a fortress at night, a small group of officials standing apart from one woman',
-    detail: 'the woman plainly dressed, everyone else in ornament, the distance between them the whole point',
+    subject: 'a bare stone battlement terrace at night above a burning city, one plainly dressed woman standing alone '
+      + 'at the parapet with her back turned, and a tight knot of heavily ornamented officers keeping their distance behind her',
+    detail: 'no table, no chairs, no food, no music, nobody speaking; every ornamented figure is watching the plain woman, '
+      + 'and she is watching the fires below',
     mood: 'council', palette: 'hoods-grey', tier: 'hero',
   },
   {
     id: `${C}.s05.p02`,
-    subject: 'a plainly dressed woman at a terrace railing turning to look at a boy who does not belong there',
+    subject: 'on a bare stone terrace at night, a woman in plain undecorated clothing turns from the parapet '
+      + 'and looks directly at a boy standing where he does not belong',
     characters: ['paranChild'],
-    detail: 'ornamented officials behind her, all of them looking somewhere else',
+    // "wearing nothing at all" war als "traegt keinen Schmuck" gemeint und wurde
+    // vom Moderationsfilter als Request Moderated abgelehnt — im selben Prompt
+    // steht ein zwoelfjaehriger Junge. Eine Redewendung, die fuer einen Leser
+    // eindeutig ist, ist es fuer einen Klassifizierer nicht.
+    detail: 'behind her a group in heavy ornament, chains and braid, every one of them looking away; '
+      + 'she is the only person in the frame with no ornament of any kind',
     mood: 'council', palette: 'hoods-grey', tier: 'standard',
   },
   {
