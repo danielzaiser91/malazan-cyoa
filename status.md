@@ -49,7 +49,7 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Thema |
 |---|---|
-| **F1** | **GitHub-Repo anlegen und pushen.** Nach außen gerichtet, deshalb Rückfrage (`MASTER_PROMPT.md` § A1). Lokal ist alles committet, der CI-Workflow liegt bereit. Ohne Remote kein Deploy, kein Live-Test des Versionsbanners, kein Portfolio-Eintrag. |
+| **F1a** | **GitHub Pages im Web-UI aktivieren** — https://github.com/danielzaiser91/malazan-cyoa/settings/pages, Source auf „GitHub Actions". Ein Klick. Das Repo steht, der Push ist durch, der Build-Job ist grün; nur der Deploy-Schritt bricht mit 404 ab, weil Pages für ein neues Repo erst freigeschaltet werden muss. Der API-Weg dorthin wurde mir verwehrt. |
 | **F2** | **Testrunde Vertical Slice** (Prolog + Kapitel 1) auf http://localhost:5176 — die Abnahme, an der § A9 Kapitel 2 aufhängt. |
 
 ---
