@@ -295,11 +295,28 @@ export class Engine {
     const snap = this.save.checkpoints[sceneId]
     if (!snap) return undefined
     const stats: Record<string, { from: number; to: number }> = {}
-    const now = this.activeStats
-    const then = snap.run.sheets[this.currentSheetId ?? ''] ?? snap.run.stats
-    for (const [k, v] of Object.entries(now)) {
-      const target = (then as Record<string, number>)[k] ?? v
-      if (target !== v) stats[k] = { from: v, to: target }
+
+    // Werte sind nur vergleichbar, wenn Ziel und Gegenwart DIESELBE Wertetafel
+    // benutzen. Die alte Fassung nahm die Tafel der aktuellen Szene und fiel,
+    // wenn sie im Schnappschuss fehlte, auf die Werte des Spielcharakters
+    // zurueck — dann standen im Dialog Parans Werte gegen die des Rekruten.
+    // Gemeldet am 01.08.2026: frisch gestartet, zum Startpunkt zurueck, und der
+    // Dialog versprach vier Wertaenderungen, von denen keine eintrat.
+    const targetSheet = this.reg.scene(sceneId)?.sheet
+    if (targetSheet === this.currentSheetId) {
+      const now = this.activeStats
+      // Fehlt die Tafel im Schnappschuss, wurde sie damals noch nicht
+      // angelegt — nach dem Sprung entsteht sie frisch aus ihrer Definition,
+      // und genau dagegen wird verglichen.
+      const then = targetSheet
+        ? snap.run.sheets[targetSheet] ?? this.reg.sheet(targetSheet)?.stats
+        : snap.run.stats
+      if (then) {
+        for (const [k, v] of Object.entries(now)) {
+          const target = (then as Record<string, number>)[k] ?? v
+          if (target !== v) stats[k] = { from: v, to: target }
+        }
+      }
     }
     const lost = Object.keys(this.save.run.items).filter(i => !(i in snap.run.items))
     return {

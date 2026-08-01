@@ -18,7 +18,12 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Task | SP | Stand |
 |---|---|---|---|
-| — | — | — | — |
+| T1 | **Sprung-Dialog behauptet Wertänderungen, die keine sind.** Frisch gestartet, zum Startpunkt zurückgesprungen: „Blade 0→1, Will 2→3, Cunning 1→2, Heart 3→1". Falscher Vergleich — vermutlich Schnappschuss gegen Startwerte statt gegen den Ist-Zustand. | 1 | Offen |
+| T2 | **Sprachwahl wird beim Fortsetzen ignoriert.** DE/EN auf dem Startbildschirm gewählt, „Weiter" lädt in der alten Sprache. | 1 | Offen |
+| T3 | **Zu viel Text pro Seite.** Ab 800 px Höhe und 900 px Breite darf nicht gescrollt werden müssen. Seiten aufteilen (ohne neue Unterkapitel — Kapitel dienen den Checkpoints), dasselbe Bild darf mehrere Seiten tragen. | 3 | Offen |
+| T4 | **Kopfzeile umbauen.** Profil und Einstellungen in einen eigenen, immer sichtbaren Bereich; Symbole statt Beschriftung. | 2 | Offen |
+| T5 | **Marginalien-Stichwörter im Fließtext hervorheben** — mindestens eines je Seite, mit Tooltip oder als Klick auf den passenden Marginalien-Eintrag. | 2 | Offen |
+| T6 | **Gesamtqualität von Bedienung und Spielgefühl.** Recherche zu Best Practices, eigene Analyse, Befunde als Notiz, dann durchgängig verbessern. | 5 | Offen |
 | — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
 
 ### 2 · Queue

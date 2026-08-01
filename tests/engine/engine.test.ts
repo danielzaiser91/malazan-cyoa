@@ -288,6 +288,30 @@ describe('Sprung: Lauf rollt zurueck, Wissen bleibt', () => {
     }
   })
 
+  // Gemeldet am 01.08.2026: frisch gestartet, sofort zum Startpunkt
+  // zurueckgesprungen — der Dialog versprach vier Wertaenderungen, von denen
+  // keine eintrat. Ursache: Der Vergleich nahm die Wertetafel der aktuellen
+  // Szene und fiel, wenn sie im Schnappschuss fehlte, auf die Werte des
+  // Spielcharakters zurueck. Damit standen die Werte einer Kanon-Figur gegen
+  // die des Rekruten.
+  it('verspricht keine Wertaenderung, wenn nichts geschehen ist', () => {
+    const e = freshEngine()
+    const diff = e.jumpDiff(e.run.scene)
+    expect(diff?.stats ?? {}).toEqual({})
+  })
+
+  it('vergleicht nie ueber zwei verschiedene Wertetafeln hinweg', () => {
+    const e = freshEngine()
+    // Jede erreichte Szene gegen den Stand, in dem man gerade steckt: Wo Ziel
+    // und Gegenwart verschiedene Tafeln benutzen, darf gar keine Wertzeile
+    // erscheinen — ein Vergleich waere dort bedeutungslos.
+    for (const id of Object.keys(e.save.checkpoints)) {
+      const targetSheet = reg.scene(id)?.sheet
+      if (targetSheet === e.currentSheetId) continue
+      expect(e.jumpDiff(id)?.stats ?? {}).toEqual({})
+    }
+  })
+
   it('lehnt einen Sprung auf eine nie erreichte Szene ab', () => {
     const e = freshEngine()
     expect(e.jumpTo('b1.c00.s07')).toEqual([{ kind: 'blocked', reason: 'unknown' }])

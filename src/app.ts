@@ -129,7 +129,9 @@ export class App {
     const save = this.store.load(id, this.blankSave(id))
     if (!save) return
     this.engine = new Engine(this.reg, save)
-    this.applySettings(save.settings)
+    this.applySettings(save.settings, false)
+    // Die zuletzt gewaehlte Sprache gewinnt und wandert in den Spielstand.
+    this.setLang(this.t.lang)
     this.afterContentWarning(() => this.showStory())
   }
 
@@ -341,7 +343,14 @@ export class App {
     })
   }
 
-  private applySettings(s: ProfileSettings): void {
+  /**
+   * `adoptLang` steuert, wer bei der Sprache gewinnt. Aus den Einstellungen
+   * heraus hat der Spieler die Sprache gerade IM Spielstand geaendert — dort
+   * gewinnt der Spielstand. Beim Fortsetzen vom Startbildschirm ist es
+   * umgekehrt: Wer dort DE/EN klickt und dann "Weiter", erwartet genau diese
+   * Sprache. Vorher hat der Spielstand sie stumm ueberschrieben.
+   */
+  private applySettings(s: ProfileSettings, adoptLang = true): void {
     const root = document.documentElement
     root.style.setProperty('--font-scale', String(s.fontScale))
     root.style.setProperty('--line-width', s.lineWidth === 'narrow' ? '45ch' : s.lineWidth === 'wide' ? '75ch' : '60ch')
@@ -350,7 +359,7 @@ export class App {
     root.dataset.contrast = s.contrast
     root.dataset.motion = s.reduceMotion ? 'reduce' : 'full'
     this.audio.update({ muted: s.muted, volume: s.volume })
-    if (s.lang !== this.t.lang) this.setLang(s.lang)
+    if (adoptLang && s.lang !== this.t.lang) this.setLang(s.lang)
   }
 
   private setLang(lang: Lang): void {
