@@ -43,6 +43,7 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 | # | Thema | Standard, falls keine Antwort |
 |---|---|---|
 | B1 | **Spielfigur:** Rekrut mit POV-Interludes vs. durchgehend Paran. **Faktisch entschieden** — Kapitel 1 ist mit dem Rekruten geschrieben, Umbau wäre jetzt teuer. | Rekrut + Interludes |
+
 ### 4 · Warten auf User-Feedback
 
 | # | Thema |
@@ -88,19 +89,6 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 8. **Temporäres Entwicklungs-Ende `1.E`.** Kruppe sagt in-fiction, dass die nächsten Karten noch
    nicht liegen. Wandert mit jedem neuen Kapitel weiter und fällt mit Kapitel 10 weg.
 
----
-
-## Archiv
-
-| Datum | Was |
-|---|---|
-| 31.07.2026 | **Outline für Band 1 komplett.** `_reference/outline-b1.md`: alle elf Kapitel als Teilgraph mit Szenen, Kanten, POV, Konvergenzen, Nebenwegen, Sackgassen, Proben und Wortbudget (115 Szenen, 436 Seiten, ~72 000 Wörter je Sprache). Die fünf Enden mit ihren Bedingungsstrukturen entworfen, bevor der Weg dorthin geschrieben wird. Epilog-Absatz je Beziehungs-Flag statt fünf getrennter Enden. |
-| 31.07.2026 | **Bild-Testlauf, Umgebungsklang, Barrierefreiheits-Nachweis.** Sechs Bilder über Cloudflare (0 €); drei Anbieter-Fallen gefunden und behoben (1:1 statt 16:9, JPEG statt PNG, Verneinung erzeugt Text). Klangteppich je Stimmung, synthetisiert. Im Browser nachgewiesen: 0 AudioContexts im Dev-Build, Kontrast 12,9:1 bis 5,4:1 (über WCAG AA), Tastaturbedienung vollständig, kein Knopf ohne zugänglichen Namen. `public/CREDITS.md`. |
-| 31.07.2026 | **Kapitel 1 „Die Küste von Itko Kan"** vollständig in DE und EN. Neun Szenen, 30 Seiten: Spine-Wahl mit drei Wegen, Lore-Nebenweg mit der Oponn-Karte, Gnadenumweg ohne Belohnung außer Herz, tödliche Sackgasse mit fünf Seiten Auszahlung, Lorn-Interlude mit eigener Tafel, Konvergenz mit vier zustandsabhängigen Einschüben. |
-| 31.07.2026 | **Recherche R1–R9 geschlossen.** Sechs neue Knowledgebase-Dateien (Zeitrechnung, Deck-Karten, Genabackis/Darujhistan, Trupp und Munition, Szenen-Detail aller 24 Kapitel, Aussprache) plus `_reference/terminology-de.md` als verbindliches Glossar — Blanvalet-Begriffe wo etabliert. |
-| 31.07.2026 | **Phase A.** Vite 7 + TS strict + Vitest, null Laufzeit-Dependencies. Engine mit gesätem RNG, deklarativen Bedingungen und Effekten, Schnappschuss/Sprung, Save mit Migration und Export/Import. Alle zwölf Content-Validierungen als Tests. Headless-Simulator. Views: Startbildschirm, Story, Auslegung als SVG und Liste, Marginalien, Blatt, Rückschau, Einstellungen. Klangschicht. Versionsbanner. Bild-Pipeline mit deterministischem Platzhalter. CI-Workflow. Prolog vollständig in beiden Sprachen. |
-| 31.07.2026 | Vorbereitung abgeschlossen: `_knowledgebase` (Seed, 8 Dateien), `_reference` (6 Specs), `MASTER_PROMPT.md`, `CLAUDE.md`, `status.md` angelegt. |
-
 9. **Rang wird beschrieben, nie benannt.** `STATION_SHEETS` in `src/content/art/style.ts` ist ein
    drittes Blatt-Register neben Figuren und Orten. Grund: „heavily ornamented officers" hat aus
    einem malazanischen Staatsakt einen Offiziersball von 1810 gemacht — abstrakte Statusbegriffe
@@ -117,3 +105,16 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
     hinten dran und trägt keine Zuordnung — „a woman … looks at a boy" plus das Blatt des Jungen
     ergab eine einzige Figur. Regel: Anzahl vorweg, je ein ausschließendes Merkmal, räumliche
     Beziehung ausgeschrieben.
+
+---
+
+## Archiv
+
+| Datum | Was |
+|---|---|
+| 31.07.2026 | **Outline für Band 1 komplett.** `_reference/outline-b1.md`: alle elf Kapitel als Teilgraph mit Szenen, Kanten, POV, Konvergenzen, Nebenwegen, Sackgassen, Proben und Wortbudget (115 Szenen, 436 Seiten, ~72 000 Wörter je Sprache). Die fünf Enden mit ihren Bedingungsstrukturen entworfen, bevor der Weg dorthin geschrieben wird. Epilog-Absatz je Beziehungs-Flag statt fünf getrennter Enden. |
+| 31.07.2026 | **Bild-Testlauf, Umgebungsklang, Barrierefreiheits-Nachweis.** Sechs Bilder über Cloudflare (0 €); drei Anbieter-Fallen gefunden und behoben (1:1 statt 16:9, JPEG statt PNG, Verneinung erzeugt Text). Klangteppich je Stimmung, synthetisiert. Im Browser nachgewiesen: 0 AudioContexts im Dev-Build, Kontrast 12,9:1 bis 5,4:1 (über WCAG AA), Tastaturbedienung vollständig, kein Knopf ohne zugänglichen Namen. `public/CREDITS.md`. |
+| 31.07.2026 | **Kapitel 1 „Die Küste von Itko Kan"** vollständig in DE und EN. Neun Szenen, 30 Seiten: Spine-Wahl mit drei Wegen, Lore-Nebenweg mit der Oponn-Karte, Gnadenumweg ohne Belohnung außer Herz, tödliche Sackgasse mit fünf Seiten Auszahlung, Lorn-Interlude mit eigener Tafel, Konvergenz mit vier zustandsabhängigen Einschüben. |
+| 31.07.2026 | **Recherche R1–R9 geschlossen.** Sechs neue Knowledgebase-Dateien (Zeitrechnung, Deck-Karten, Genabackis/Darujhistan, Trupp und Munition, Szenen-Detail aller 24 Kapitel, Aussprache) plus `_reference/terminology-de.md` als verbindliches Glossar — Blanvalet-Begriffe wo etabliert. |
+| 31.07.2026 | **Phase A.** Vite 7 + TS strict + Vitest, null Laufzeit-Dependencies. Engine mit gesätem RNG, deklarativen Bedingungen und Effekten, Schnappschuss/Sprung, Save mit Migration und Export/Import. Alle zwölf Content-Validierungen als Tests. Headless-Simulator. Views: Startbildschirm, Story, Auslegung als SVG und Liste, Marginalien, Blatt, Rückschau, Einstellungen. Klangschicht. Versionsbanner. Bild-Pipeline mit deterministischem Platzhalter. CI-Workflow. Prolog vollständig in beiden Sprachen. |
+| 31.07.2026 | Vorbereitung abgeschlossen: `_knowledgebase` (Seed, 8 Dateien), `_reference` (6 Specs), `MASTER_PROMPT.md`, `CLAUDE.md`, `status.md` angelegt. |
