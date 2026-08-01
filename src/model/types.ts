@@ -272,6 +272,15 @@ export interface CodexEntry {
   spoilerScope: SpoilerScope
   /** Verwandte Eintraege — im Codex als Querverweise gerendert. */
   see?: CodexId[]
+  /**
+   * Bild, das diesen Eintrag zeigt — die ID eines bestehenden `ArtPrompt`.
+   *
+   * Bewusst eine Wiederverwendung und keine eigene Erzeugung: Die Bilder der
+   * Seiten zeigen ohnehin Orte, Figuren und Gegenstaende, und ein Eintrag ueber
+   * Malaz-Stadt braucht kein zweites Bild von Malaz-Stadt. Kostet keine
+   * Credits und haelt die beiden Ansichten optisch zusammen.
+   */
+  art?: ArtPromptId
 }
 
 export interface CardDef {

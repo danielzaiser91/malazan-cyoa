@@ -11,6 +11,7 @@ import type { ProfileSettings } from '../model/state.ts'
 import type { Lang, StatId } from '../model/types.ts'
 import { STAT_IDS } from '../model/types.ts'
 import { sigilGlyph } from './title.ts'
+import { illustration } from '../core/placeholder.ts'
 import { btn, clear, el, focus } from './dom.ts'
 import { GAME_VERSION } from '../core/version.ts'
 
@@ -76,21 +77,62 @@ export function buildCodex(body: HTMLElement, reg: Registry, engine: Engine, t: 
     body.append(el('p', { class: 'muted', text: t.t('ui.noFlags') }))
     return
   }
-  const byCategory = new Map<string, typeof known>()
-  for (const entry of known) {
-    const list = byCategory.get(entry.category) ?? []
-    list.push(entry)
-    byCategory.set(entry.category, list)
+
+  // Vorher standen alle Kategorien untereinander, jede Ueberschrift gefolgt von
+  // allen Eintraegen. Bei 20 Eintraegen schon unuebersichtlich, bei den 60+
+  // eines fertigen Buches unbrauchbar. Jetzt filtert man, statt zu scrollen.
+  const categories = [...new Set(known.map(c => c.category))]
+  const counts = new Map(categories.map(c => [c, known.filter(k => k.category === c).length]))
+
+  let filter: string | null = null
+  let query = ''
+
+  const bar = el('div', { class: 'filterbar', role: 'group', 'aria-label': t.t('ui.codex') })
+  const search = el('input', {
+    class: 'filterbar__search', type: 'search',
+    placeholder: t.t('ui.search'), 'aria-label': t.t('ui.search'),
+  }) as HTMLInputElement
+  const list = el('div', { class: 'codex__list' })
+
+  const chips = new Map<string | null, HTMLElement>()
+  const addChip = (id: string | null, label: string, n: number) => {
+    const b = btn(`${label} ${n}`, () => { filter = id; render() }, {
+      class: 'chip chip--filter', role: 'radio', 'aria-checked': String(filter === id),
+    })
+    chips.set(id, b)
+    bar.append(b)
   }
-  for (const [category, entries] of byCategory) {
-    body.append(el('h3', { class: 'codex__cat', text: t.t(`codex.cat.${category}`) }))
-    for (const entry of entries) {
-      const open = entry.id === openId
-      const details = el('details', { class: 'codex__entry', open })
-      details.append(
-        el('summary', { class: 'codex__summary', text: t.t(entry.titleKey) }),
-        el('p', { class: 'codex__body', text: t.t(entry.bodyKey) }),
-      )
+  addChip(null, t.t('ui.all'), known.length)
+  for (const c of categories) addChip(c, t.t(`codex.cat.${c}`), counts.get(c) ?? 0)
+
+  function render(): void {
+    for (const [id, node] of chips) node.setAttribute('aria-checked', String(filter === id))
+    clear(list)
+    const q = query.trim().toLowerCase()
+    const shown = known.filter(c => (!filter || c.category === filter) && (
+      !q || t.t(c.titleKey).toLowerCase().includes(q) || t.t(c.bodyKey).toLowerCase().includes(q)
+    ))
+    if (!shown.length) { list.append(el('p', { class: 'muted', text: t.t('ui.noMatch') })); return }
+
+    for (const entry of shown) {
+      const details = el('details', { class: 'codex__entry', open: entry.id === openId || shown.length === 1 })
+      details.append(el('summary', { class: 'codex__summary', text: t.t(entry.titleKey) }))
+
+      const inner = el('div', { class: 'codex__inner' })
+      // Das Bild kommt aus den Seiten-Illustrationen — ein Eintrag ueber
+      // Malaz-Stadt braucht kein zweites Bild von Malaz-Stadt. Faellt still
+      // weg, wenn die Datei fehlt: In einem halb bebilderten Buch ist ein
+      // kaputtes Bildsymbol schlimmer als gar keins.
+      if (entry.art) {
+        const art = illustration(entry.art, import.meta.env.BASE_URL)
+        const img = el('img', {
+          class: 'codex__art', alt: '', loading: 'lazy', decoding: 'async', src: art.src,
+        }) as HTMLImageElement
+        img.onerror = () => img.remove()
+        inner.append(img)
+      }
+      inner.append(el('p', { class: 'codex__body', text: t.t(entry.bodyKey) }))
+
       const seeKnown = (entry.see ?? []).filter(id => engine.meta.codex.includes(id))
       if (seeKnown.length) {
         const row = el('p', { class: 'codex__see' })
@@ -98,11 +140,16 @@ export function buildCodex(body: HTMLElement, reg: Registry, engine: Engine, t: 
           const ref = reg.codex(id)
           if (ref) row.append(el('span', { class: 'codex__ref', text: t.t(ref.titleKey) }))
         }
-        details.append(row)
+        inner.append(row)
       }
-      body.append(details)
+      details.append(inner)
+      list.append(details)
     }
   }
+
+  search.addEventListener('input', () => { query = search.value; render() })
+  body.append(bar, search, list)
+  render()
 }
 
 /**

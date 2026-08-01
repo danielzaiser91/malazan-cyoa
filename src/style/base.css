@@ -350,3 +350,21 @@ html, body {
 .codex__body { margin: .3rem 0 .6rem; color: var(--fg); }
 .codex__see { display: flex; flex-wrap: wrap; gap: .3rem; }
 .codex__ref { font-size: .8em; color: var(--fg-quiet); border: 1px solid #2c2c44; border-radius: 999px; padding: .05rem .5rem; }
+
+/* --- Marginalien: filtern statt scrollen --------------------------------- */
+.filterbar { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .5rem; }
+.chip--filter { font-size: .88em; padding: .28rem .6rem; }
+.filterbar__search {
+  width: 100%; margin-bottom: .8rem; padding: .45rem .6rem;
+  background: #14141f; color: var(--fg);
+  border: 1px solid var(--line); border-radius: 8px;
+}
+.filterbar__search:focus-visible { outline: 2px solid var(--ember); outline-offset: 1px; }
+.codex__list { min-height: 10rem; }
+.codex__inner { display: grid; gap: .5rem; }
+/* Das Bild sitzt oben und bleibt schmal: Es soll den Eintrag begleiten, nicht
+   ihn verdraengen. */
+.codex__art {
+  width: 100%; max-width: 22rem; aspect-ratio: 16 / 9;
+  object-fit: cover; border-radius: 8px; border: 1px solid var(--line);
+}

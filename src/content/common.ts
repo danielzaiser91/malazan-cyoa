@@ -9,26 +9,26 @@ import type {
 } from '../model/types.ts'
 
 export const codex: CodexEntry[] = [
-  { id: 'malaz-city', category: 'places', titleKey: 'codex.malaz-city.title', bodyKey: 'codex.malaz-city.body', spoilerScope: 'gotm' },
-  { id: 'mouse-quarter', category: 'places', titleKey: 'codex.mouse-quarter.title', bodyKey: 'codex.mouse-quarter.body', spoilerScope: 'gotm', see: ['malaz-city', 'wax-witches'] },
+  { id: 'malaz-city', category: 'places', titleKey: 'codex.malaz-city.title', bodyKey: 'codex.malaz-city.body', spoilerScope: 'gotm', art: 'b1.c00.s04.p01' },
+  { id: 'mouse-quarter', category: 'places', titleKey: 'codex.mouse-quarter.title', bodyKey: 'codex.mouse-quarter.body', spoilerScope: 'gotm', see: ['malaz-city', 'wax-witches'], art: 'b1.c00.s01.p01' },
   { id: 'malazan-empire', category: 'history', titleKey: 'codex.malazan-empire.title', bodyKey: 'codex.malazan-empire.body', spoilerScope: 'gotm', see: ['laseen', 'old-guard'] },
-  { id: 'bridgeburners', category: 'peoples', titleKey: 'codex.bridgeburners.title', bodyKey: 'codex.bridgeburners.body', spoilerScope: 'gotm', see: ['malazan-empire', 'old-guard'] },
+  { id: 'bridgeburners', category: 'peoples', titleKey: 'codex.bridgeburners.title', bodyKey: 'codex.bridgeburners.body', spoilerScope: 'gotm', see: ['malazan-empire', 'old-guard'], art: 'b1.c00.s02.p01' },
   { id: 'claw', category: 'peoples', titleKey: 'codex.claw.title', bodyKey: 'codex.claw.body', spoilerScope: 'gotm', see: ['laseen'] },
   { id: 'laseen', category: 'people', titleKey: 'codex.laseen.title', bodyKey: 'codex.laseen.body', spoilerScope: 'gotm', see: ['claw', 'old-guard'] },
   { id: 'old-guard', category: 'peoples', titleKey: 'codex.old-guard.title', bodyKey: 'codex.old-guard.body', spoilerScope: 'gotm' },
   { id: 'wax-witches', category: 'magic', titleKey: 'codex.wax-witches.title', bodyKey: 'codex.wax-witches.body', spoilerScope: 'gotm' },
   { id: 'ascendancy', category: 'magic', titleKey: 'codex.ascendancy.title', bodyKey: 'codex.ascendancy.body', spoilerScope: 'gotm', see: ['deck-of-dragons'] },
-  { id: 'deck-of-dragons', category: 'deck', titleKey: 'codex.deck-of-dragons.title', bodyKey: 'codex.deck-of-dragons.body', spoilerScope: 'gotm', see: ['ascendancy'] },
-  { id: 'itko-kan', category: 'places', titleKey: 'codex.itko-kan.title', bodyKey: 'codex.itko-kan.body', spoilerScope: 'gotm' },
+  { id: 'deck-of-dragons', category: 'deck', titleKey: 'codex.deck-of-dragons.title', bodyKey: 'codex.deck-of-dragons.body', spoilerScope: 'gotm', see: ['ascendancy'], art: 'b1.c01.s03.p02' },
+  { id: 'itko-kan', category: 'places', titleKey: 'codex.itko-kan.title', bodyKey: 'codex.itko-kan.body', spoilerScope: 'gotm', art: 'b1.c01.s02.p01' },
   { id: 'genabackis', category: 'places', titleKey: 'codex.genabackis.title', bodyKey: 'codex.genabackis.body', spoilerScope: 'gotm' },
   { id: 'rhivi', category: 'peoples', titleKey: 'codex.rhivi.title', bodyKey: 'codex.rhivi.body', spoilerScope: 'gotm' },
   { id: 'sorry', category: 'people', titleKey: 'codex.sorry.title', bodyKey: 'codex.sorry.body', spoilerScope: 'gotm' },
-  { id: 'hounds-of-shadow', category: 'peoples', titleKey: 'codex.hounds-of-shadow.title', bodyKey: 'codex.hounds-of-shadow.body', spoilerScope: 'gotm', see: ['shadowthrone-cotillion'] },
-  { id: 'shadowthrone-cotillion', category: 'people', titleKey: 'codex.shadowthrone-cotillion.title', bodyKey: 'codex.shadowthrone-cotillion.body', spoilerScope: 'gotm', see: ['hounds-of-shadow', 'ascendancy'] },
-  { id: 'lorn', category: 'people', titleKey: 'codex.lorn.title', bodyKey: 'codex.lorn.body', spoilerScope: 'gotm', see: ['adjunct', 'otataral'] },
+  { id: 'hounds-of-shadow', category: 'peoples', titleKey: 'codex.hounds-of-shadow.title', bodyKey: 'codex.hounds-of-shadow.body', spoilerScope: 'gotm', see: ['shadowthrone-cotillion'], art: 'b1.c01.s08.p04' },
+  { id: 'shadowthrone-cotillion', category: 'people', titleKey: 'codex.shadowthrone-cotillion.title', bodyKey: 'codex.shadowthrone-cotillion.body', spoilerScope: 'gotm', see: ['hounds-of-shadow', 'ascendancy'], art: 'b1.c01.s08.p03' },
+  { id: 'lorn', category: 'people', titleKey: 'codex.lorn.title', bodyKey: 'codex.lorn.body', spoilerScope: 'gotm', see: ['adjunct', 'otataral'], art: 'b1.c01.s07.p04' },
   { id: 'adjunct', category: 'history', titleKey: 'codex.adjunct.title', bodyKey: 'codex.adjunct.body', spoilerScope: 'gotm', see: ['laseen', 'otataral'] },
-  { id: 'otataral', category: 'magic', titleKey: 'codex.otataral.title', bodyKey: 'codex.otataral.body', spoilerScope: 'gotm' },
-  { id: 'paran', category: 'people', titleKey: 'codex.paran.title', bodyKey: 'codex.paran.body', spoilerScope: 'gotm' },
+  { id: 'otataral', category: 'magic', titleKey: 'codex.otataral.title', bodyKey: 'codex.otataral.body', spoilerScope: 'gotm', art: 'b1.c01.s07.p03' },
+  { id: 'paran', category: 'people', titleKey: 'codex.paran.title', bodyKey: 'codex.paran.body', spoilerScope: 'gotm', art: 'b1.c00.s05.p02' },
 ]
 
 export const cards: CardDef[] = [
