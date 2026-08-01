@@ -9,6 +9,9 @@ import { artPrompts } from '../../src/content/index.ts'
 import { buildPrompt, promptHash, COMPOSITION } from '../../src/content/art/prompt.ts'
 import { CHARACTER_SHEETS, CLOSE_ANCHOR, CLOSE_COMPOSITION, FORBIDDEN_PERIOD_MARKERS, MODERATION_TRIGGERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR, WORLD_ANCHOR } from '../../src/content/art/style.ts'
 import { ART_MOODS } from '../../src/model/types.ts'
+import { illustration } from '../../src/core/placeholder.ts'
+import { existsSync, readdirSync } from 'node:fs'
+import { join } from 'node:path'
 
 describe('Stil-Anker', () => {
   it('steht wortgleich am Anfang JEDES Prompts', () => {
@@ -203,5 +206,28 @@ describe('Reproduzierbarkeit', () => {
     // erzeugt die Pipeline zweimal dasselbe Bild fuer zwei Szenen.
     const dupes = hashes.filter((h, i) => hashes.indexOf(h) !== i)
     expect([...new Set(dupes)]).toEqual([])
+  })
+})
+
+describe('Auslieferung', () => {
+  // Bis zum 01.08.2026 hat die Story-Ansicht IMMER den deterministischen
+  // Platzhalter gesetzt und die echten Dateien nie angefasst — 56 bezahlte
+  // Illustrationen lagen im Build und waren nirgends zu sehen. Aufgefallen ist
+  // es erst, als ein Vorschaubild fuers Portfolio den Platzhalter zeigte.
+  it('der Bildpfad haengt am base-Pfad und nutzt beide Groessen', () => {
+    const a = illustration('b1.c00.s01.p01', '/malazan-cyoa/')
+    expect(a.src).toBe('/malazan-cyoa/illustrations/b1.c00.s01.p01.webp')
+    expect(a.srcset).toContain('b1.c00.s01.p01@640.webp 640w')
+    expect(a.srcset).toContain('b1.c00.s01.p01.webp 1280w')
+    // Ein absoluter Pfad ohne base waere auf GitHub Pages tot.
+    expect(illustration('x', '/').src).toBe('/illustrations/x.webp')
+  })
+
+  it('jedes erzeugte Bild liegt in beiden Groessen vor', () => {
+    const dir = join(import.meta.dirname, '..', '..', 'public', 'illustrations')
+    if (!existsSync(dir)) return
+    const big = readdirSync(dir).filter(f => f.endsWith('.webp') && !f.includes('@640'))
+    const missing = big.filter(f => !existsSync(join(dir, f.replace('.webp', '@640.webp'))))
+    expect(missing).toEqual([])
   })
 })

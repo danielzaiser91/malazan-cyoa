@@ -10,7 +10,7 @@ import type { Registry } from '../model/registry.ts'
 import type { Choice } from '../model/types.ts'
 import { btn, clear, el, focus, paragraphs } from './dom.ts'
 import { artById } from '../content/index.ts'
-import { placeholderDataUri } from '../core/placeholder.ts'
+import { illustration, placeholderDataUri } from '../core/placeholder.ts'
 import { BACKLOG_SIZE } from '../core/constants.ts'
 
 export interface StoryHost {
@@ -68,11 +68,24 @@ export class StoryView {
 
     // --- Illustration -----------------------------------------------------
     const prompt = artById.get(page.art.promptId)
-    this.img.src = placeholderDataUri({
+    const fallback = placeholderDataUri({
       id: page.id,
       mood: page.art.mood,
       palette: prompt?.palette ?? 'ash-rust',
     })
+    // Das echte Bild, mit dem Platzhalter als Rueckfallebene. Beides ist noetig:
+    // Es gibt 436 Seiten und deutlich weniger fertige Illustrationen, und eine
+    // Seite ohne Bild soll trotzdem etwas zeigen, das zur Stimmung passt.
+    const art = illustration(page.id, import.meta.env.BASE_URL)
+    this.img.onerror = () => {
+      this.img.onerror = null
+      this.img.removeAttribute('srcset')
+      this.img.removeAttribute('sizes')
+      this.img.src = fallback
+    }
+    this.img.srcset = art.srcset
+    this.img.sizes = '(max-width: 760px) 100vw, 640px'
+    this.img.src = art.src
     this.img.alt = t.t(page.art.altKey)
     this.figure.dataset.mood = page.art.mood
     this.host.setMood(page.art.mood)

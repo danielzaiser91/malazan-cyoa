@@ -154,3 +154,22 @@ function motifMarkup(
 export function placeholderDataUri(input: PlaceholderInput): string {
   return 'data:image/svg+xml;utf8,' + encodeURIComponent(placeholderSvg(input))
 }
+
+/**
+ * Pfade zur ausgelieferten Illustration einer Seite.
+ *
+ * Rein und testbar, weil der Rest der Bildlogik in der View sitzt und dort
+ * nicht geprueft werden kann. `base` kommt aus `import.meta.env.BASE_URL` und
+ * ist auf GitHub Pages ein Unterpfad (`/malazan-cyoa/`) — ein hartkodierter
+ * absoluter Pfad waere dort tot.
+ *
+ * Die 640er-Variante erzeugt `tools/art-post.mjs` mit; ohne `srcset` waere sie
+ * umsonst gebaut worden.
+ */
+export function illustration(pageId: string, base: string): { src: string; srcset: string } {
+  const dir = `${base.endsWith('/') ? base : base + '/'}illustrations`
+  return {
+    src: `${dir}/${pageId}.webp`,
+    srcset: `${dir}/${pageId}@640.webp 640w, ${dir}/${pageId}.webp 1280w`,
+  }
+}
