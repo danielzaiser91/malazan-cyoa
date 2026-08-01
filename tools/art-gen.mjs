@@ -105,7 +105,10 @@ if (cmd === 'plan') {
   for (const p of missing) byTier[p.art.tier] = (byTier[p.art.tier] ?? 0) + 1
   console.log(`\n  Seiten: ${all.length} · fertig: ${all.length - missing.length} · offen: ${missing.length}`)
   console.log(`  Stufen offen: ${JSON.stringify(byTier)}`)
-  console.log(`  Kosten fuer alle offenen: ${missing.length * 3} Credits\n`)
+  const cost = missing.reduce((n, p) =>
+    n + 3 + 1.5 * Math.min(refCap, (p.art.characters ?? []).flatMap(refsFor).length), 0)
+  console.log(`  Kosten fuer alle offenen: ${cost} Credits (3 je Bild + 1,5 je Referenz)
+`)
   for (const p of missing.slice(0, 30)) {
     const refs = (p.art.characters ?? []).flatMap(refsFor).length
     console.log(`    ${p.page.id}  ${p.art.tier.padEnd(8)} ${refs ? refs + ' Referenzen' : '—'}`)
@@ -123,7 +126,10 @@ if (!todo.length) { console.log('  Nichts zu tun.'); process.exit(0) }
 
 const before = await credits(key)
 console.log(`\n  Guthaben vorher: ${before} Credits`)
-console.log(`  Block: ${todo.length} Bilder · erwartet ${todo.length * 3} Credits\n`)
+const est = todo.reduce((n, p) =>
+  n + 3 + 1.5 * Math.min(refCap, (p.art.characters ?? []).flatMap(refsFor).length), 0)
+console.log(`  Block: ${todo.length} Bilder · erwartet ${est} Credits
+`)
 
 const jobs = []
 for (const t of todo) {
