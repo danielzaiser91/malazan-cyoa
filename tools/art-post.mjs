@@ -75,8 +75,17 @@ async function processImage(id) {
   //
   // Pauschal q70 waere trotzdem verschenkt: ein ruhiges Motiv liegt bei q82
   // schon bei 129 KB und braucht die Absenkung nicht.
+  // Leiter bis 58: zwei Bilder aus Kapitel 1 lagen bei q66 noch ueber Budget
+  // (200 und 181 KB). Es sind die beiden dichtesten Motive des Kapitels —
+  // Menge, Staub, Korn ueber die ganze Flaeche, und genau das komprimiert
+  // schlecht.
+  //
+  // Weiter als 58 geht die Leiter bewusst nicht. `b1.c01.s08.p01` bleibt damit
+  // ein paar Kilobyte ueber dem Budget, und das ist die richtige Seite des
+  // Kompromisses: 180 KB sind eine selbstgesetzte Richtgroesse, sichtbarer
+  // Kompressionsmatsch waere ein echter Schaden.
   let quality = 0
-  for (const q of [82, 78, 74, 70, 66]) {
+  for (const q of [82, 78, 74, 70, 66, 62, 58]) {
     quality = q
     await sharp(cropped).webp({ quality: q }).toFile(big)
     if (statSync(big).size <= IMG_BUDGET) break
