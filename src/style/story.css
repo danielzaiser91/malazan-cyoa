@@ -8,8 +8,18 @@
 }
 
 @media (min-width: 900px) {
-  .story { grid-template-columns: minmax(320px, 44%) 1fr; }
-  .story__figure { position: sticky; top: 4rem; }
+  /* M14: 44 % von 1180 px sind rund 520 px fuer den Text — bei 17 px Schrift
+     etwa 58 Zeichen und damit im empfohlenen Band (50–75, Optimum 66). Die
+     Einstellung `--line-width` deckelt zusaetzlich, greift hier aber selten:
+     Die Spalte ist ohnehin schmaler als das Versprechen. Deshalb wird sie zur
+     OBERgrenze, nicht zur Sollbreite. */
+  .story { grid-template-columns: minmax(320px, 42%) 1fr; }
+
+  /* M12: Das Bild bleibt beim Scrollen stehen und der Text laeuft daran
+     vorbei — vorher blieb unter dem Bild Leerraum, waehrend rechts weiter
+     Text kam. `align-self: start` haelt es oben, `top` haelt Abstand zur
+     Kopfzeile. */
+  .story__figurebox { position: sticky; top: 4.25rem; align-self: start; }
 }
 
 /* Der Bildauftritt: Das Bild kommt gross und ein Stueck vorgeschoben herein und
@@ -38,7 +48,21 @@
 }
 .story__art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 
-.story__body { max-width: var(--line-width); }
+.story__body { max-width: min(var(--line-width), 100%); }
+
+/* M13: Eine schmale Zustandszeile unter dem Bild. Wer wissen will, wie es um
+   ihn steht, soll dafuer die Seite nicht verlassen muessen — und es soll
+   trotzdem nichts vom Text wegnehmen. Deshalb sitzt sie dort, wo ohnehin
+   Platz ist: unter der Illustration, auf breiten Schirmen. */
+.story__vitals {
+  display: flex; flex-wrap: wrap; gap: .35rem .8rem;
+  margin-top: .55rem; font-size: .82em; color: var(--fg-quiet);
+}
+.story__vital { display: inline-flex; align-items: baseline; gap: .25rem; }
+.story__vital b { color: var(--fg); font-variant-numeric: tabular-nums; }
+/* Aufmerksamkeit ist der einzige Wert, den man NICHT steigern will — sie
+   faerbt sich, sobald sie zu zaehlen beginnt. */
+.story__vital--warn b { color: var(--bad); }
 
 .story__meter {
   display: flex; flex-wrap: wrap; gap: .35rem .9rem;

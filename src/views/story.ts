@@ -33,6 +33,9 @@ export class StoryView {
   private readonly figure = el('figure', { class: 'story__figure' })
   private readonly img = el('img', { class: 'story__art', alt: '', loading: 'lazy', decoding: 'async' })
   private readonly prose = el('div', { class: 'story__prose', tabindex: '-1' })
+  /** Bild plus Zustandszeile — sie gehoeren zusammen in dieselbe Spalte. */
+  private readonly figureBox = el('div', { class: 'story__figurebox' })
+  private readonly vitals = el('div', { class: 'story__vitals' })
   private readonly extras = el('div', { class: 'story__extras' })
   private readonly actions = el('div', { class: 'story__actions' })
   private readonly meter = el('p', { class: 'story__meter', 'aria-live': 'polite' })
@@ -43,8 +46,9 @@ export class StoryView {
   constructor(host: StoryHost) {
     this.host = host
     this.figure.append(this.img, el('figcaption', { class: 'sr-only' }))
+    this.figureBox.append(this.figure, this.vitals)
     this.root = el('article', { class: 'story', 'aria-label': host.t.t('ui.reading') },
-      this.figure,
+      this.figureBox,
       el('div', { class: 'story__body' }, this.meter, this.prose, this.extras, this.actions),
     )
     this.root.addEventListener('keydown', e => this.onKey(e))
@@ -95,6 +99,20 @@ export class StoryView {
     // Initial nur auf der ERSTEN Seite einer Szene: Es markiert einen Anfang.
     // Auf jeder Seite waere es Dekoration und keine Information mehr.
     this.prose.classList.toggle('story__prose--opening', view.index === 0)
+
+    // Zustandszeile: die drei Werte, die im Slice tatsaechlich abgefragt
+    // werden, plus Aufmerksamkeit — sobald sie ueberhaupt vorhanden ist.
+    clear(this.vitals)
+    const stats = engine.activeStats
+    for (const id of ['blade', 'will', 'cunning', 'heart'] as const) {
+      this.vitals.append(el('span', { class: 'story__vital', title: t.t(`stat.${id}.hint`) },
+        t.t(`stat.${id}`), el('b', { text: String(stats[id] ?? 0) })))
+    }
+    if (engine.run.attention > 0) {
+      this.vitals.append(el('span', {
+        class: 'story__vital story__vital--warn', title: t.t('stat.attention.hint'),
+      }, t.t('stat.attention'), el('b', { text: String(engine.run.attention) })))
+    }
     this.figure.dataset.mood = page.art.mood
     this.host.setMood(page.art.mood)
     this.figure.classList.remove('story__figure--in')
