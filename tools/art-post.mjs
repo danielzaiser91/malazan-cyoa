@@ -8,7 +8,7 @@
  * Drei Schritte je Bild:
  *   1. Schnitt 1344x768 -> 1280x720 (mittig). Exaktes 16:9, und nimmt
  *      Artefakte direkt an der Kante mit.
- *   2. webp 1280 (Qualitaet 82) und webp 640 fuer `srcset`.
+ *   2. webp 1280 und webp 640 fuer `srcset`, Qualitaet adaptiv (82 bis 66).
  *   3. Budget pruefen: hoechstens 180 KB je Bild.
  *
  * ⚠️ **Signaturen werden NICHT automatisch uebermalt.** Der erste Entwurf tat
@@ -63,12 +63,29 @@ async function processImage(id) {
     .png()
     .toBuffer()
 
-  await sharp(cropped).webp({ quality: 82 }).toFile(big)
-  await sharp(cropped).resize(640).webp({ quality: 80 }).toFile(small)
+  // Qualitaet adaptiv statt pauschal: die hoechste Stufe nehmen, die unter dem
+  // Budget bleibt.
+  //
+  // Gemessen am 01.08.2026: Der Oelstil kostet Platz. Bei Qualitaet 82 lagen
+  // 11 von 23 Bildern ueber 180 KB, das dichteste bei 250 KB — die Nutzlast ist
+  // das Farbkorn, und Korn komprimiert schlecht. Der Verlust dabei ist
+  // minimal: die mittlere Abweichung zu Qualitaet 92 steigt von 3,07 (q82) auf
+  // nur 4,33 (q70) von 255, also ein halbes Prozent fuer 30 % weniger Bytes.
+  // Korn ist rauschartig; was dabei wegfaellt, sieht niemand.
+  //
+  // Pauschal q70 waere trotzdem verschenkt: ein ruhiges Motiv liegt bei q82
+  // schon bei 129 KB und braucht die Absenkung nicht.
+  let quality = 0
+  for (const q of [82, 78, 74, 70, 66]) {
+    quality = q
+    await sharp(cropped).webp({ quality: q }).toFile(big)
+    if (statSync(big).size <= IMG_BUDGET) break
+  }
+  await sharp(cropped).resize(640).webp({ quality: Math.min(80, quality) }).toFile(small)
 
   const size = statSync(big).size
   const suspects = flag('signatures') ? await findAll(cropped, OUT_W, OUT_H) : []
-  return { id, size, over: size > IMG_BUDGET, suspects }
+  return { id, size, quality, over: size > IMG_BUDGET, suspects }
 }
 
 mkdirSync(OUT, { recursive: true })
@@ -87,7 +104,7 @@ for (const id of ids) {
   if (r.over) over++
   total += r.size
   if (r.suspects.length) flagged++
-  console.log(`  · ${id.padEnd(18)} ${String(Math.round(r.size / 1024)).padStart(4)} KB` +
+  console.log(`  · ${id.padEnd(18)} ${String(Math.round(r.size / 1024)).padStart(4)} KB  q${r.quality}` +
     (r.over ? '  ⚠ ueber Budget' : '') +
     (r.suspects.length ? `  ? Signatur-Verdacht: ${r.suspects.map(s => s.corner).join(', ')}` : ''))
 }
