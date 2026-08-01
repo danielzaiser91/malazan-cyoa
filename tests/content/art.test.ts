@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest'
 import { artPrompts } from '../../src/content/index.ts'
 import { buildPrompt, promptHash, COMPOSITION } from '../../src/content/art/prompt.ts'
-import { CHARACTER_SHEETS, FORBIDDEN_PERIOD_MARKERS, MODERATION_TRIGGERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR } from '../../src/content/art/style.ts'
+import { CHARACTER_SHEETS, FORBIDDEN_PERIOD_MARKERS, MODERATION_TRIGGERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR, WORLD_ANCHOR } from '../../src/content/art/style.ts'
 import { ART_MOODS } from '../../src/model/types.ts'
 
 describe('Stil-Anker', () => {
@@ -39,6 +39,17 @@ describe('Stil-Anker', () => {
     for (const anchor of [STYLE_ANCHOR, REFERENCE_ANCHOR]) {
       expect(anchor).not.toMatch(/empty margin|blank border|empty border/i)
     }
+  })
+
+  it('der Weltanker steht in JEDEM Prompt und verneint nichts', () => {
+    // Gemessen am 01.08.2026 an Kapitel 1: Ohne Epochen-Angabe waehlt das
+    // Modell die am besten belegte — "graue Kolonne im flachen Tageslicht"
+    // wurde zum Ersten Weltkrieg, in einem Bild samt asphaltierter Strasse
+    // mit Mittelstreifen. Der Prolog kam nur durch, weil Feuer, Nacht und
+    // Festungsmauer die Epoche selbst mitbringen.
+    const bad = artPrompts.filter(p => !buildPrompt(p).includes(WORLD_ANCHOR)).map(p => p.id)
+    expect(bad).toEqual([])
+    expect(/\b(no|not|without|avoid|never|free of)\b/i.test(WORLD_ANCHOR)).toBe(false)
   })
 
   it('kein Charakterblatt traegt ein Reizwort der Content-Moderation', () => {

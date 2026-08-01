@@ -42,6 +42,33 @@ export const STYLE_ANCHOR =
   'bare stone, paint reaching to every edge of the picture.'
 
 /**
+ * Der Weltanker. Steht direkt hinter dem Stil-Anker in jedem Szenen-Prompt.
+ *
+ * **Warum er fehlte und was das gekostet hat:** Der Stil-Anker beschreibt nur
+ * die MALWEISE. Zur Epoche sagt er nichts — und wo ein Motiv sie nicht selbst
+ * festlegt, waehlt das Modell die am besten belegte. Der Prolog kam damit
+ * durch: brennende Stadt, Nacht, Festungsmauer, Feuerschein ziehen zuverlaessig
+ * mittelalterliche Belagerungsmalerei.
+ *
+ * Kapitel 1 nicht. Gemessen am 01.08.2026 an 28 Bildern: „graue Kolonne im
+ * flachen Tageslicht", „Rekruten", „Offiziere", „Kuestenstrasse" treffen genau
+ * die Ikonografie der Weltkriegsfotografie — und das Modell hat geliefert.
+ * Stahlhelme, Khaki, Schirmmuetzen, in einem Bild eine asphaltierte Strasse
+ * mit Mittelstreifen. Rund zehn Bilder waren unbrauchbar.
+ *
+ * Die Regel dahinter: **Was das Motiv nicht festlegt, legt das Trainingsmaterial
+ * fest.** Ein Anker, der die Epoche offen laesst, ist bei jedem Motiv ohne
+ * eindeutige Epochen-Merkmale ein Gluecksspiel.
+ *
+ * Wieder ohne eine einzige Verneinung: Statt „keine Feuerwaffen" steht hier,
+ * womit gekaempft wird; statt „keine Fahrzeuge", was etwas bewegt.
+ */
+export const WORLD_ANCHOR =
+  'Set in an iron-age empire: cut stone and packed earth underfoot, timber and canvas, ' +
+  'mail and boiled leather, spears crossbows and edged steel, oil lamps and open flame, ' +
+  'everything moved by muscle, hoof and sail.'
+
+/**
  * Anker fuer Referenzbilder: derselbe Malstil, aber ohne die
  * Kompositionsregeln des Szenen-Ankers.
  *

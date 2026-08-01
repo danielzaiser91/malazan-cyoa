@@ -4,11 +4,12 @@
  *   node tools/art-gen.mjs plan                        # was fehlt
  *   node tools/art-gen.mjs gen --id b1.c00.s02.p02     # ein Bild
  *   node tools/art-gen.mjs gen --chapter b1.c00 --max 25
+ *   node tools/art-gen.mjs gen --stale                 # auch Veraltetes neu
  *
  * Regeln, die hier nicht verhandelbar sind (Skill `flux-bildgenerierung`):
  *  - `disable_pup: true`, fixer Seed, `width`/`height` statt `aspect_ratio`
  *  - Request-JSON gleichnamig neben das Bild, polling_url sofort hinein
- *  - was existiert, wird nie neu erzeugt (Datei UND Prompt-Hash pruefen)
+ *  - was existiert, wird nie ungefragt neu erzeugt (siehe `exists`/`stale`)
  *  - Guthaben vor jedem Block nennen
  *  - Blockgroesse begrenzt (`--max`), Standard 25
  */
@@ -60,12 +61,29 @@ function pages() {
   return out
 }
 
-/** Fertig heisst: Datei da UND Prompt seither unveraendert. */
-function done({ page, art }) {
-  const png = join(RAW, `${page.id}.png`)
-  const meta = join(RAW, `${page.id}.json`)
-  if (!existsSync(png) || !existsSync(meta)) return false
-  try { return JSON.parse(readFileSync(meta, 'utf8'))._promptHash === promptHash(art) } catch { return false }
+/**
+ * Bestandsschutz. Frueher hiess "fertig": Datei da UND Prompt unveraendert —
+ * und ein einziger geaenderter Baustein machte damit den gesamten Bestand
+ * wieder zu Arbeit. Bei 436 Bildern ueber Wochen ist das keine Kleinigkeit,
+ * sondern der Unterschied zwischen "Prompt verbessern" und "Prompt nicht
+ * anfassen, weil es zu teuer ist" (real am 01.08.2026: der neue Weltanker
+ * haette 53 bezahlte Bilder auf einen Schlag entwertet).
+ *
+ * Deshalb zwei getrennte Zustaende:
+ *  - FEHLT:    keine Datei. Wird erzeugt, ohne dass jemand fragt.
+ *  - VERALTET: Datei da, Prompt seither geaendert. Wird NUR auf Ansage neu
+ *              erzeugt (`--stale`, oder gezielt `--id`).
+ *
+ * Damit kostet eine Prompt-Verbesserung erst einmal gar nichts, und die
+ * Entscheidung, wofuer man zahlt, bleibt beim Menschen und vor dem Lauf.
+ */
+function exists({ page }) {
+  return existsSync(join(RAW, `${page.id}.png`)) && existsSync(join(RAW, `${page.id}.json`))
+}
+
+function stale({ page, art }) {
+  if (!exists({ page })) return false
+  try { return JSON.parse(readFileSync(join(RAW, `${page.id}.json`), 'utf8'))._promptHash !== promptHash(art) } catch { return true }
 }
 
 function request({ page, art }) {
@@ -98,21 +116,31 @@ function request({ page, art }) {
   return req
 }
 
+const costOf = list => list.reduce((n, p) =>
+  n + 3 + 1.5 * Math.min(refCap, (p.art.characters ?? []).flatMap(refsFor).length), 0)
+
 if (cmd === 'plan') {
   const all = pages()
-  const missing = all.filter(p => !done(p))
+  const missing = all.filter(p => !exists(p))
+  const outdated = all.filter(p => stale(p))
   const byTier = {}
   for (const p of missing) byTier[p.art.tier] = (byTier[p.art.tier] ?? 0) + 1
-  console.log(`\n  Seiten: ${all.length} · fertig: ${all.length - missing.length} · offen: ${missing.length}`)
-  console.log(`  Stufen offen: ${JSON.stringify(byTier)}`)
-  const cost = missing.reduce((n, p) =>
-    n + 3 + 1.5 * Math.min(refCap, (p.art.characters ?? []).flatMap(refsFor).length), 0)
-  console.log(`  Kosten fuer alle offenen: ${cost} Credits (3 je Bild + 1,5 je Referenz)
-`)
+
+  console.log(`\n  Seiten: ${all.length} · vorhanden: ${all.length - missing.length} · fehlen: ${missing.length}`)
+  console.log(`  Stufen der fehlenden: ${JSON.stringify(byTier)}`)
+  console.log(`  Kosten fuer die fehlenden: ${costOf(missing)} Credits (3 je Bild + 1,5 je Referenz)\n`)
   for (const p of missing.slice(0, 30)) {
     const refs = (p.art.characters ?? []).flatMap(refsFor).length
     console.log(`    ${p.page.id}  ${p.art.tier.padEnd(8)} ${refs ? refs + ' Referenzen' : '—'}`)
   }
+
+  if (outdated.length) {
+    console.log(`\n  VERALTET: ${outdated.length} Bilder liegen vor, ihr Prompt hat sich seither geaendert.`)
+    console.log(`  Sie werden NICHT automatisch neu erzeugt. Neu waeren sie ${costOf(outdated)} Credits.`)
+    console.log(`  Gezielt: --id <id> · alle: gen --stale\n`)
+    for (const p of outdated.slice(0, 40)) console.log(`    ${p.page.id}`)
+  }
+  console.log('')
   process.exit(0)
 }
 
@@ -121,7 +149,10 @@ if (cmd !== 'gen') { console.error(`Unbekannter Befehl: ${cmd}`); process.exit(1
 mkdirSync(RAW, { recursive: true })
 const key = loadKey()
 const max = Number(arg('max', '25'))
-const todo = pages().filter(p => flag('force') || !done(p)).slice(0, max)
+// Standard: nur was FEHLT. Veraltetes kommt nur auf ausdrueckliche Ansage
+// dazu — `--stale` fuer alle, oder `--id` fuer ein einzelnes.
+const wanted = p => flag('force') || !exists(p) || (flag('stale') && stale(p)) || arg('id') === p.page.id
+const todo = pages().filter(wanted).slice(0, max)
 if (!todo.length) { console.log('  Nichts zu tun.'); process.exit(0) }
 
 const before = await credits(key)
