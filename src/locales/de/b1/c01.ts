@@ -17,7 +17,8 @@ export const de_b1_c01: Record<string, string> = {
   'b1.c01.s01.p01.body':
     'Der Tisch stand seit acht Tagen unter demselben Sonnensegel am Rand des Marktes, und die Schlange davor war an keinem dieser Tage kürzer geworden.\n\n' +
     'In Itko Kan war kein Krieg. Es war etwas Langsameres: zwei Missernten hintereinander, ein Fischzug, der ausgeblieben war, und ein Reich, das Soldaten brauchte und pünktlich zahlte. Die Leute in der Schlange trugen keine Waffen und sahen nicht aus, als hätten sie je welche gewollt. Sie sahen aus wie Leute, die rechnen konnten.\n\n' +
-    'Vorn saß ein Schreiber mit einem Buch, daneben ein Sergeant, der schon lange nichts mehr fragte, was ihn selbst interessierte. Auf dem Tisch lag ein Stapel silberner Kreszente, und daneben stand ein Kasten mit Wachs und einem Siegel, das durch viele Hände gegangen war und aussah, als hätte es davon gelernt.\n\n' +
+    'Vorn saß ein Schreiber mit einem Buch, daneben ein Sergeant, der schon lange nichts mehr fragte, was ihn selbst interessierte. Auf dem Tisch lag ein Stapel silberner Kreszente, und daneben stand ein Kasten mit Wachs und einem Siegel, das durch viele Hände gegangen war und aussah, als hätte es davon gelernt.',
+  'b1.c01.s01.p01b.body':
     '{name} stand seit dem Vormittag in dieser Schlange. Zwei Plätze vor dem Tisch war Schluss mit den zurechtgelegten Sätzen; es fragte ohnehin niemand nach Gründen. Ein Mann vorn wurde abgewiesen, weil er zu alt war, und ging weg, ohne zu streiten. Eine Frau bekam ihr Silber, zählte es an Ort und Stelle nach und war damit Soldatin.\n\n' +
     'Vorn wurde gestritten, weil einer behauptete, es gebe eine Prämie für Leute mit eigenem Pferd, und der Sergeant sagte, das habe es vor elf Jahren gegeben und auch damals nur auf dem Papier. Der Mann ging trotzdem nicht.\n\n' +
     'Über den Dächern stand die Sonne so hoch, dass die Schatten unter dem Sonnensegel klein und hart waren, und dahinter, hinter den letzten Häusern, lag das Meer als graue Linie da, die den ganzen Tag über nicht die Farbe wechselte.\n\n' +
@@ -260,7 +261,8 @@ export const de_b1_c01: Record<string, string> = {
     'Adjunktin Lorn ging die Reihe zweimal ab, einmal in jede Richtung, und blieb kein einziges Mal aus Erschütterung stehen.\n\n' +
     'Sie zählte. Nicht die Toten — die Zahl stand in einem Bericht, den sie am Morgen gelesen hatte. Sie zählte die Abstände: wie weit ein Pferd geschleudert worden war, wie viele Schritte zwischen zwei Bögen im Boden lagen, wie viele Tiere sich in dieselbe Richtung gedreht hatten, bevor es sie erwischte. Aus diesen Zahlen ließ sich ableiten, wie viele es gewesen waren und wie schnell.\n\n' +
     'Es waren mehrere gewesen. Sie waren sehr schnell gewesen. Und sie hatten in einem einzigen Durchgang aufgehört, was sehr wenige Dinge tun, wenn sie einmal angefangen haben.\n\n' +
-    'Neben ihr ging ein Leutnant der Achten Kavallerie, der seit einer Stunde versuchte, nicht auf die Gesichter zu sehen, und dabei genau das tat.\n\n' +
+    'Neben ihr ging ein Leutnant der Achten Kavallerie, der seit einer Stunde versuchte, nicht auf die Gesichter zu sehen, und dabei genau das tat.',
+  'b1.c01.s07.p01b.body':
     'Lorn hielt ihn nicht davon ab. Es war ihr aufgefallen, und sie hatte beschlossen, es sich zu merken statt es zu unterbinden.\n\n' +
     'Es gab eine Art, so etwas anzusehen, die sie sich vor Jahren beigebracht hatte, und sie funktionierte zuverlässig: Man nimmt das Ganze auseinander, bis es nur noch aus Einzelheiten besteht, und Einzelheiten kann man betrachten. Ein Riemen. Ein Winkel. Ein Abstand. Solange man bei den Einzelheiten bleibt, bleibt man auch bei sich.\n\n' +
     'Wo sie das gelernt hatte, stand in keinem Bericht, und sie hätte es auch niemandem erzählt, der danach fragte. Es hatte in einer Stadt angefangen, deren ärmstes Viertel eine Nacht lang gebrannt hatte, und sie war damals eine von denen gewesen, die die Liste abarbeiteten.',
@@ -313,7 +315,8 @@ export const de_b1_c01: Record<string, string> = {
     'Der Kai war voller als der Markt in Kan an einem Festtag, und niemand feierte.\n\n' +
     'Vier Transporter lagen an den Steinpieren, dazu ein Getreidesegler, den man kurzfristig verpflichtet hatte und dem man es ansah. Quartiermeister brüllten Nummern über die Köpfe hinweg. Ein Kran hob Fässer, die niemand gezählt hatte, in einen Laderaum, den niemand gemessen hatte. Möwen nahmen alles mit, was fiel.\n\n' +
     'Die Aushebung saß in Reihen auf dem Stein, das Gepäck zwischen den Knien, und wartete seit vier Stunden. Es gab nichts zu tun. Es gab auch nichts mehr zu entscheiden, und das war die eigentliche Neuigkeit dieses Morgens.\n\n' +
-    '{name} saß mit dem Rücken an einem Poller und sah zu, wie eine Stadt, die man sein Leben lang gekannt hatte, ohne einen von hinten weitermachte: Fischer luden aus, ein Kind wurde geschimpft, jemand strich eine Tür.\n\n' +
+    '{name} saß mit dem Rücken an einem Poller und sah zu, wie eine Stadt, die man sein Leben lang gekannt hatte, ohne einen von hinten weitermachte: Fischer luden aus, ein Kind wurde geschimpft, jemand strich eine Tür.',
+  'b1.c01.s09.p01b.body':
     'Ein Kaplan ging die Reihen ab und segnete, wen er erwischte, und wurde dabei von den meisten geduldet wie schlechtes Wetter. Ein Junge, kaum sechzehn, fragte laut, ob man von der Reling aus noch winken könne, und bekam keine Antwort, weil niemand es wusste.\n\n' +
     'Draußen vor der Hafenmauer lag eine lange graue Dünung, an der man ablesen konnte, wie das Wasser dahinter aussehen würde.\n\n' +
     'Dann kam die Nummer auf dem Zettel an die Reihe, und danach ging alles sehr schnell: aufstehen, aufnehmen, gehen, über eine Planke, die federte, in einen Schatten, der nach Teer roch.',

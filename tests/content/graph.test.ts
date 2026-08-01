@@ -184,10 +184,18 @@ describe('9 · Auswahl-Sanitaet', () => {
     expect(bad).toEqual([])
   })
 
-  it('eine Wahlmoeglichkeit erscheint spaetestens auf der dritten Seite des Buches', () => {
+  // Gemessen wird in WOERTERN, nicht in Seiten. Die Regel meint "der Spieler
+  // soll frueh entscheiden duerfen" — und als die Seiten am 01.08.2026 kuerzer
+  // wurden, um das Scrollen abzuschaffen, stieg die Seitenzahl bis zur ersten
+  // Wahl von 3 auf 4, waehrend die Woerter davor von rund 600 auf 520 SANKEN.
+  // Eine Seitenzaehlung haette hier also einen Fortschritt als Rueckschritt
+  // gemeldet. Was zaehlt, ist die Lesezeit bis zur ersten Entscheidung.
+  it('die erste Wahlmoeglichkeit kommt nach hoechstens 600 Woertern', () => {
+    const i18n = i18nFor('de')
     for (const book of reg.books) {
       const entry = reg.scene(book.entry)!
-      expect(entry.pages.length).toBeLessThanOrEqual(3)
+      const n = entry.pages.reduce((sum, p) => sum + i18n.t(p.bodyKey).trim().split(/\s+/).length, 0)
+      expect(n).toBeLessThanOrEqual(600)
     }
   })
 })

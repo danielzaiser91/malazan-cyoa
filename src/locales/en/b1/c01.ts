@@ -14,7 +14,8 @@ export const en_b1_c01: Record<string, string> = {
   'b1.c01.s01.p01.body':
     'The table had stood under the same awning at the edge of the market for eight days, and on none of those days had the queue in front of it got any shorter.\n\n' +
     'There was no war in Itko Kan. There was something slower: two failed harvests in a row, a catch that had not come, and an empire that needed soldiers and paid on time. The people in the queue carried no weapons and did not look like people who had ever wanted any. They looked like people who could do arithmetic.\n\n' +
-    'At the front sat a clerk with a book, and beside him a sergeant who had long since stopped asking anything that interested him. There was a stack of silver crescents on the table, and next to it a box of wax and a seal that had passed through many hands and looked as though it had learned from them.\n\n' +
+    'At the front sat a clerk with a book, and beside him a sergeant who had long since stopped asking anything that interested him. There was a stack of silver crescents on the table, and next to it a box of wax and a seal that had passed through many hands and looked as though it had learned from them.',
+  'b1.c01.s01.p01b.body':
     '{name} had been in that queue since morning. Two places from the table there was no more use for prepared sentences; nobody asked for reasons anyway. A man at the front was turned away for being too old, and left without arguing. A woman took her silver, counted it there and then, and was a soldier.\n\n' +
     'At the front there was an argument, because somebody claimed there was a bounty for men with their own horse, and the sergeant said there had been one eleven years ago and only on paper even then. The man did not leave.\n\n' +
     'Above the roofs the sun stood high enough that the shadows under the awning were small and hard, and behind that, behind the last houses, the sea lay as a grey line that did not change colour all day.\n\n' +
@@ -256,7 +257,8 @@ export const en_b1_c01: Record<string, string> = {
     'Adjunct Lorn walked the line twice, once in each direction, and did not once stop out of shock.\n\n' +
     'She counted. Not the dead — that number was in a report she had read that morning. She counted the distances: how far a horse had been thrown, how many paces lay between two arcs in the ground, how many animals had turned the same way before it reached them. From those numbers you could work out how many there had been and how fast.\n\n' +
     'There had been several. They had been very fast. And they had stopped after a single pass, which very few things do once they have started.\n\n' +
-    'Beside her walked a lieutenant of the Eighth Cavalry who had spent an hour trying not to look at the faces and doing exactly that.\n\n' +
+    'Beside her walked a lieutenant of the Eighth Cavalry who had spent an hour trying not to look at the faces and doing exactly that.',
+  'b1.c01.s07.p01b.body':
     'Lorn did not stop him. She had noticed it, and had decided to remember it rather than put an end to it.\n\n' +
     'There was a way of looking at such a thing that she had taught herself years ago, and it worked reliably: you take the whole apart until it consists of nothing but details, and details can be examined. A strap. An angle. A distance. As long as you stay with the details, you also stay with yourself.\n\n' +
     'Where she had learned that was in no report, and she would not have told anyone who asked. It had started in a city whose poorest quarter burned for one night, and she had been one of the people working through the list.',
@@ -309,7 +311,8 @@ export const en_b1_c01: Record<string, string> = {
     'The quay was fuller than the market in Kan on a feast day, and nobody was celebrating.\n\n' +
     'Four transports lay at the stone piers, along with a grain hauler that had been commandeered at short notice and looked it. Quartermasters bellowed numbers over people\'s heads. A crane lifted barrels nobody had counted into a hold nobody had measured. Gulls took anything that fell.\n\n' +
     'The levy sat in rows on the stone, kit between their knees, and had been waiting four hours. There was nothing to do. There was also nothing left to decide, and that was the real news of the morning.\n\n' +
-    '{name} sat with a back against a bollard and watched a town known for a lifetime carry on without anyone: fishermen unloading, a child being scolded, somebody painting a door.\n\n' +
+    '{name} sat with a back against a bollard and watched a town known for a lifetime carry on without anyone: fishermen unloading, a child being scolded, somebody painting a door.',
+  'b1.c01.s09.p01b.body':
     'A chaplain went down the rows blessing whoever he caught, and was tolerated by most of them the way bad weather is tolerated. A boy, barely sixteen, asked loudly whether you could still wave from the rail, and got no answer, because nobody knew.\n\n' +
     'Out beyond the harbour wall lay a long grey swell, from which you could read what the water past it was going to be like.\n\n' +
     'Then the number on the slip came up, and after that everything went very fast: stand, take up, walk, across a plank that gave under you, into a shadow that smelled of tar.',

@@ -13,7 +13,8 @@ export const en_b1_c00: Record<string, string> = {
 
   'b1.c00.s01.p01.body':
     'The smoke stood over the Mouse Quarter like a badly built column, too thick at the base, fraying at the top, and the harbour wind bent it inland so the whole city could smell it. Ganoes Paran leaned on the parapet of Mock\'s Hold and counted the fires. Three. Then four. The fourth had only just opened, two lanes further west, and it had not looked like something that jumped there.\n\n' +
-    'Below him Malaz City did what it did on any other evening. Carts rolled along the harbour road. There was an argument at the fish market. A boy drove goats toward the gate without lifting his head. Only along the edge of the Mouse Quarter did people stand in small knots and watch, and not one of those knots moved any closer.\n\n' +
+    'Below him Malaz City did what it did on any other evening. Carts rolled along the harbour road. There was an argument at the fish market. A boy drove goats toward the gate without lifting his head. Only along the edge of the Mouse Quarter did people stand in small knots and watch, and not one of those knots moved any closer.',
+  'b1.c00.s01.p01b.body':
     'Ganoes was twelve, and that evening he had understood something he did not like: adults did not look at things because the things mattered to them. They looked at things they were certain nobody could do anything about. The distinction was new to him and it tasted of smoke.\n\n' +
     'Behind him soldiers stood along the wall. They had taken off their helmets. One of them was eating something out of a cloth. The fire was far enough away that you could not hear it, and close enough that the faces were orange.\n\n' +
     'Ganoes waited for someone to give an order. None came.',
@@ -74,7 +75,8 @@ export const en_b1_c00: Record<string, string> = {
     '"Why."\n\n' +
     '"Because I don\'t want to watch."\n\n' +
     'The soldier sat down on the parapet with his back to the fire. Ganoes took it for indifference at the time and recognised it years later as practice. For a while the man said nothing. Something cracked below and folded in on itself, and the smoke brightened for a moment, as though somebody had turned up a lamp.\n\n' +
-    '"I\'ll tell you what a good life is," he said at last. "A good life is one the gods never watch. You\'re born, you work, you have children, you get old and die in a bed, and none of it interests anyone up there. That\'s all of it. There isn\'t any more, and it is the best thing going."\n\n' +
+    '"I\'ll tell you what a good life is," he said at last. "A good life is one the gods never watch. You\'re born, you work, you have children, you get old and die in a bed, and none of it interests anyone up there. That\'s all of it. There isn\'t any more, and it is the best thing going."',
+  'b1.c00.s02.p02b.body':
     '"That sounds boring."\n\n' +
     '"Aye," said the soldier. "That\'s the point."\n\n' +
     'Ganoes looked down at the quarter, where the fires had run together by now, and tried to imagine a life in which nobody was looking. He could not do it. It came out like a room with no window in it, where you get old while something happens outside.\n\n' +
@@ -141,7 +143,8 @@ export const en_b1_c00: Record<string, string> = {
     'From the highest point of the parapet you saw the city the way maps claim it: flat, ordered, assembled out of quarters that had names.\n\n' +
     'Ganoes leaned over the stone and counted again. Six fires. The first stood by the canal, the last three streets further up the slope, and between them lay four more at a spacing you could measure off with a thumb. No fire stood between two others. No fire had been skipped.\n\n' +
     'Fire jumped. Fire took what stood next to it and asked nobody. This one had a plan, and the plan had left out houses where nobody lived who was involved.\n\n' +
-    'Down in the bay fishing boats were putting out, though the evening was not cold and the catch must long since have been in. They did not go far. They went only far enough not to be lying against the shore any more, and there they sat with their sails in, waiting.\n\n' +
+    'Down in the bay fishing boats were putting out, though the evening was not cold and the catch must long since have been in. They did not go far. They went only far enough not to be lying against the shore any more, and there they sat with their sails in, waiting.',
+  'b1.c00.s04.p01b.body':
     'Anyone who takes to the water in order not to be on land knew beforehand what was going to happen on land. It was a thought Ganoes had for the first time that evening, and it did not feel to him like a child\'s thought.\n\n' +
     'Further up the slope, where the houses got better, not one window was lit. Not because nobody lived there, but because nobody lived there who was involved, and because in houses like that you learn early to put the light out.\n\n' +
     'Ganoes made a note of that too, without knowing what for.',
@@ -242,7 +245,8 @@ export const en_b1_c00: Record<string, string> = {
     'Ganoes saw it before he could have explained it: they had all put themselves on the same half of the terrace, and on the other half a single woman stood at the railing looking down at the city. She wore nothing special. No badge of office, no ornament, nothing that could have been mentioned in a report.\n\n' +
     'Everyone else was wearing something. That was the difference, and it was the whole conversation.\n\n' +
     'A messenger came, said three sentences and went away again. The woman nodded without turning round. After that nobody on the important half of the terrace spoke at all.\n\n' +
-    'Ganoes understood later that this was the minute in which word arrived that the Emperor and his assassin lay dead in Malaz City. He also understood that he had seen no astonishment. Nowhere.\n\n' +
+    'Ganoes understood later that this was the minute in which word arrived that the Emperor and his assassin lay dead in Malaz City. He also understood that he had seen no astonishment. Nowhere.',
+  'b1.c00.s05.p01b.body':
     'Two of the dignitaries began to say something almost at the same moment, and both stopped. After that somebody arranged his sleeves. Somebody else took a step closer to the woman at the railing, then halted and pretended he had merely shifted his stance.\n\n' +
     'It was the most courteous thing Ganoes had ever seen, and the coldest. Nobody raised a voice. Nobody asked what was happening to the city below. The smoke came across the terrace, and the people stepped aside to let it through.',
   'b1.c00.s05.p01.alt':

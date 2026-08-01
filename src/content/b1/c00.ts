@@ -33,7 +33,13 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s01.p01`,
           bodyKey: `${C}.s01.p01.body`,
-          band: 'long',
+          band: 'standard',
+          art: { promptId: `${C}.s01.p01`, altKey: `${C}.s01.p01.alt`, mood: 'siege' },
+        },
+        {
+          id: `${C}.s01.p01b`,
+          bodyKey: `${C}.s01.p01b.body`,
+          band: 'standard',
           art: { promptId: `${C}.s01.p01`, altKey: `${C}.s01.p01.alt`, mood: 'siege' },
         },
         {
@@ -119,7 +125,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s02.p02`,
           bodyKey: `${C}.s02.p02.body`,
-          band: 'long',
+          band: 'standard',
           art: { promptId: `${C}.s02.p02`, altKey: `${C}.s02.p02.alt`, mood: 'aftermath' },
           interactions: [
             {
@@ -135,6 +141,12 @@ export const chapter00: Chapter = {
               effects: [{ codex: 'malazan-empire' }],
             },
           ],
+        },
+        {
+          id: `${C}.s02.p02b`,
+          bodyKey: `${C}.s02.p02b.body`,
+          band: 'beat',
+          art: { promptId: `${C}.s02.p02`, altKey: `${C}.s02.p02.alt`, mood: 'aftermath' },
         },
         {
           id: `${C}.s02.p03`,
@@ -175,7 +187,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s03.p03`,
           bodyKey: `${C}.s03.p03.body`,
-          band: 'standard',
+          band: 'beat',
           art: { promptId: `${C}.s03.p03`, altKey: `${C}.s03.p03.alt`, mood: 'siege' },
         },
       ],
@@ -218,7 +230,13 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s04.p01`,
           bodyKey: `${C}.s04.p01.body`,
-          band: 'long',
+          band: 'standard',
+          art: { promptId: `${C}.s04.p01`, altKey: `${C}.s04.p01.alt`, mood: 'siege' },
+        },
+        {
+          id: `${C}.s04.p01b`,
+          bodyKey: `${C}.s04.p01b.body`,
+          band: 'beat',
           art: { promptId: `${C}.s04.p01`, altKey: `${C}.s04.p01.alt`, mood: 'siege' },
         },
         {
@@ -253,13 +271,13 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s06.p01`,
           bodyKey: `${C}.s06.p01.body`,
-          band: 'standard',
+          band: 'beat',
           art: { promptId: `${C}.s06.p01`, altKey: `${C}.s06.p01.alt`, mood: 'aftermath' },
         },
         {
           id: `${C}.s06.p02`,
           bodyKey: `${C}.s06.p02.body`,
-          band: 'standard',
+          band: 'beat',
           art: { promptId: `${C}.s06.p02`, altKey: `${C}.s06.p02.alt`, mood: 'aftermath' },
         },
         {
@@ -295,7 +313,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s07.p01`,
           bodyKey: `${C}.s07.p01.body`,
-          band: 'standard',
+          band: 'beat',
           art: { promptId: `${C}.s07.p01`, altKey: `${C}.s07.p01.alt`, mood: 'siege' },
         },
         {
@@ -307,7 +325,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s07.p03`,
           bodyKey: `${C}.s07.p03.body`,
-          band: 'long',
+          band: 'standard',
           art: { promptId: `${C}.s07.p03`, altKey: `${C}.s07.p03.alt`, mood: 'aftermath' },
         },
         {
@@ -342,13 +360,19 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s05.p01`,
           bodyKey: `${C}.s05.p01.body`,
-          band: 'long',
+          band: 'standard',
           art: { promptId: `${C}.s05.p01`, altKey: `${C}.s05.p01.alt`, mood: 'council' },
           inserts: [
             { when: { flag: 'paran.met.bridgeburner' }, bodyKey: `${C}.s05.p01.ins.soldier` },
             { when: { flag: 'paran.helped.woman' }, bodyKey: `${C}.s05.p01.ins.mercy` },
             { when: { flag: 'paran.turned.back' }, bodyKey: `${C}.s05.p01.ins.back` },
           ],
+        },
+        {
+          id: `${C}.s05.p01b`,
+          bodyKey: `${C}.s05.p01b.body`,
+          band: 'beat',
+          art: { promptId: `${C}.s05.p01`, altKey: `${C}.s05.p01.alt`, mood: 'council' },
         },
         {
           id: `${C}.s05.p02`,
@@ -378,7 +402,7 @@ export const chapter00: Chapter = {
         {
           id: `${C}.s05.p06`,
           bodyKey: `${C}.s05.p06.body`,
-          band: 'long',
+          band: 'standard',
           art: { promptId: `${C}.s05.p06`, altKey: `${C}.s05.p06.alt`, mood: 'march' },
           effects: [{ achievement: 'prologue-done' }],
         },

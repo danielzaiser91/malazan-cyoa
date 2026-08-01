@@ -66,16 +66,26 @@ if (cmd === 'plan') {
   process.exit(0)
 }
 
-/** Absatz-Index, ab dem die zweite Haelfte beginnt: erste Grenze jenseits der Mitte. */
-function splitAt(text) {
-  const paras = text.split('\n\n')
-  const total = words(text)
-  let acc = 0
-  for (let i = 0; i < paras.length - 1; i++) {
-    acc += words(paras[i])
-    if (acc >= total / 2) return i + 1
+/**
+ * Absatz-Index, ab dem die zweite Haelfte beginnt.
+ *
+ * Gewaehlt wird die Grenze, die die LAENGERE der beiden Haelften am kleinsten
+ * macht — und zwar ueber beide Sprachen zugleich, weil ein Band fuer beide gilt
+ * und Englisch rund 8 % laenger ausfaellt. Die naheliegende Regel „erste Grenze
+ * jenseits der Mitte" ist schlechter: Bei einem langen Absatz kurz vor der
+ * Mitte springt sie weit darueber hinaus (real 185/85 statt 128/142).
+ */
+function splitAt(de, en) {
+  const pd = de.split('\n\n'), pe = en.split('\n\n')
+  let best = 1, bestMax = Infinity
+  for (let i = 1; i < pd.length; i++) {
+    const worst = Math.max(
+      words(pd.slice(0, i).join(' ')), words(pd.slice(i).join(' ')),
+      words(pe.slice(0, i).join(' ')), words(pe.slice(i).join(' ')),
+    )
+    if (worst < bestMax) { bestMax = worst; best = i }
   }
-  return Math.max(1, paras.length - 1)
+  return best
 }
 
 const targets = argv.slice(1).length ? argv.slice(1) : tooLong.map(x => x.page.id)
@@ -91,7 +101,7 @@ for (const id of targets) {
   // Die Bruchstelle wird an der DEUTSCHEN Fassung bestimmt und auf die
   // englische uebertragen: gleicher Absatz-Index, damit beide Sprachen an
   // derselben Stelle umblaettern.
-  const cut = splitAt(DE[page.bodyKey])
+  const cut = splitAt(DE[page.bodyKey], EN[page.bodyKey])
   const parts = {}
   for (const [lang, d] of [['de', DE], ['en', EN]]) {
     const paras = d[page.bodyKey].split('\n\n')
@@ -126,13 +136,25 @@ for (const id of targets) {
   }
 
   // --- Content -----------------------------------------------------------
+  // Das Ende des Seiten-Objekts wird durch KLAMMERZAEHLUNG bestimmt, nicht per
+  // Regex: Eine Seite enthaelt verschachtelte Objekte (`art`, `interactions`,
+  // `inserts`), und ein nicht-gieriges `[\s\S]*?\}` endet zuverlaessig an der
+  // ersten inneren Klammer statt an der richtigen.
   const file = join(ROOT, 'src', 'content', 'b1', `${chapter}.ts`)
   let s = readFileSync(file, 'utf8')
-  const anchor = new RegExp(
-    `(\\{\\s*\\n\\s*id: \`\\$\\{C\\}\\.${short.replace(/\./g, '\\.')}\`,[\\s\\S]*?\\n(\\s*)\\},\\n)`)
-  const m = s.match(anchor)
-  if (!m) { console.log(`  ! ${id}: Content-Eintrag nicht gefunden`); continue }
-  const indent = m[2]
+  const idAt = s.indexOf(`id: \`\${C}.${short}\`,`)
+  if (idAt < 0) { console.log(`  ! ${id}: Content-Eintrag nicht gefunden`); continue }
+  const open = s.lastIndexOf('{', idAt)
+  let depth = 0, close = -1
+  for (let k = open; k < s.length; k++) {
+    if (s[k] === '{') depth++
+    else if (s[k] === '}') { depth--; if (depth === 0) { close = k; break } }
+  }
+  if (close < 0) { console.log(`  ! ${id}: Objektende nicht gefunden`); continue }
+  const lineStart = s.lastIndexOf('\n', open) + 1
+  const indent = s.slice(lineStart, open).match(/^\s*/)[0]
+  const objEnd = s.indexOf('\n', close) + 1
+  const anchor = s.slice(lineStart, objEnd)
   // Die zweite Haelfte erbt Bild und Alt-Text. Interaktionen und Effekte
   // bleiben bei der ERSTEN — sie gehoeren zum Anfang der Seite.
   const added = `${indent}{\n` +
@@ -141,10 +163,10 @@ for (const id of targets) {
     `${indent}  band: '${bandB}',\n` +
     `${indent}  art: { promptId: \`\${C}.${short}\`, altKey: \`\${C}.${short}.alt\`, mood: '${page.art.mood}' },\n` +
     `${indent}},\n`
-  s = s.replace(anchor, `$1${added}`)
-  // Band der ersten Haelfte nachziehen.
-  const bandRe = new RegExp(`(id: \`\\$\\{C\\}\\.${short.replace(/\./g, '\\.')}\`,[\\s\\S]{0,300}?band: ')[a-z]+(')`)
-  s = s.replace(bandRe, `$1${bandA}$2`)
+  // Band der ersten Haelfte im herausgeloesten Block nachziehen, dann Block
+  // und neue Seite zusammen wieder einsetzen.
+  const first = anchor.replace(/band: '[a-z]+'/, `band: '${bandA}'`)
+  s = s.slice(0, lineStart) + first + added + s.slice(objEnd)
   writeFileSync(file, s)
 
   console.log(`  · ${id} -> ${bandA} + ${short}b ${bandB}  (${words(parts.de[0])}/${words(parts.de[1])} de)`)

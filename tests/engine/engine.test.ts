@@ -136,9 +136,13 @@ describe('Szenen, Seiten und Schnappschuesse', () => {
   })
 
   it('zaehlt gelesene Seiten ins Meta-Wissen', () => {
+    // Bewusst ueber die Content-Struktur statt ueber eine feste Seiten-ID: Seiten
+    // werden geteilt, wenn sie zu lang sind, und ein Test, der an `p02` haengt,
+    // meldet dann einen Fehler, wo keiner ist.
     const e = freshEngine()
+    const second = reg.scene(e.run.scene)!.pages[1]!.id
     e.next()
-    expect(e.meta.pagesRead).toContain('b1.c00.s01.p02')
+    expect(e.meta.pagesRead).toContain(second)
   })
 
   it('wendet Seiteneffekte nur einmal pro Lauf an', () => {
@@ -154,7 +158,12 @@ describe('Szenen, Seiten und Schnappschuesse', () => {
 describe('Interaktionen', () => {
   it('brennen ab, wenn sie nicht wiederholbar sind', () => {
     const e = freshEngine()
-    e.next() // Seite 2 traegt die Gespraechsknoten
+    // Bis zu der Seite blaettern, die den Gespraechsknoten wirklich traegt —
+    // eine feste Zahl von `next()` bricht, sobald eine Seite geteilt wird.
+    const pages = reg.scene(e.run.scene)!.pages
+    const at = pages.findIndex(p => p.interactions?.some(i => i.id === 'say-nothing'))
+    expect(at).toBeGreaterThan(-1)
+    for (let n = 0; n < at; n++) e.next()
     const first = e.interact('say-nothing')
     expect(first.some(x => x.kind === 'stat')).toBe(true)
     const second = e.interact('say-nothing')

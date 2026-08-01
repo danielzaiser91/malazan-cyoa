@@ -13,7 +13,8 @@ export const de_b1_c00: Record<string, string> = {
 
   'b1.c00.s01.p01.body':
     'Der Rauch stand über dem Mausviertel wie eine schlecht gesetzte Säule, unten zu dick, oben ausgefranst, und der Wind vom Hafen bog ihn landeinwärts, damit die ganze Stadt ihn riechen konnte. Ganoes Paran lehnte an der Brustwehr von Mocks Feste und zählte die Feuer. Drei. Dann vier. Das vierte war eben erst aufgegangen, zwei Gassen weiter westlich, und es hatte nicht ausgesehen, als wäre es dorthin gesprungen.\n\n' +
-    'Unter ihm lag Malaz-Stadt und tat, was sie an jedem anderen Abend auch tat. Karren rollten über die Uferstraße. Auf dem Fischmarkt wurde gestritten. Ein Junge trieb Ziegen zum Tor, ohne den Kopf zu heben. Nur am Rand des Mausviertels standen Menschen in kleinen Gruppen und sahen zu, und keine dieser Gruppen ging näher heran.\n\n' +
+    'Unter ihm lag Malaz-Stadt und tat, was sie an jedem anderen Abend auch tat. Karren rollten über die Uferstraße. Auf dem Fischmarkt wurde gestritten. Ein Junge trieb Ziegen zum Tor, ohne den Kopf zu heben. Nur am Rand des Mausviertels standen Menschen in kleinen Gruppen und sahen zu, und keine dieser Gruppen ging näher heran.',
+  'b1.c00.s01.p01b.body':
     'Ganoes war zwölf und hatte an diesem Abend etwas begriffen, das ihm nicht gefiel: Erwachsene sahen sich Dinge nicht an, weil sie ihnen wichtig waren. Sie sahen sich Dinge an, bei denen sie sicher waren, dass niemand etwas tun konnte. Der Unterschied war neu für ihn und schmeckte nach Rauch.\n\n' +
     'Hinter ihm standen Soldaten auf der Mauer. Sie hatten die Helme abgesetzt. Einer aß etwas aus einem Tuch. Das Feuer war weit genug entfernt, dass man den Lärm nicht hörte, und nah genug, dass die Gesichter orange waren.\n\n' +
     'Ganoes wartete darauf, dass jemand einen Befehl gab. Es kam keiner.',
@@ -74,7 +75,8 @@ export const de_b1_c00: Record<string, string> = {
     '„Warum."\n\n' +
     '„Weil ich nicht zusehen will."\n\n' +
     'Der Soldat setzte sich auf die Brustwehr, den Rücken zum Feuer. Ganoes hielt das zuerst für Gleichgültigkeit und erkannte es Jahre später als Übung. Eine Weile sagte der Mann nichts. Unten knackte etwas, sackte in sich zusammen, und der Rauch wurde für einen Moment heller, als hätte jemand eine Lampe aufgedreht.\n\n' +
-    '„Ich sag dir, was ein gutes Leben ist", sagte er schließlich. „Ein gutes Leben ist eins, bei dem die Götter dir nie zusehen. Du wirst geboren, du arbeitest, du bekommst Kinder, du wirst alt und stirbst in einem Bett, und nichts davon interessiert irgendwen da oben. Das ist alles. Mehr gibt es nicht, und es ist das Beste, was es gibt."\n\n' +
+    '„Ich sag dir, was ein gutes Leben ist", sagte er schließlich. „Ein gutes Leben ist eins, bei dem die Götter dir nie zusehen. Du wirst geboren, du arbeitest, du bekommst Kinder, du wirst alt und stirbst in einem Bett, und nichts davon interessiert irgendwen da oben. Das ist alles. Mehr gibt es nicht, und es ist das Beste, was es gibt."',
+  'b1.c00.s02.p02b.body':
     '„Das klingt langweilig."\n\n' +
     '„Ja", sagte der Soldat. „Das ist der Punkt."\n\n' +
     'Ganoes sah zum Viertel hinunter, wo die Feuer inzwischen zusammengelaufen waren, und versuchte sich ein Leben vorzustellen, in dem niemand hinsah. Es gelang ihm nicht. Es kam ihm vor wie ein Zimmer ohne Fenster, in dem man alt wird, während draußen etwas passiert.\n\n' +
@@ -141,7 +143,8 @@ export const de_b1_c00: Record<string, string> = {
     'Von der höchsten Stelle der Brustwehr sah man die Stadt so, wie Landkarten sie behaupten: flach, geordnet, aus Vierteln zusammengesetzt, die Namen hatten.\n\n' +
     'Ganoes lehnte sich über den Stein und zählte noch einmal. Sechs Feuer. Das erste stand am Kanal, das letzte drei Straßen weiter oben am Hang, und zwischen ihnen lagen vier weitere in einem Abstand, den man mit dem Daumen abmessen konnte. Kein Feuer stand zwischen zwei anderen. Kein Feuer war übersprungen worden.\n\n' +
     'Feuer sprang. Feuer nahm, was danebenstand, und fragte niemanden. Dieses hier hatte einen Plan, und der Plan hatte Häuser ausgelassen, in denen niemand wohnte, den es betraf.\n\n' +
-    'Unten in der Bucht legten Fischerboote ab, obwohl der Abend nicht kalt war und der Fang längst drin sein musste. Sie fuhren nicht weit. Sie fuhren nur so weit hinaus, dass sie nicht mehr am Ufer lagen, und blieben dort liegen, mit eingeholten Segeln, und warteten.\n\n' +
+    'Unten in der Bucht legten Fischerboote ab, obwohl der Abend nicht kalt war und der Fang längst drin sein musste. Sie fuhren nicht weit. Sie fuhren nur so weit hinaus, dass sie nicht mehr am Ufer lagen, und blieben dort liegen, mit eingeholten Segeln, und warteten.',
+  'b1.c00.s04.p01b.body':
     'Wer aufs Wasser fährt, um nicht an Land zu sein, hat vorher gewusst, was an Land geschehen wird. Das war ein Gedanke, den Ganoes an diesem Abend zum ersten Mal hatte, und er kam ihm nicht wie ein Kindergedanke vor.\n\n' +
     'Weiter oben am Hang, wo die Häuser besser wurden, brannte kein einziges Fenster. Nicht weil dort niemand wohnte, sondern weil dort niemand wohnte, den es betraf, und weil man in solchen Häusern früh lernt, das Licht auszumachen.\n\n' +
     'Ganoes merkte sich das ebenfalls, ohne zu wissen, wofür.',
@@ -242,7 +245,8 @@ export const de_b1_c00: Record<string, string> = {
     'Ganoes sah es, bevor er es hätte erklären können: Sie hatten sich alle auf dieselbe Hälfte der Terrasse gestellt, und in der anderen Hälfte stand eine einzelne Frau am Geländer und sah auf die Stadt hinunter. Sie trug nichts Besonderes. Kein Amtszeichen, kein Schmuck, nichts, was man in einem Bericht hätte erwähnen können.\n\n' +
     'Alle anderen trugen etwas. Das war der Unterschied, und er war das ganze Gespräch.\n\n' +
     'Ein Bote kam, sagte drei Sätze und ging wieder. Die Frau nickte, ohne sich umzudrehen. Danach redete auf der wichtigen Hälfte der Terrasse niemand mehr.\n\n' +
-    'Ganoes verstand später, dass in dieser Minute die Nachricht eingetroffen war, dass der Kaiser und sein Meuchler tot in Malaz-Stadt lägen. Er verstand auch, dass er kein Erstaunen gesehen hatte. Nirgendwo.\n\n' +
+    'Ganoes verstand später, dass in dieser Minute die Nachricht eingetroffen war, dass der Kaiser und sein Meuchler tot in Malaz-Stadt lägen. Er verstand auch, dass er kein Erstaunen gesehen hatte. Nirgendwo.',
+  'b1.c00.s05.p01b.body':
     'Zwei der Würdenträger begannen fast gleichzeitig, etwas zu sagen, und hörten beide wieder auf. Danach ordnete jemand seine Ärmel. Jemand anderes trat einen Schritt näher an die Frau am Geländer heran, blieb dann stehen und tat, als hätte er nur seinen Stand gewechselt.\n\n' +
     'Es war die höflichste Sache, die Ganoes je gesehen hatte, und die kälteste. Niemand hob die Stimme. Niemand fragte, was mit der Stadt unten sei. Der Rauch zog über die Terrasse, und die Leute traten beiseite, damit er durchkonnte.',
   'b1.c00.s05.p01.alt':

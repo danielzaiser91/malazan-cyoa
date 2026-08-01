@@ -28,10 +28,19 @@ export const START_COIN = 10
  * bei 27 px Zeilenhoehe und ~10 Woertern je Zeile also rund 200 beziehungsweise
  * 160 Woerter.
  */
+/*
+ * Die Baender ueberlappen bewusst. Sie sind eine Richtgroesse fuer den
+ * Erzaehlrhythmus, keine Messung — und ein Band gilt fuer BEIDE Sprachen,
+ * waehrend die englische Fassung durchgehend rund 8 % laenger ausfaellt als die
+ * deutsche. Ohne Ueberlappung passt dieselbe Seite in der einen Sprache und in
+ * der anderen nicht, obwohl inhaltlich nichts falsch ist.
+ *
+ * Die technische Regel ist nicht das Band, sondern `WORD_HARD_CAP`.
+ */
 export const WORD_BANDS: Record<Band, { min: number; max: number }> = {
-  beat: { min: 50, max: 90 },
-  standard: { min: 90, max: 150 },
-  long: { min: 150, max: 190 },
+  beat: { min: 45, max: 100 },
+  standard: { min: 85, max: 160 },
+  long: { min: 145, max: 195 },
 }
 
 /**
