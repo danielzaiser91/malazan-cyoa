@@ -13,7 +13,7 @@
  */
 
 import type { ArtPrompt, ArtTier } from './types.ts'
-import { CHARACTER_SHEETS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, STYLE_ANCHOR } from './style.ts'
+import { CHARACTER_SHEETS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, STATION_SHEETS, STYLE_ANCHOR } from './style.ts'
 
 /** Vierter Block der Vorlage, aus der Stufe abgeleitet. */
 export const COMPOSITION: Record<ArtTier, string> = {
@@ -29,6 +29,12 @@ export function sceneBlock(p: ArtPrompt): string {
   // beschreiben, sonst driftet die Figur ueber die Bilder hinweg.
   for (const c of p.characters ?? []) {
     const sheet = CHARACTER_SHEETS[c]
+    if (sheet) parts.push(sheet)
+  }
+  // Standesblaetter direkt hinter die Figuren: Sie beschreiben Menschen, nicht
+  // Kulisse, und stehen deshalb vor dem Ort.
+  for (const s of p.station ?? []) {
+    const sheet = STATION_SHEETS[s]
     if (sheet) parts.push(sheet)
   }
   if (p.place) {

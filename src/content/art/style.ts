@@ -140,9 +140,12 @@ export const CHARACTER_SHEETS: Record<string, string> = {
   tattersail:
     'a heavyset middle-aged human sorceress, red hair coiled up, ' +
     'faded military robes over a cadre uniform, a wooden card case in one hand',
+  // "no ornament of any kind" war eine Verneinung im Prompt — dieselbe Falle wie
+  // "no text" im Anker. Positiv gesagt traegt der Satz dieselbe Aussage und
+  // erzeugt sie auch.
   lorn:
     'a composed human woman in black imperial leathers, hair bound tight, ' +
-    'a plain rust-red sword sheathed at her side, no ornament of any kind',
+    'a plain rust-red sword sheathed at her side, the plainest person in any room she enters',
   kruppe:
     'a small round man in an ochre waistcoat too tight for him, ' +
     'greasy hair, delighted expression, sleeves that could hide anything',
@@ -156,6 +159,56 @@ export const CHARACTER_SHEETS: Record<string, string> = {
     'an undead warrior of dust and bone in cured hide, a flint sword, ' +
     'the skull of a great cat worn as a helm, nothing alive about him',
 }
+
+/**
+ * Stand und Rang — das Vokabular fuer alle Figuren, die keine Namen haben,
+ * sondern eine Stellung. Festgelegt am 01.08.2026.
+ *
+ * **Warum es das gibt:** Abstrakte Statusbegriffe (`ornamented`, `noble`,
+ * `official`, `formal`, `rich`) sagen dem Modell nur, DASS jemand Rang hat,
+ * nicht WIE der hier aussieht. Die Luecke fuellt es aus seinem Trainings-
+ * schwerpunkt, und der ist bei "Militaer mit Zierrat" eindeutig napoleonisch:
+ * Goldtressen, Epauletten, Schaerpen, hohe Kragen. Gemessen an `b1.c00.s05` —
+ * aus einem malazanischen Staatsakt wurde ein Offiziersball von 1810.
+ *
+ * **Die Regel dahinter, wichtiger als die Blaetter selbst: Rang nie benennen,
+ * immer als Material, Machart und Zustand beschreiben.** Wer sagt, woraus der
+ * Mantel ist, muss nicht sagen, dass sein Traeger wichtig ist.
+ *
+ * Das Reich ist spaetantik-schwer, nicht hoefisch-verspielt: Wolle, Fell,
+ * Leder, stumpfes Metall, dunkle Faerbung. Reichtum zeigt sich an der MENGE
+ * Stoff und an der Qualitaet der Arbeit, nie an aufgenaehtem Schmuck.
+ *
+ * Weitere Blaetter erst anlegen, wenn ein Kapitel sie braucht — geraten wird
+ * hier nichts.
+ */
+export const STATION_SHEETS: Record<string, string> = {
+  /** Hoefische und zivile Wuerdentraeger des Imperiums. */
+  imperialCourt:
+    'imperial court officials in heavy floor-length coats of dark dyed wool, ' +
+    'deep sleeves that cover the hands, thick collars of dark fur, ' +
+    'broad flat necklaces of dull silver lying on the chest, rings on every finger, ' +
+    'hair oiled and pinned, standing very still',
+  /** Malazanische Offiziere ab Hauptmann aufwaerts. */
+  imperialCommand:
+    'senior Malazan officers in dark lacquered scale over grey leather, ' +
+    'plain wool cloaks pinned at one shoulder with a bronze disc, cropped hair, ' +
+    'one heavy signet ring each, every piece hard-worn and well kept',
+}
+
+/**
+ * Woerter, die in KEINEN Prompt geraten duerfen. Alle bezeichnen dasselbe
+ * Missverstaendnis: europaeisches Militaer und Hofleben des 18./19.
+ * Jahrhunderts. Ein einziges davon zieht den ganzen Bildaufbau dorthin.
+ *
+ * Die Liste ist eine TEST-Regel, keine Prompt-Regel — im Prompt selbst stehen
+ * nie Verneinungen (siehe `STYLE_ANCHOR`). Geprueft wird der Quelltext.
+ */
+export const FORBIDDEN_PERIOD_MARKERS = [
+  'epaulette', 'gold braid', 'braiding', 'frogging', 'sash', 'aiguillette',
+  'bicorne', 'tricorn', 'shako', 'plume', 'frock coat', 'regimental',
+  'medal', 'gilt', 'brocade', 'cravat', 'powdered wig', 'lace cuff',
+] as const
 
 /** Wiederkehrende Orte — dieselbe Regel wie bei den Figuren. */
 export const PLACE_SHEETS: Record<string, string> = {

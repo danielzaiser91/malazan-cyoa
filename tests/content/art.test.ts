@@ -7,7 +7,7 @@
 import { describe, expect, it } from 'vitest'
 import { artPrompts } from '../../src/content/index.ts'
 import { buildPrompt, promptHash, COMPOSITION } from '../../src/content/art/prompt.ts'
-import { CHARACTER_SHEETS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STYLE_ANCHOR } from '../../src/content/art/style.ts'
+import { CHARACTER_SHEETS, FORBIDDEN_PERIOD_MARKERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR } from '../../src/content/art/style.ts'
 import { ART_MOODS } from '../../src/model/types.ts'
 
 describe('Stil-Anker', () => {
@@ -73,9 +73,36 @@ describe('Prompt-Vorlage', () => {
         if (!CHARACTER_SHEETS[c]) { problems.push(`${p.id}: unbekannte Figur "${c}"`); continue }
         if (!buildPrompt(p).includes(CHARACTER_SHEETS[c])) problems.push(`${p.id}: Blatt "${c}" nicht wortgleich`)
       }
+      for (const s of p.station ?? []) {
+        if (!STATION_SHEETS[s]) { problems.push(`${p.id}: unbekannter Stand "${s}"`); continue }
+        if (!buildPrompt(p).includes(STATION_SHEETS[s])) problems.push(`${p.id}: Standesblatt "${s}" nicht wortgleich`)
+      }
       if (p.place && !PLACE_SHEETS[p.place]) problems.push(`${p.id}: unbekannter Ort "${p.place}"`)
     }
     expect(problems).toEqual([])
+  })
+
+  // Gemessen am 01.08.2026 an `b1.c00.s05`: aus einem malazanischen Staatsakt
+  // wurde ein Offiziersball von 1810, weil im Motiv "heavily ornamented
+  // officers" stand. Das Modell fuellt abstrakte Statusbegriffe aus seinem
+  // Trainingsschwerpunkt — und der ist bei Zierrat am Militaer napoleonisch.
+  it('kein Prompt traegt einen Marker des 18./19. Jahrhunderts', () => {
+    const bad: string[] = []
+    for (const p of artPrompts) {
+      const text = buildPrompt(p).toLowerCase()
+      for (const m of FORBIDDEN_PERIOD_MARKERS) if (text.includes(m)) bad.push(`${p.id}: "${m}"`)
+    }
+    expect(bad).toEqual([])
+  })
+
+  // Rang wird als Material und Machart beschrieben, nie als Etikett. Wer
+  // "ornamented officials" schreibt, laesst das Modell den Rest erfinden.
+  it('kein Prompt benennt Rang abstrakt statt ihn zu beschreiben', () => {
+    const vague = /\b(ornamented|richly dressed|finely dressed|in finery|nobles?|aristocrats?|dignitar\w+)\b/i
+    const bad = artPrompts
+      .filter(p => vague.test(`${p.subject} ${p.detail ?? ''}`))
+      .map(p => p.id)
+    expect(bad).toEqual([])
   })
 
   it('kein Prompt enthaelt eine Verneinung', () => {

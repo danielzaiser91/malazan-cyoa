@@ -22,6 +22,12 @@ export interface ArtPrompt {
   subject: string
   /** Schluessel in `CHARACTER_SHEETS`; werden wortwoertlich eingesetzt. */
   characters?: string[]
+  /**
+   * Schluessel in `STATION_SHEETS` — fuer namenlose Figurengruppen, die durch
+   * ihren Stand da sind (Hofstaat, Offiziere). Nie `ornamented officials` o. Ae.
+   * frei in `subject` schreiben: das Modell fuellt solche Luecken napoleonisch.
+   */
+  station?: string[]
   /** Schluessel in `PLACE_SHEETS`. */
   place?: string
   /** Zusaetzliches Detail zur Umgebung. */

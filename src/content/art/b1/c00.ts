@@ -131,9 +131,10 @@ export const art00: ArtPrompt[] = [
 
   {
     id: `${C}.s05.p01`,
-    subject: 'a bare stone battlement terrace at night above a burning city, one plainly dressed woman standing alone '
-      + 'at the parapet with her back turned, and a tight knot of heavily ornamented officers keeping their distance behind her',
-    detail: 'no table, no chairs, no food, no music, nobody speaking; every ornamented figure is watching the plain woman, '
+    subject: 'a bare stone battlement terrace at night above a burning city, one woman in plain undyed clothing standing alone '
+      + 'at the parapet with her back turned, and a tight knot of court officials keeping their distance behind her',
+    station: ['imperialCourt'],
+    detail: 'bare flagstones and open night air, every heavy-coated figure watching the plain woman, '
       + 'and she is watching the fires below',
     mood: 'council', palette: 'hoods-grey', tier: 'hero',
   },
@@ -146,8 +147,9 @@ export const art00: ArtPrompt[] = [
     // vom Moderationsfilter als Request Moderated abgelehnt — im selben Prompt
     // steht ein zwoelfjaehriger Junge. Eine Redewendung, die fuer einen Leser
     // eindeutig ist, ist es fuer einen Klassifizierer nicht.
-    detail: 'behind her a group in heavy ornament, chains and braid, every one of them looking away; '
-      + 'she is the only person in the frame with no ornament of any kind',
+    station: ['imperialCourt'],
+    detail: 'behind her the court officials stand in a close group, every one of them looking away; '
+      + 'she is the plainest figure in the frame',
     mood: 'council', palette: 'hoods-grey', tier: 'standard',
   },
   {

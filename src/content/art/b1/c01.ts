@@ -80,6 +80,7 @@ export const art01: ArtPrompt[] = [
   {
     id: `${C}.s02.p04`,
     subject: 'officers standing apart from a halted column, talking too quietly to be heard',
+    station: ['imperialCommand'],
     mood: 'aftermath', palette: 'hoods-grey', tier: 'standard',
   },
 
@@ -141,6 +142,7 @@ export const art01: ArtPrompt[] = [
     id: `${C}.s07.p02`,
     subject: 'a woman in black leathers and a young officer standing over the same body, looking at different things',
     characters: ['lorn'],
+    station: ['imperialCommand'],
     mood: 'aftermath', palette: 'hoods-grey', tier: 'standard',
   },
   {
