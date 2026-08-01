@@ -34,7 +34,8 @@ export const en_b1_c01: Record<string, string> = {
     'It went faster than it should have been allowed to.\n\n' +
     'Name, birthplace, age. Not one word about where to. The clerk turned the book round, pointed at a line and waited, and {name} put a mark under it while the sergeant was already looking at the next one in the queue.\n\n' +
     'Then silver into the hand, a slip with a number on it, and the sentence he had probably said forty times that day: "East gate, first light. Anyone not there is a deserter, and nobody looks long for deserters, they just strike them out."\n\n' +
-    'The silver was warm from the sun.',
+    'The silver was warm from the sun.\n\n' +
+    'The sergeant looked up one last time. “Forty-one,” he said, and then to the clerk, without lowering his voice: “{they} {isAre} in the second rank. Put {them} with the Kanese.”',
   'b1.c01.s01.p02.alt':
     'A sergeant looks up from a ledger in which a name has just been entered. Silver coins and a wax seal lie on the table.',
 

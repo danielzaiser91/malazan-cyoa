@@ -61,3 +61,32 @@ export function wordCount(text: string): number {
   if (!cleaned) return 0
   return cleaned.split(/\s+/).length
 }
+
+/**
+ * Pronomen je Anrede und Sprache.
+ *
+ * Deutsch kennt kein etabliertes geschlechtsneutrales Personalpronomen; die
+ * dritte Option ist deshalb das generische „sie" — so heisst sie auch in der
+ * Profil-Anlage („sie (neutral)"), damit niemand etwas anderes erwartet.
+ *
+ * `isAre` und `hasHave` gehoeren dazu, weil englisches "they" den Plural
+ * verlangt. Ohne sie schreibt man Saetze, die fuer eine der drei Anreden
+ * grammatisch falsch sind, und merkt es nie — man spielt ja selbst nur eine.
+ */
+export const PRONOUNS: Record<Lang, Record<'she' | 'he' | 'they', Record<string, string>>> = {
+  de: {
+    she:  { they: 'sie', them: 'sie', themDat: 'ihr', their: 'ihr', isAre: 'ist', hasHave: 'hat' },
+    he:   { they: 'er', them: 'ihn', themDat: 'ihm', their: 'sein', isAre: 'ist', hasHave: 'hat' },
+    they: { they: 'sie', them: 'sie', themDat: 'ihr', their: 'ihr', isAre: 'ist', hasHave: 'hat' },
+  },
+  en: {
+    she:  { they: 'she', them: 'her', themDat: 'her', their: 'her', isAre: 'is', hasHave: 'has' },
+    he:   { they: 'he', them: 'him', themDat: 'him', their: 'his', isAre: 'is', hasHave: 'has' },
+    they: { they: 'they', them: 'them', themDat: 'them', their: 'their', isAre: 'are', hasHave: 'have' },
+  },
+}
+
+/** Die Platzhalter einer Anrede, fertig zum Einsetzen neben `{name}`. */
+export function pronounVars(lang: Lang, pronouns: 'she' | 'he' | 'they'): Record<string, string> {
+  return PRONOUNS[lang][pronouns]
+}

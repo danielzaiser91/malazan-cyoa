@@ -6,6 +6,7 @@
 
 import type { Engine, EngineEvent } from '../core/engine.ts'
 import type { I18n } from '../core/i18n.ts'
+import { pronounVars } from '../core/i18n.ts'
 import type { Registry } from '../model/registry.ts'
 import type { Choice } from '../model/types.ts'
 import { btn, clear, el, focus, paragraphs } from './dom.ts'
@@ -57,7 +58,11 @@ export class StoryView {
    * `_knowledgebase/70-style-and-voice.md`.
    */
   private vars(): Record<string, string> {
-    return { name: this.host.engine.save.profile.name }
+    const profile = this.host.engine.save.profile
+    // Pronomen fahren neben dem Namen mit. Damit kann jede Textstelle sie
+    // benutzen, ohne dass es drei Fassungen der Seite braucht — der Grund,
+    // aus dem sie bisher gar nicht vorkamen.
+    return { name: profile.name, ...pronounVars(this.host.t.lang, profile.pronouns) }
   }
 
   render(): void {

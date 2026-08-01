@@ -20,7 +20,6 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 |---|---|---|---|
 | U8 | **Wahldichte: 4 Wahlpunkte auf 63 Seiten sind zu wenig.** Ziel laut `verbesserungsvorschlaege.md` § 1: eine Wahl alle 3–5 Seiten, also 13–20 statt 4. Kleine Wahlen innerhalb einer Szene (`Interaction`, bisher 5× im ganzen Buch) tragen die Strecke, die Verzweigung am Szenenende bleibt für die Wegänderungen. Dazu: sichtbare Kosten, Risiko und Folgen — und je Szene ein Pfad, der etwas kostet und trotzdem gut ist. | 8 | Offen |
 | U9 | **Werte und Herkunft wirksam machen.** Im ganzen Slice entscheiden sie über EINE Probe. Ziel: je Szene eine wertabhängige Option (sichtbar gesperrt oder leichter) und ein Einschub je Herkunft. Beide Strukturen existieren und werden kaum genutzt. | 5 | Offen |
-| U12 | **Anrede: wirksam machen oder streichen.** Sie wird abgefragt, gespeichert und nie gelesen — der Spielcharakter trägt bewusst nie ein Pronomen. Eine Option, die etwas verspricht und nichts einlöst, ist schlechter als keine. | 1 | Offen |
 | U13 | **DOM-Tests für die drei Dialoge.** Alle 122 Tests liegen auf Core und Content; die Darstellungsschicht ist ungetestet — und genau dort lagen die Regressionen dieser Runde. Günstigste Absicherung im Projekt. | 2 | Offen |
 | T6b | **Rest aus `_reference/ux-befunde.md`:** M12 Bild und Text teilen sich die Höhe, M13 Zustandszeile in der Kopfleiste, M14 Zeilenlänge im Zweispalter gegenprüfen. | 3 | Offen |
 | — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
@@ -73,9 +72,14 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
    Jahre, nicht zwei. `50-gotm-chapter-map.md` behauptete zwei. Berichtigt, Prosa nachgezogen,
    Begründung in `11-timeline.md`.
 
-4. **Der Spielcharakter wird nie mit einem Pronomen bezeichnet**, nur mit `{name}`. Dritte Person
-   ist Vorgabe, deutsche Neutral-Pronomen gibt es nicht brauchbar, und vier Fassungen jeder Seite
-   wären der Preis. Festgehalten in `70-style-and-voice.md`.
+4. **Der Erzähltext nennt den Spielcharakter mit `{name}`, nicht mit Pronomen** — dritte Person
+   ist Vorgabe. ~~Und Pronomen wären zu teuer.~~ **Korrigiert am 01.08.2026:** Der genannte Preis
+   („vier Fassungen jeder Seite") entfällt, wenn die Pronomen Platzhalter sind, genau wie `{name}`.
+   Es gibt jetzt `{they}`, `{them}`, `{themDat}`, `{their}` sowie `{isAre}` und `{hasHave}` — die
+   letzten beiden, weil englisches „they" den Plural verlangt und ein Satz sonst für eine der drei
+   Anreden falsch ist, ohne dass es je jemandem auffällt. Eingesetzt wird sparsam: dort, wo jemand
+   **über** den Rekruten spricht statt zu ihm. Damit tut die Anrede endlich etwas — vorher wurde
+   sie abgefragt, gespeichert und nie gelesen.
 
 5. **Proben laufen als eigene Kante.** `Choice.check` würfelt `Wert + W6` gegen eine Schwierigkeit
    und verzweigt bei Misserfolg — ein Fehlschlag blockiert nie. Wert und Schwierigkeit stehen

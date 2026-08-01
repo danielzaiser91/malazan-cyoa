@@ -37,7 +37,8 @@ export const de_b1_c01: Record<string, string> = {
     'Es ging schneller, als es hätte gehen dürfen.\n\n' +
     'Name, Herkunft, Alter. Kein Wort darüber, wohin. Der Schreiber drehte das Buch herum, deutete auf eine Zeile und wartete, und {name} setzte ein Zeichen darunter, während der Sergeant schon nach dem nächsten in der Schlange sah.\n\n' +
     'Dann Silber auf die Hand, ein Zettel mit einer Nummer, und der Satz, den er an diesem Tag vermutlich zum vierzigsten Mal sagte: „Morgen früh am Osttor. Wer nicht da ist, ist Deserteur, und Deserteure sucht man nicht lange, man streicht sie."\n\n' +
-    'Das Silber war warm von der Sonne.',
+    'Das Silber war warm von der Sonne.\n\n' +
+    'Der Sergeant sah ein letztes Mal auf. „Nummer einundvierzig“, sagte er, und dann zum Schreiber, ohne die Stimme zu senken: „{they} {isAre} in der zweiten Reihe. Schreib {them} zu den Kanern.“',
   'b1.c01.s01.p02.alt':
     'Ein Sergeant sieht von einem Buch auf, in das gerade ein Name eingetragen wurde. Auf dem Tisch liegen Silbermünzen und ein Wachssiegel.',
 

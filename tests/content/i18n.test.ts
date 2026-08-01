@@ -3,6 +3,7 @@
  */
 
 import { describe, expect, it } from 'vitest'
+import { pronounVars } from '../../src/core/i18n.ts'
 import { allPages, allScenes, artById, i18nFor, LANGS, locales, reg } from '../helpers.ts'
 import { wordCount } from '../../src/core/i18n.ts'
 import { WORD_BANDS, WORD_HARD_CAP } from '../../src/core/constants.ts'
@@ -209,6 +210,48 @@ describe('7 · Bild-Abdeckung', () => {
     const bad = allPages()
       .filter(({ page }) => !ART_MOODS.includes(page.art.mood))
       .map(({ page }) => page.id)
+    expect(bad).toEqual([])
+  })
+})
+
+describe('Anrede', () => {
+  // Bis zum 01.08.2026 wurde die Anrede abgefragt, gespeichert und nie gelesen:
+  // Der Erzaehltext nennt den Spielcharakter nur mit {name}, weil Pronomen
+  // sonst drei Fassungen jeder Seite verlangt haetten. Als Platzhalter kosten
+  // sie nichts — und dann muss auch geprueft werden, dass sie aufgehen.
+  const FORMS = ['she', 'he', 'they'] as const
+
+  it('kennt jede Form in jeder Sprache', () => {
+    for (const lang of ['de', 'en'] as const) {
+      for (const form of FORMS) {
+        const v = pronounVars(lang, form)
+        for (const key of ['they', 'them', 'themDat', 'their', 'isAre', 'hasHave']) {
+          expect(v[key], `${lang}/${form}/${key}`).toBeTruthy()
+        }
+      }
+    }
+  })
+
+  it('englisches "they" verlangt den Plural', () => {
+    // Die Falle, die man sonst nie bemerkt: Man spielt selbst nur eine Anrede.
+    expect(pronounVars('en', 'they').isAre).toBe('are')
+    expect(pronounVars('en', 'they').hasHave).toBe('have')
+    expect(pronounVars('en', 'she').isAre).toBe('is')
+  })
+
+  it('kein Text laesst einen Pronomen-Platzhalter ungefuellt', () => {
+    const bad: string[] = []
+    for (const lang of ['de', 'en'] as const) {
+      const i18n = i18nFor(lang)
+      for (const key of i18n.keys(lang)) {
+        if (!key.endsWith('.body')) continue
+        for (const form of FORMS) {
+          const out = i18n.t(key, { name: 'Tesk', ...pronounVars(lang, form) })
+          const left = out.match(/\{(they|them|themDat|their|isAre|hasHave)\}/g)
+          if (left) bad.push(`${lang} ${key} (${form}): ${left.join(', ')}`)
+        }
+      }
+    }
     expect(bad).toEqual([])
   })
 })
