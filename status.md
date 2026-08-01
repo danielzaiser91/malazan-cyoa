@@ -43,15 +43,14 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 | # | Thema | Standard, falls keine Antwort |
 |---|---|---|
 | B1 | **Spielfigur:** Rekrut mit POV-Interludes vs. durchgehend Paran. **Faktisch entschieden** — Kapitel 1 ist mit dem Rekruten geschrieben, Umbau wäre jetzt teuer. | Rekrut + Interludes |
-| B3 | **Bild-Budget.** Der Testlauf lief über Cloudflare zum Nulltarif und in brauchbarer Qualität. Offen bleibt, ob die ~40 Hero-Bilder einen bezahlten Anbieter bekommen. | Cloudflare für alles, bezahlt nur auf Ansage |
-
 ### 4 · Warten auf User-Feedback
 
 | # | Thema |
 |---|---|
 | **F1** | **GitHub-Repo anlegen und pushen.** Nach außen gerichtet, deshalb Rückfrage (`MASTER_PROMPT.md` § A1). Lokal ist alles committet, der CI-Workflow liegt bereit. Ohne Remote kein Deploy, kein Live-Test des Versionsbanners, kein Portfolio-Eintrag. |
 | **F2** | **Testrunde Vertical Slice** (Prolog + Kapitel 1) auf http://localhost:5176 — die Abnahme, an der § A9 Kapitel 2 aufhängt. |
-| **F3** | **Bild-Look abnehmen.** Sechs Testbilder liegen in `public/illustrations/_raw/`. Der Look ist eher fotorealistisch als malerisch; wenn das nicht passt, ändert sich die Stil-Endung, bevor 436 Bilder entstehen. |
+| **F4** | **`b1.c00.s05.p02` ein drittes Mal erzeugen (4,5 Credits).** Der Prompt ist korrigiert; die Frau fehlte im Bild. Sinnvollerweise zusammen mit Block 2. |
+| **F5** | **Block 2 starten:** Kapitel 1, 25 der 31 offenen Bilder, ~76 Credits. Danach Block 3 (die restlichen 6). |
 
 ---
 
@@ -101,3 +100,20 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 | 31.07.2026 | **Recherche R1–R9 geschlossen.** Sechs neue Knowledgebase-Dateien (Zeitrechnung, Deck-Karten, Genabackis/Darujhistan, Trupp und Munition, Szenen-Detail aller 24 Kapitel, Aussprache) plus `_reference/terminology-de.md` als verbindliches Glossar — Blanvalet-Begriffe wo etabliert. |
 | 31.07.2026 | **Phase A.** Vite 7 + TS strict + Vitest, null Laufzeit-Dependencies. Engine mit gesätem RNG, deklarativen Bedingungen und Effekten, Schnappschuss/Sprung, Save mit Migration und Export/Import. Alle zwölf Content-Validierungen als Tests. Headless-Simulator. Views: Startbildschirm, Story, Auslegung als SVG und Liste, Marginalien, Blatt, Rückschau, Einstellungen. Klangschicht. Versionsbanner. Bild-Pipeline mit deterministischem Platzhalter. CI-Workflow. Prolog vollständig in beiden Sprachen. |
 | 31.07.2026 | Vorbereitung abgeschlossen: `_knowledgebase` (Seed, 8 Dateien), `_reference` (6 Specs), `MASTER_PROMPT.md`, `CLAUDE.md`, `status.md` angelegt. |
+
+9. **Rang wird beschrieben, nie benannt.** `STATION_SHEETS` in `src/content/art/style.ts` ist ein
+   drittes Blatt-Register neben Figuren und Orten. Grund: „heavily ornamented officers" hat aus
+   einem malazanischen Staatsakt einen Offiziersball von 1810 gemacht — abstrakte Statusbegriffe
+   füllt das Modell aus seinem Trainingsschwerpunkt. Zwei Tests halten das fest: eine Liste von
+   Markern des 18./19. Jahrhunderts und ein Verbot vager Rangwörter in Motiv und Detail.
+
+10. **Zwei bekannte Regelverstöße bleiben absichtlich stehen.** Die Palette `hoods-grey` enthält
+    die Verneinung „no warmth at all", und `paranChild` beginnt mit „noble boy". Beides verstößt
+    gegen eigene Regeln — und beides ist durch fertige Bilder widerlegt (12 bzw. 9 Stück, alle
+    korrekt). Eine Änderung würde 22 bzw. 11 Prompts entwerten. Beleg schlägt Regel; Kommentare
+    an beiden Stellen verhindern das versehentliche „Aufräumen".
+
+11. **Bei zwei Figuren steht die Anzahl am Satzanfang.** Ein Figurenblatt hängt als eigener Satz
+    hinten dran und trägt keine Zuordnung — „a woman … looks at a boy" plus das Blatt des Jungen
+    ergab eine einzige Figur. Regel: Anzahl vorweg, je ein ausschließendes Merkmal, räumliche
+    Beziehung ausgeschrieben.
