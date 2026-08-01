@@ -387,4 +387,16 @@ export const de_b1_c01: Record<string, string> = {
   'b1.c01.s09.p02.i.stay-quiet.response':
     'Die Hängematte ist zu kurz und riecht nach jemand anderem. Über {name} redet jemand die halbe Nacht über ein Boot, das er einmal besessen hat.\n\n' +
     'Es ist nicht unangenehm. Es ist nur klar, dass niemand fragen wird.',
+  'b1.c01.s02.p02.bg.marine': 'Sie sind nicht geflohen. Keiner liegt mit dem Rücken zur Straße, und das heißt: Es ging zu schnell, um wegzulaufen.',
+  'b1.c01.s02.p02.bg.sapper': 'Kein Krater, kein Brandrand, kein Splitterbild. Was hier gearbeitet hat, hat nichts mitgebracht, was man anzünden muss.',
+  'b1.c01.s02.p02.bg.mage': 'Die Luft über der Straße steht anders als die Luft daneben — kühler, und sie riecht nach nichts. Nach zu wenig.',
+  'b1.c01.s06.p01.bg.marine': 'Die Formation ist noch zu erkennen. Sie standen richtig, sie haben richtig reagiert, und es hat nicht den geringsten Unterschied gemacht.',
+  'b1.c01.s06.p01.bg.sapper': 'Der Boden ist an drei Stellen aufgeworfen wie nach einer Sprengung, nur dass keine Ladung so gleichmäßig arbeitet und keine ohne Ruß.',
+  'b1.c01.s06.p01.bg.mage': 'Über dem Feld liegt eine Stille, die nicht vom Fehlen der Geräusche kommt, sondern davon, dass hier etwas Geräusche verbraucht hat.',
+  'b1.c01.s08.p02.bg.marine': 'Kein Deckung, kein Rückweg, keine Sicht auf die Flanken. {name} kennt diesen Ort, ohne ihn je gesehen zu haben: Es ist der Ort, an dem man stirbt.',
+  'b1.c01.s08.p02.bg.sapper': 'Sand hält keine Spur so lange. Diese hier ist scharfkantig, als wäre sie eben entstanden, und der Wind geht seit Stunden.',
+  'b1.c01.s08.p02.bg.mage': 'Das Gewirr liegt hier so dicht unter der Welt, dass {name} es im Kiefer spürt, und es ist nicht das eigene.',
+  'b1.c01.s09.p02.bg.marine': 'Zweihundert Leute in einem Raum, der für Fracht gebaut wurde. {name} zählt die Ausgänge, findet zwei, und zählt danach nicht mehr.',
+  'b1.c01.s09.p02.bg.sapper': 'Die Spanten sind neu verstärkt und schlecht verstärkt. Wer das gemacht hat, hatte es eilig und wusste, wofür.',
+  'b1.c01.s09.p02.bg.mage': 'Unter so viel Wasser wird ein Gewirr schwer erreichbar. {name} merkt es daran, dass etwas fehlt, an das man sich nie gewöhnt hatte.',
 }

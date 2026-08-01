@@ -222,6 +222,14 @@ export const chapter01: Chapter = {
           id: `${C}.s02.p02`,
           bodyKey: `${C}.s02.p02.body`,
           band: 'beat',
+          // Die Ausbildung laesst etwas anderes SEHEN, nicht nur anders
+          // urteilen — das ist der Unterschied zwischen Charakterisierung
+          // und Kosmetik.
+          inserts: [
+            { when: { background: 'marine' }, bodyKey: `${C}.s02.p02.bg.marine` },
+            { when: { background: 'sapper' }, bodyKey: `${C}.s02.p02.bg.sapper` },
+            { when: { background: 'mage' }, bodyKey: `${C}.s02.p02.bg.mage` },
+          ],
           art: { promptId: `${C}.s02.p02`, altKey: `${C}.s02.p02.alt`, mood: 'aftermath' },
         },
         {
@@ -271,6 +279,14 @@ export const chapter01: Chapter = {
           id: `${C}.s06.p01`,
           bodyKey: `${C}.s06.p01.body`,
           band: 'beat',
+          // Die Ausbildung laesst etwas anderes SEHEN, nicht nur anders
+          // urteilen — das ist der Unterschied zwischen Charakterisierung
+          // und Kosmetik.
+          inserts: [
+            { when: { background: 'marine' }, bodyKey: `${C}.s06.p01.bg.marine` },
+            { when: { background: 'sapper' }, bodyKey: `${C}.s06.p01.bg.sapper` },
+            { when: { background: 'mage' }, bodyKey: `${C}.s06.p01.bg.mage` },
+          ],
           art: { promptId: `${C}.s06.p01`, altKey: `${C}.s06.p01.alt`, mood: 'aftermath' },
         },
         {
@@ -332,6 +348,14 @@ export const chapter01: Chapter = {
           id: `${C}.s08.p02`,
           bodyKey: `${C}.s08.p02.body`,
           band: 'beat',
+          // Die Ausbildung laesst etwas anderes SEHEN, nicht nur anders
+          // urteilen — das ist der Unterschied zwischen Charakterisierung
+          // und Kosmetik.
+          inserts: [
+            { when: { background: 'marine' }, bodyKey: `${C}.s08.p02.bg.marine` },
+            { when: { background: 'sapper' }, bodyKey: `${C}.s08.p02.bg.sapper` },
+            { when: { background: 'mage' }, bodyKey: `${C}.s08.p02.bg.mage` },
+          ],
           art: { promptId: `${C}.s08.p02`, altKey: `${C}.s08.p02.alt`, mood: 'divine' },
         },
         {
@@ -459,6 +483,14 @@ export const chapter01: Chapter = {
           id: `${C}.s09.p02`,
           bodyKey: `${C}.s09.p02.body`,
           band: 'beat',
+          // Die Ausbildung laesst etwas anderes SEHEN, nicht nur anders
+          // urteilen — das ist der Unterschied zwischen Charakterisierung
+          // und Kosmetik.
+          inserts: [
+            { when: { background: 'marine' }, bodyKey: `${C}.s09.p02.bg.marine` },
+            { when: { background: 'sapper' }, bodyKey: `${C}.s09.p02.bg.sapper` },
+            { when: { background: 'mage' }, bodyKey: `${C}.s09.p02.bg.mage` },
+          ],
           interactions: [
             {
               id: 'learn-names',

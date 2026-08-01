@@ -383,4 +383,16 @@ export const en_b1_c01: Record<string, string> = {
   'b1.c01.s09.p02.i.stay-quiet.response':
     'The hammock is too short and smells of somebody else. Above {name} a man talks half the night about a boat he used to own.\n\n' +
     'It is not unpleasant. It is only clear that nobody is going to ask.',
+  'b1.c01.s02.p02.bg.marine': 'They did not run. Not one of them lies with their back to the road, and that means it happened too fast to run.',
+  'b1.c01.s02.p02.bg.sapper': 'No crater, no burn edge, no fragment pattern. Whatever worked here brought nothing along that has to be lit.',
+  'b1.c01.s02.p02.bg.mage': 'The air above the road stands differently from the air beside it — cooler, and it smells of nothing. Of too little.',
+  'b1.c01.s06.p01.bg.marine': 'The formation is still readable. They stood correctly, they reacted correctly, and it made not the slightest difference.',
+  'b1.c01.s06.p01.bg.sapper': 'The ground is thrown up in three places like after a charge, except no charge works that evenly and none works without soot.',
+  'b1.c01.s06.p01.bg.mage': 'A silence lies over the field that does not come from the absence of sound, but from something here having used sound up.',
+  'b1.c01.s08.p02.bg.marine': 'No cover, no way back, no sight of the flanks. {name} knows this place without ever having seen it: it is the place where you die.',
+  'b1.c01.s08.p02.bg.sapper': 'Sand does not hold a track this long. This one is sharp-edged, as though it had just been made, and the wind has been up for hours.',
+  'b1.c01.s08.p02.bg.mage': 'The warren lies so close under the world here that {name} feels it in the jaw, and it is not {their} own.',
+  'b1.c01.s09.p02.bg.marine': 'Two hundred people in a room built for cargo. {name} counts the exits, finds two, and stops counting after that.',
+  'b1.c01.s09.p02.bg.sapper': 'The ribs have been reinforced recently and badly. Whoever did it was in a hurry and knew what for.',
+  'b1.c01.s09.p02.bg.mage': 'Under this much water a warren becomes hard to reach. {name} notices it as an absence of something {they} never got used to.',
 }
