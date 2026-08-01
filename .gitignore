@@ -31,3 +31,8 @@ public/illustrations/_style/*.png
 
 # Referenzen: Master lokal, Requests als Beleg committet
 public/illustrations/_refs/*.png
+
+# Kontaktboegen: QA-Werkzeug, kein Auslieferungsmaterial. Werden aus den
+# webp neu gebaut (tools/art-sheet.mjs) und waeren sonst pro Kapitel ein
+# weiteres Megabyte im Repo.
+public/illustrations/_sheet/
