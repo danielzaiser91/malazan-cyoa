@@ -51,6 +51,7 @@ Ziel: **null Laufzeit-Dependencies**. Stand heute erfüllt — `package.json` ha
 | `typescript` | Das Content-Schema zahlt sich nur aus, wenn es typgeprüft wird. |
 | `vitest` | Test-Runner; dieselbe Auflösung wie Vite, also laufen Tests gegen exakt den Code, der gebaut wird. |
 | `@types/node` | Nur Typen, landet in keinem Bundle. Nötig, weil `tools/` und `tests/` Node-APIs benutzen. |
+| `jsdom` | Nur für Tests der Ansichten. Alle Tests lagen auf Core und Content, während die Darstellungsschicht ungeprüft blieb — und genau dort lagen die Regressionen der ersten Testrunde. Landet in keinem Bundle. |
 
 **Konvention, die daran hängt:** Jeder relative Import trägt seine `.ts`-Endung
 (`allowImportingTsExtensions` + `verbatimModuleSyntax`). Das kostet nichts und erlaubt Node 24,
