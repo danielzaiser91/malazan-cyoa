@@ -18,12 +18,8 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Task | SP | Stand |
 |---|---|---|---|
-| T1 | **Sprung-Dialog behauptet Wertänderungen, die keine sind.** Frisch gestartet, zum Startpunkt zurückgesprungen: „Blade 0→1, Will 2→3, Cunning 1→2, Heart 3→1". Falscher Vergleich — vermutlich Schnappschuss gegen Startwerte statt gegen den Ist-Zustand. | 1 | Offen |
-| T2 | **Sprachwahl wird beim Fortsetzen ignoriert.** DE/EN auf dem Startbildschirm gewählt, „Weiter" lädt in der alten Sprache. | 1 | Offen |
-| T3 | **Zu viel Text pro Seite.** Ab 800 px Höhe und 900 px Breite darf nicht gescrollt werden müssen. Seiten aufteilen (ohne neue Unterkapitel — Kapitel dienen den Checkpoints), dasselbe Bild darf mehrere Seiten tragen. | 3 | Offen |
-| T4 | **Kopfzeile umbauen.** Profil und Einstellungen in einen eigenen, immer sichtbaren Bereich; Symbole statt Beschriftung. | 2 | Offen |
-| T5 | **Marginalien-Stichwörter im Fließtext hervorheben** — mindestens eines je Seite, mit Tooltip oder als Klick auf den passenden Marginalien-Eintrag. | 2 | Offen |
-| T6 | **Gesamtqualität von Bedienung und Spielgefühl.** Recherche zu Best Practices, eigene Analyse, Befunde als Notiz, dann durchgängig verbessern. | 5 | Offen |
+| T5b | **Marginalien-Abdeckung.** Gemessen: nur **9 von 63 Seiten** enthalten überhaupt einen Codex-Begriff. Für „mindestens einer je Seite" braucht es mehr Einträge (Brückenverbrenner, Gewirr, Adjunktin, Itko Kan …) und Beugungsformen als Aliase — Deutsch beugt, `indexOf('Adjunktin')` findet „der Adjunktin" nicht. | 3 | Offen |
+| T6b | **Restliche Punkte aus `_reference/ux-befunde.md`:** M12 Bild und Text teilen sich die Höhe (aktuell bleibt unter dem Bild Leerraum), M13 schmale Zustandszeile in der Kopfleiste (wer seine Werte sehen will, verliert sonst die Seite), M14 Zeilenlänge im Zweispalter gegen die Einstellung gegenprüfen. | 3 | Offen |
 | — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
 
 ### 2 · Queue
@@ -133,6 +129,8 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | Datum | Was |
 |---|---|
+| 01.08.2026 | **Erste Testrunde ausgewertet, sechs Punkte abgearbeitet.** T1 Sprung-Dialog verglich zwei verschiedene Wertetafeln (Parans Werte gegen die des Rekruten) — behoben, zwei Regressionstests. T2 Sprachwahl wurde beim Fortsetzen still überschrieben — jetzt gewinnt die aktive Wahl. T3 Wortbänder gesenkt und sieben Eröffnungsseiten geteilt (56 → 63 Seiten, keine über 195 Wörter, Grenze aus dem Höhenbudget gerechnet). T4 Kopfzeile trennt Inhalt von Verwaltung, Verwaltung als Symbole. T5 Marginalien-Begriffe nur noch einmal je Seite, mit Kurzhinweis. T6 Befunde und Plan in `_reference/ux-befunde.md`. Dazu: die Story-Ansicht zeigte nie die echten Illustrationen — 56 bezahlte Bilder lagen ungenutzt im Build. |
+| 01.08.2026 | **Portfolio- und Arcade-Eintrag** (Q12). `projects.ts` als Fun-Eintrag mit Live-Demo, `games.ts` in der Kategorie „Story" mit `wip`-Kennzeichnung — Prolog und Kapitel 1 von elf werden nicht als fertiges Buch verkauft. Vorschaubild automatisiert. |
 | 01.08.2026 | **Live.** Repo `danielzaiser91/malazan-cyoa` öffentlich angelegt, 30 Commits gepusht, Pages über den Actions-Workflow deployt. https://danielzaiser91.github.io/malazan-cyoa/ antwortet mit 200, Assets und Illustrationen laden unter dem Sub-Pfad, Startbildschirm rendert, keine Konsolenfehler. |
 | 01.08.2026 | **Kapitel 1 vollständig bebildert** (31 Bilder), Prolog ebenso (25). Dabei drei strukturelle Lücken der Pipeline geschlossen: Weltanker gegen Epochen-Drift, Standesblätter statt abstrakter Rangwörter, eigener Anker für Naheinstellungen. Dazu Bestandsschutz (`fehlt` vs. `veraltet`), Kontaktbogen-Werkzeug und die Stimmung `close-quarters`. Rund 170 Credits. |
 | 31.07.2026 | **Outline für Band 1 komplett.** `_reference/outline-b1.md`: alle elf Kapitel als Teilgraph mit Szenen, Kanten, POV, Konvergenzen, Nebenwegen, Sackgassen, Proben und Wortbudget (115 Szenen, 436 Seiten, ~72 000 Wörter je Sprache). Die fünf Enden mit ihren Bedingungsstrukturen entworfen, bevor der Weg dorthin geschrieben wird. Epilog-Absatz je Beziehungs-Flag statt fünf getrennter Enden. |
