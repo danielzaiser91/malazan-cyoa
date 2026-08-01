@@ -18,9 +18,6 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Task | SP | Stand |
 |---|---|---|---|
-| U8b | **Folgen sichtbar machen.** Die Wahldichte steht (2,2 Seiten je Entscheidung), aber eine Wertänderung wird beim Auslösen nirgends angezeigt — die Ereignis-Schicht `EffectEvent` liefert sie und die Ansicht nutzt sie nur für Klang. Dazu Kosten und Risiko an den Verzweigungen sichtbar machen (`costs`, `risk` existieren und werden kaum genutzt). | 3 | Offen |
-| U9 | **Herkunft im Text wirksam.** Zwei wertabhängige Knoten sind gesetzt; was fehlt, ist der Einschub je Herkunft — ein Sappeur sieht an einer Mauer etwas anderes als ein Kadermagier. `Insert` existiert und wird an vier Stellen genutzt. | 3 | Offen |
-| T6b | **Rest aus `_reference/ux-befunde.md`:** M12 Bild und Text teilen sich die Höhe, M13 Zustandszeile in der Kopfleiste, M14 Zeilenlänge im Zweispalter gegenprüfen. | 3 | Offen |
 | — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
 
 ### 2 · Queue
@@ -143,6 +140,7 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | Datum | Was |
 |---|---|
+| 01.08.2026 | **Zweite Feedback-Runde vollständig abgearbeitet.** Figur-Ansicht mit Wappen und Reitern · Marginalien mit Filter, Suche und Bildern · Bildauftritt, Dialog-Einfärbung, Initial, gestaffelte Absätze · Platzhalter-Ursache behoben (Bildpfad hing an der Seiten- statt der Prompt-ID) · Begriffe Karte/Figur/Nachlesen · Auswahl sichtbar, Startwerte an der Herkunftskarte · Anrede über Pronomen-Platzhalter wirksam · sieben DOM-Tests für die Darstellungsschicht · **Wahldichte von 15,8 auf 2,2 Seiten je Entscheidung** · zwölf Herkunfts-Einschübe · `costly` kostet jetzt wirklich · Layout: Bild bleibt stehen, Werte immer sichtbar, Zeilenlänge nachgerechnet. 133 Tests, Simulator grün. Analyse in `_reference/ux-befunde.md` und `verbesserungsvorschlaege.md`. |
 | 01.08.2026 | **Erste Testrunde ausgewertet, sechs Punkte abgearbeitet.** T1 Sprung-Dialog verglich zwei verschiedene Wertetafeln (Parans Werte gegen die des Rekruten) — behoben, zwei Regressionstests. T2 Sprachwahl wurde beim Fortsetzen still überschrieben — jetzt gewinnt die aktive Wahl. T3 Wortbänder gesenkt und sieben Eröffnungsseiten geteilt (56 → 63 Seiten, keine über 195 Wörter, Grenze aus dem Höhenbudget gerechnet). T4 Kopfzeile trennt Inhalt von Verwaltung, Verwaltung als Symbole. T5 Marginalien-Begriffe nur noch einmal je Seite, mit Kurzhinweis. T6 Befunde und Plan in `_reference/ux-befunde.md`. Dazu: die Story-Ansicht zeigte nie die echten Illustrationen — 56 bezahlte Bilder lagen ungenutzt im Build. |
 | 01.08.2026 | **Portfolio- und Arcade-Eintrag** (Q12). `projects.ts` als Fun-Eintrag mit Live-Demo, `games.ts` in der Kategorie „Story" mit `wip`-Kennzeichnung — Prolog und Kapitel 1 von elf werden nicht als fertiges Buch verkauft. Vorschaubild automatisiert. |
 | 01.08.2026 | **Live.** Repo `danielzaiser91/malazan-cyoa` öffentlich angelegt, 30 Commits gepusht, Pages über den Actions-Workflow deployt. https://danielzaiser91.github.io/malazan-cyoa/ antwortet mit 200, Assets und Illustrationen laden unter dem Sub-Pfad, Startbildschirm rendert, keine Konsolenfehler. |
