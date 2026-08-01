@@ -18,17 +18,10 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Task | SP | Stand |
 |---|---|---|---|
-| U1 | **Bildlücken sichtbar machen.** Wo steht noch ein Platzhalter, und warum? Übersicht, die auch künftige Lücken mitzählt — nicht einmalig, sondern als Werkzeug. | 2 | Offen |
-| U2 | **Deutsche Begriffe neu wählen.** „Blatt", „Rückschau", „Die Auslegung" sagen niemandem, was gemeint ist. | 1 | Offen |
-| U3 | **Marginalien-Ansicht umbauen.** Kategorien als Filter oder aufklappbare Abschnitte statt einer überladenen Liste; Bilder zeigen, wo sie zum Eintrag passen. | 3 | Offen |
-| U4 | **Das Blatt neu gestalten.** Porträt, Name, grafische Werte-Darstellung, Reiter statt alles untereinander, Fläche links/rechts nutzen, kein Scrollen. | 3 | Offen |
-| U5 | **Profil-Anlage.** Getroffene Auswahl ist nicht sichtbar markiert. Und: Was bewirken Anrede, Herkunft und Zeichen überhaupt? Wirkung sichtbar machen. | 2 | Offen |
-| U6 | **Optik und Leben im Text.** Farbe für Textstellen, künstlerische Hervorhebung besonderer Passagen, Text-Animation. | 5 | Offen |
-| U7 | **Bild in den Vordergrund.** Nach dem Weiterklick zuerst groß zeigen, dann per Animation an seinen Platz. | 3 | Offen |
-| U8 | **Mehr Entscheidungen, spürbare Folgen.** Es ist ein CYOA — Wahlen sollen häufig kommen, Konsequenzen gut/schlecht/neutral tragen, und jeder Pfad soll sich erzählerisch lohnen. | 5 | Offen |
-| U9 | **Werte, Talente und Gegenstände wirksam machen.** Sie sollen spürbar etwas ändern, nicht nur dastehen. | 5 | Offen |
-| U10 | **`verbesserungsvorschlaege.md`** — den gesamten Code durchgehen, Lücken und Schwächen sammeln, Vorschläge formulieren. | 3 | Offen |
-| U11 | **Vergleich mit erfolgreichen CYOA-Spielen.** Was die gut machen, nach Priorität sortiert in die Vorschläge aufnehmen. | 3 | Offen |
+| U8 | **Wahldichte: 4 Wahlpunkte auf 63 Seiten sind zu wenig.** Ziel laut `verbesserungsvorschlaege.md` § 1: eine Wahl alle 3–5 Seiten, also 13–20 statt 4. Kleine Wahlen innerhalb einer Szene (`Interaction`, bisher 5× im ganzen Buch) tragen die Strecke, die Verzweigung am Szenenende bleibt für die Wegänderungen. Dazu: sichtbare Kosten, Risiko und Folgen — und je Szene ein Pfad, der etwas kostet und trotzdem gut ist. | 8 | Offen |
+| U9 | **Werte und Herkunft wirksam machen.** Im ganzen Slice entscheiden sie über EINE Probe. Ziel: je Szene eine wertabhängige Option (sichtbar gesperrt oder leichter) und ein Einschub je Herkunft. Beide Strukturen existieren und werden kaum genutzt. | 5 | Offen |
+| U12 | **Anrede: wirksam machen oder streichen.** Sie wird abgefragt, gespeichert und nie gelesen — der Spielcharakter trägt bewusst nie ein Pronomen. Eine Option, die etwas verspricht und nichts einlöst, ist schlechter als keine. | 1 | Offen |
+| U13 | **DOM-Tests für die drei Dialoge.** Alle 122 Tests liegen auf Core und Content; die Darstellungsschicht ist ungetestet — und genau dort lagen die Regressionen dieser Runde. Günstigste Absicherung im Projekt. | 2 | Offen |
 | T6b | **Rest aus `_reference/ux-befunde.md`:** M12 Bild und Text teilen sich die Höhe, M13 Zustandszeile in der Kopfleiste, M14 Zeilenlänge im Zweispalter gegenprüfen. | 3 | Offen |
 | — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
 
