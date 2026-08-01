@@ -358,4 +358,29 @@ export const en_b1_c01: Record<string, string> = {
     'Nobody at that rail knew any of it that evening, and that was probably the last advantage they had.',
   'b1.c01.s09.p05.alt':
     'Open ocean at night from a transport deck. No land in any direction; a lamp swings.',
+  'b1.c01.s04.p02.i.ask-name.label': 'Ask her name',
+  'b1.c01.s04.p02.i.ask-name.response':
+    'She says it without turning her head, and does not repeat it when the wind takes it.\n\n' +
+    'Afterwards she sits exactly as she sat before, but the bench is a different bench.',
+  'b1.c01.s04.p02.i.say-nothing-bench.label': 'Say nothing',
+  'b1.c01.s04.p02.i.say-nothing-bench.response':
+    'It is remarkable how long two people can sit in silence before it turns rude. Longer than {name} would have guessed.\n\n' +
+    'Eventually something is shouted across the yard, and the moment is over without anything having happened.',
+  'b1.c01.s06.p02.i.check-tack.label': 'Look at the harness',
+  'b1.c01.s06.p02.i.check-tack.lock': 'It is leather and metal and it lies in the dirt like everything else here.',
+  'b1.c01.s06.p02.i.check-tack.response':
+    'The strap is not torn. It is cut, in one stroke, and the face of the cut is smooth enough that you want to test it with a thumb.\n\n' +
+    'Whatever did this did not mean the strap. It simply did not miss.',
+  'b1.c01.s06.p02.i.sit-with-it.label': 'Sit down beside them',
+  'b1.c01.s06.p02.i.sit-with-it.response':
+    'The soldier says nothing when {name} sits down, and says nothing when the horse stops breathing.\n\n' +
+    'Later he stands, beats the dust off and goes back to work, and the half hour is recorded nowhere.',
+  'b1.c01.s09.p02.i.learn-names.label': 'Learn the others\u2019 names',
+  'b1.c01.s09.p02.i.learn-names.response':
+    'There are nine in this corner, and by evening {name} can place six of them — not the faces, the voices.\n\n' +
+    'Two of them will not leave Pale. Nobody here knows that yet, and it does not change the fact that it was worth doing.',
+  'b1.c01.s09.p02.i.stay-quiet.label': 'Keep to yourself',
+  'b1.c01.s09.p02.i.stay-quiet.response':
+    'The hammock is too short and smells of somebody else. Above {name} a man talks half the night about a boat he used to own.\n\n' +
+    'It is not unpleasant. It is only clear that nobody is going to ask.',
 }

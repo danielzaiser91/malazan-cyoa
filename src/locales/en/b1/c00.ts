@@ -269,6 +269,19 @@ export const en_b1_c00: Record<string, string> = {
   'b1.c00.s05.p02.alt':
     'A plainly dressed woman at a terrace railing turns and briefly appraises a boy who does not belong there.',
 
+  'b1.c00.s05.p02.i.away.label': 'Look down',
+  'b1.c00.s05.p02.i.away.response':
+    'It is the movement everyone else on the terrace made some time ago, and {name} makes it a second late — just long enough for it to count.\n\n' +
+    'After that the floor is very clear: swept, damp, with a dark streak where somebody spilled something and wiped over it.',
+  'b1.c00.s05.p02.i.hold.label': 'Hold her gaze',
+  'b1.c00.s05.p02.i.hold.response':
+    'She looks back. Not for long, and not surprised — more like someone finding a name on a list where they expected it.\n\n' +
+    'One of the coats behind her turns its head, and {name} knows two things at once: that it was a mistake, and that it was not.',
+  'b1.c00.s05.p02.i.read.label': 'See who is really standing here',
+  'b1.c00.s05.p02.i.read.lock': 'There are too many of them, they stand too still, and {name} is twelve.',
+  'b1.c00.s05.p02.i.read.response':
+    'Not the faces — the distances. Two of the coats stand closer together than courtiers stand, and neither of them keeps their hands in front.\n\n' +
+    'They wear no badges. They wear nothing at all by which they could be known, and that is exactly how they are known.',
   'b1.c00.s05.p03.body':
     'In the throne room the doors to the terrace had been left open, and the smoke came in unhindered and settled on the benches.\n\n' +
     'There was no ceremony. There was a run of short conversations in doorways, a few papers, and a captain of the guard who took an order and did not ask in whose name.\n\n' +
@@ -313,4 +326,20 @@ export const en_b1_c00: Record<string, string> = {
     '"Until then," says Kruppe, "one may certainly lay it all out again. Kruppe has time. Kruppe always has time."',
   'b1.wip.alt':
     'A small round man lays cards on a stained tavern table. One place in the layout is still empty.',
+  'b1.c00.s04.p02.i.count-again.label': 'Count again',
+  'b1.c00.s04.p02.i.count-again.response':
+    'Seven. Seven on the second pass, seven on the third, and they are not where fires sit when they start on their own.\n\n' +
+    'They sit at the ends of the streets that lead out of the quarter.',
+  'b1.c00.s04.p02.i.look-harbour.label': 'Look across at the harbour',
+  'b1.c00.s04.p02.i.look-harbour.response':
+    'Everything there is lit and in order. Two ships loading by torchlight, someone calling a number, someone calling it back.\n\n' +
+    'The city has decided not to notice this, and {name} watches it decide.',
+  'b1.c00.s06.p02.i.give-water.label': 'Hand the woman the jug',
+  'b1.c00.s06.p02.i.give-water.response':
+    'She does not drink. She holds it out to the child and waits until it is done, then sets it back down without thanking anyone.\n\n' +
+    'The child looks at {name} the way you look at someone who happens to be there.',
+  'b1.c00.s06.p02.i.keep-moving.label': 'Keep walking',
+  'b1.c00.s06.p02.i.keep-moving.response':
+    'There is a point where watching starts being something else, and {name} walks on just before it.\n\n' +
+    'Around the next corner it is quieter, and that is worse.',
 }

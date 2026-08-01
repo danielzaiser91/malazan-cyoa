@@ -362,4 +362,29 @@ export const de_b1_c01: Record<string, string> = {
     'Davon wusste an diesem Abend niemand an dieser Reling etwas, und das war vermutlich der letzte Vorteil, den sie hatten.',
   'b1.c01.s09.p05.alt':
     'Offenes Meer bei Nacht vom Deck eines Transporters. In keiner Richtung Land, eine Lampe schwingt.',
+  'b1.c01.s04.p02.i.ask-name.label': 'Nach ihrem Namen fragen',
+  'b1.c01.s04.p02.i.ask-name.response':
+    'Sie sagt ihn, ohne den Kopf zu drehen, und wiederholt ihn nicht, als der Wind dazwischenkommt.\n\n' +
+    'Danach sitzt sie genauso da wie vorher, aber die Bank ist eine andere Bank.',
+  'b1.c01.s04.p02.i.say-nothing-bench.label': 'Nichts sagen',
+  'b1.c01.s04.p02.i.say-nothing-bench.response':
+    'Es ist erstaunlich, wie lange zwei Menschen nebeneinander schweigen können, bevor es unhöflich wird. Länger, als {name} gedacht hätte.\n\n' +
+    'Irgendwann wird auf dem Hof etwas gerufen, und der Moment ist vorbei, ohne dass etwas passiert wäre.',
+  'b1.c01.s06.p02.i.check-tack.label': 'Das Zaumzeug ansehen',
+  'b1.c01.s06.p02.i.check-tack.lock': 'Es ist Leder und Metall und liegt im Dreck wie alles andere hier.',
+  'b1.c01.s06.p02.i.check-tack.response':
+    'Der Riemen ist nicht gerissen. Er ist durchtrennt, in einem Zug, und die Schnittfläche ist so glatt, dass man sie mit dem Daumen prüfen möchte.\n\n' +
+    'Was das getan hat, hat den Riemen nicht gemeint. Es hat nur nicht danebengetroffen.',
+  'b1.c01.s06.p02.i.sit-with-it.label': 'Sich dazusetzen',
+  'b1.c01.s06.p02.i.sit-with-it.response':
+    'Der Soldat sagt nichts, als {name} sich hinsetzt, und er sagt auch nichts, als das Pferd aufhört zu atmen.\n\n' +
+    'Später steht er auf, klopft sich den Staub ab und geht arbeiten, und die halbe Stunde ist nirgends verzeichnet.',
+  'b1.c01.s09.p02.i.learn-names.label': 'Die Namen der anderen lernen',
+  'b1.c01.s09.p02.i.learn-names.response':
+    'Es sind neun in dieser Ecke, und bis zum Abend kann {name} sechs davon zuordnen — nicht die Gesichter, die Stimmen.\n\n' +
+    'Zwei davon werden Pale nicht verlassen. Das weiß hier noch niemand, und es ändert nichts daran, dass es sich gelohnt hat.',
+  'b1.c01.s09.p02.i.stay-quiet.label': 'Für sich bleiben',
+  'b1.c01.s09.p02.i.stay-quiet.response':
+    'Die Hängematte ist zu kurz und riecht nach jemand anderem. Über {name} redet jemand die halbe Nacht über ein Boot, das er einmal besessen hat.\n\n' +
+    'Es ist nicht unangenehm. Es ist nur klar, dass niemand fragen wird.',
 }

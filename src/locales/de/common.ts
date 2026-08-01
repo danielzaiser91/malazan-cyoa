@@ -223,6 +223,12 @@ export const de_common: Record<string, string> = {
 
   // --- Flags im Klartext (Blatt + Einblendung) -----------------------------
   'flag.paran.asked.smoke': 'Du hast gefragt, warum niemand löscht.',
+  'flag.paran.counted.pattern': 'Hat gezählt: sieben Feuer, und keines davon zufällig.',
+  'flag.paran.gave.water': 'Hat einer Fremden im Rauch Wasser gegeben.',
+  'flag.recruit.asked.name': 'Hat nach ihrem Namen gefragt.',
+  'flag.recruit.knows.squad': 'Kennt die Stimmen der eigenen Ecke unter Deck.',
+  'flag.paran.looked.away': 'Hat vor der Kaiserin den Blick gesenkt — eine Sekunde zu spät.',
+  'flag.paran.held.gaze': 'Hat der Kaiserin in die Augen gesehen. Jemand hinter ihr hat es bemerkt.',
   'flag.paran.noticed.soldier': 'Dir ist der Mann am Ende der Mauer aufgefallen.',
   'flag.paran.met.bridgeburner': 'Ein Brückenverbrenner hat mit dir geredet.',
   'flag.paran.turned.back': 'Du bist umgekehrt, bevor dich jemand ansprach.',

@@ -170,6 +170,20 @@ export const chapter01: Chapter = {
           id: `${C}.s04.p02`,
           bodyKey: `${C}.s04.p02.body`,
           band: 'beat',
+          interactions: [
+            {
+              id: 'ask-name',
+              labelKey: `${C}.s04.p02.i.ask-name.label`,
+              responseKey: `${C}.s04.p02.i.ask-name.response`,
+              effects: [{ stat: 'heart', add: 1 }, { flag: 'recruit.asked.name', set: true }],
+            },
+            {
+              id: 'say-nothing-bench',
+              labelKey: `${C}.s04.p02.i.say-nothing-bench.label`,
+              responseKey: `${C}.s04.p02.i.say-nothing-bench.response`,
+              effects: [{ stat: 'will', add: 1 }],
+            },
+          ],
           art: { promptId: `${C}.s04.p02`, altKey: `${C}.s04.p02.alt`, mood: 'march' },
         },
         {
@@ -263,6 +277,22 @@ export const chapter01: Chapter = {
           id: `${C}.s06.p02`,
           bodyKey: `${C}.s06.p02.body`,
           band: 'beat',
+          interactions: [
+            {
+              id: 'check-tack',
+              labelKey: `${C}.s06.p02.i.check-tack.label`,
+              responseKey: `${C}.s06.p02.i.check-tack.response`,
+              requires: { stat: 'cunning', gte: 3 },
+              lockHintKey: `${C}.s06.p02.i.check-tack.lock`,
+              effects: [{ stat: 'cunning', add: 1 }, { codex: 'hounds-of-shadow' }],
+            },
+            {
+              id: 'sit-with-it',
+              labelKey: `${C}.s06.p02.i.sit-with-it.label`,
+              responseKey: `${C}.s06.p02.i.sit-with-it.response`,
+              effects: [{ stat: 'heart', add: 1 }, { attention: 1 }],
+            },
+          ],
           art: { promptId: `${C}.s06.p02`, altKey: `${C}.s06.p02.alt`, mood: 'aftermath' },
         },
         {
@@ -429,6 +459,20 @@ export const chapter01: Chapter = {
           id: `${C}.s09.p02`,
           bodyKey: `${C}.s09.p02.body`,
           band: 'beat',
+          interactions: [
+            {
+              id: 'learn-names',
+              labelKey: `${C}.s09.p02.i.learn-names.label`,
+              responseKey: `${C}.s09.p02.i.learn-names.response`,
+              effects: [{ stat: 'standing', add: 1 }, { flag: 'recruit.knows.squad', set: true }],
+            },
+            {
+              id: 'stay-quiet',
+              labelKey: `${C}.s09.p02.i.stay-quiet.label`,
+              responseKey: `${C}.s09.p02.i.stay-quiet.response`,
+              effects: [{ stat: 'will', add: 1 }],
+            },
+          ],
           art: { promptId: `${C}.s09.p02`, altKey: `${C}.s09.p02.alt`, mood: 'march' },
         },
         {

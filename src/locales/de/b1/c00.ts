@@ -269,6 +269,19 @@ export const de_b1_c00: Record<string, string> = {
   'b1.c00.s05.p02.alt':
     'Eine schlicht gekleidete Frau am Geländer einer Terrasse dreht sich um und mustert kurz einen Jungen, der dort nicht hingehört.',
 
+  'b1.c00.s05.p02.i.away.label': 'Den Blick senken',
+  'b1.c00.s05.p02.i.away.response':
+    'Es ist die Bewegung, die alle anderen auf der Terrasse längst gemacht haben, und {name} macht sie eine Sekunde zu spät — gerade lang genug, dass sie zählt.\n\n' +
+    'Danach ist der Boden sehr genau zu sehen: gefegt, feucht, mit einem dunklen Streifen dort, wo jemand etwas verschüttet und darüber gewischt hat.',
+  'b1.c00.s05.p02.i.hold.label': 'Den Blick halten',
+  'b1.c00.s05.p02.i.hold.response':
+    'Sie sieht zurück. Nicht lange, und nicht überrascht — eher wie jemand, der einen Namen auf einer Liste findet, den er dort erwartet hat.\n\n' +
+    'Einer der Mäntel hinter ihr dreht den Kopf, und {name} weiß im selben Moment zweierlei: dass es ein Fehler war, und dass es keiner war.',
+  'b1.c00.s05.p02.i.read.label': 'Sehen, wer hier wirklich steht',
+  'b1.c00.s05.p02.i.read.lock': 'Es sind zu viele, sie stehen zu ruhig, und {name} ist zwölf.',
+  'b1.c00.s05.p02.i.read.response':
+    'Nicht die Gesichter — die Abstände. Zwei der Mäntel stehen näher beieinander, als Höflinge stehen, und keiner von beiden hat die Hände vorn.\n\n' +
+    'Sie tragen keine Abzeichen. Sie tragen überhaupt nichts, woran man sie erkennen könnte, und genau daran erkennt man sie.',
   'b1.c00.s05.p03.body':
     'Im Thronsaal waren die Türen zur Terrasse offen gelassen worden, und der Rauch zog ungehindert hinein und legte sich auf die Bänke.\n\n' +
     'Es gab keine Zeremonie. Es gab eine Reihe kurzer Gespräche in Türrahmen, ein paar Papiere, und einen Hauptmann der Garde, der einen Befehl entgegennahm und dabei nicht fragte, in wessen Namen.\n\n' +
@@ -313,4 +326,20 @@ export const de_b1_c00: Record<string, string> = {
     '„Bis dahin", sagt Kruppe, „darf man ruhig noch einmal von vorn legen. Kruppe hat Zeit. Kruppe hat immer Zeit."',
   'b1.wip.alt':
     'Ein kleiner runder Mann legt Karten auf einen fleckigen Wirtshaustisch. Ein Platz in der Auslegung ist noch leer.',
+  'b1.c00.s04.p02.i.count-again.label': 'Noch einmal zählen',
+  'b1.c00.s04.p02.i.count-again.response':
+    'Sieben. Beim zweiten Durchgang sieben, beim dritten wieder sieben, und sie liegen nicht dort, wo Feuer liegen, wenn sie von selbst entstehen.\n\n' +
+    'Sie liegen an den Enden der Straßen, die aus dem Viertel herausführen.',
+  'b1.c00.s04.p02.i.look-harbour.label': 'Zum Hafen hinübersehen',
+  'b1.c00.s04.p02.i.look-harbour.response':
+    'Dort ist alles hell und in Ordnung. Zwei Schiffe laden bei Fackellicht, jemand ruft eine Zahl, jemand ruft sie zurück.\n\n' +
+    'Die Stadt hat sich entschieden, das hier nicht zu bemerken, und {name} sieht ihr dabei zu.',
+  'b1.c00.s06.p02.i.give-water.label': 'Der Frau den Krug reichen',
+  'b1.c00.s06.p02.i.give-water.response':
+    'Sie trinkt nicht selbst. Sie hält ihn dem Kind hin und wartet, bis es fertig ist, und stellt ihn dann zurück, ohne zu danken.\n\n' +
+    'Das Kind sieht {name} an, wie man jemanden ansieht, der zufällig da ist.',
+  'b1.c00.s06.p02.i.keep-moving.label': 'Weitergehen',
+  'b1.c00.s06.p02.i.keep-moving.response':
+    'Es gibt einen Punkt, an dem Zusehen anfängt, etwas anderes zu sein, und {name} geht kurz davor weiter.\n\n' +
+    'Hinter der nächsten Ecke ist es leiser, und das ist schlimmer.',
 }

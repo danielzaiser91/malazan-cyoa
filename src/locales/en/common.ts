@@ -223,6 +223,12 @@ export const en_common: Record<string, string> = {
 
   // --- Flags in plain language (sheet + toast) -----------------------------
   'flag.paran.asked.smoke': 'You asked why nobody was putting it out.',
+  'flag.paran.counted.pattern': 'Counted: seven fires, and not one of them by chance.',
+  'flag.paran.gave.water': 'Gave water to a stranger in the smoke.',
+  'flag.recruit.asked.name': 'Asked her name.',
+  'flag.recruit.knows.squad': 'Knows the voices of their own corner below deck.',
+  'flag.paran.looked.away': 'Looked down before the Empress — one second too late.',
+  'flag.paran.held.gaze': 'Met the Empress\u2019s eyes. Someone behind her noticed.',
   'flag.paran.noticed.soldier': 'You noticed the man at the end of the wall.',
   'flag.paran.met.bridgeburner': 'A Bridgeburner spoke to you.',
   'flag.paran.turned.back': 'You turned back before anybody spoke to you.',

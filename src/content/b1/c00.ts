@@ -243,6 +243,20 @@ export const chapter00: Chapter = {
           id: `${C}.s04.p02`,
           bodyKey: `${C}.s04.p02.body`,
           band: 'standard',
+          interactions: [
+            {
+              id: 'count-again',
+              labelKey: `${C}.s04.p02.i.count-again.label`,
+              responseKey: `${C}.s04.p02.i.count-again.response`,
+              effects: [{ stat: 'cunning', add: 1 }, { flag: 'paran.counted.pattern', set: true }],
+            },
+            {
+              id: 'look-harbour',
+              labelKey: `${C}.s04.p02.i.look-harbour.label`,
+              responseKey: `${C}.s04.p02.i.look-harbour.response`,
+              effects: [{ codex: 'malaz-city' }],
+            },
+          ],
           art: { promptId: `${C}.s04.p02`, altKey: `${C}.s04.p02.alt`, mood: 'siege' },
         },
         {
@@ -278,6 +292,20 @@ export const chapter00: Chapter = {
           id: `${C}.s06.p02`,
           bodyKey: `${C}.s06.p02.body`,
           band: 'beat',
+          interactions: [
+            {
+              id: 'give-water',
+              labelKey: `${C}.s06.p02.i.give-water.label`,
+              responseKey: `${C}.s06.p02.i.give-water.response`,
+              effects: [{ stat: 'heart', add: 1 }, { flag: 'paran.gave.water', set: true }],
+            },
+            {
+              id: 'keep-moving',
+              labelKey: `${C}.s06.p02.i.keep-moving.label`,
+              responseKey: `${C}.s06.p02.i.keep-moving.response`,
+              effects: [{ stat: 'will', add: 1 }],
+            },
+          ],
           art: { promptId: `${C}.s06.p02`, altKey: `${C}.s06.p02.alt`, mood: 'aftermath' },
         },
         {
@@ -378,6 +406,35 @@ export const chapter00: Chapter = {
           id: `${C}.s05.p02`,
           bodyKey: `${C}.s05.p02.body`,
           band: 'standard',
+          // Drei Gespraechsknoten auf der Seite, auf der Paran zum ersten Mal
+          // vor der neuen Kaiserin steht. Vorher lief die laengste Szene des
+          // Prologs sieben Seiten ohne eine einzige Entscheidung durch.
+          interactions: [
+            {
+              id: 'look-away',
+              labelKey: `${C}.s05.p02.i.away.label`,
+              responseKey: `${C}.s05.p02.i.away.response`,
+              effects: [{ stat: 'will', add: 1 }, { flag: 'paran.looked.away', set: true }],
+            },
+            {
+              id: 'hold-gaze',
+              labelKey: `${C}.s05.p02.i.hold.label`,
+              responseKey: `${C}.s05.p02.i.hold.response`,
+              // Kostet Aufmerksamkeit und gibt Haltung: der teuer erkaufte
+              // gute Pfad, der laut Vergleich bisher ganz fehlte.
+              effects: [{ stat: 'standing', add: 1 }, { attention: 1 }, { flag: 'paran.held.gaze', set: true }],
+            },
+            {
+              id: 'read-room',
+              labelKey: `${C}.s05.p02.i.read.label`,
+              responseKey: `${C}.s05.p02.i.read.response`,
+              // Sichtbar gesperrt, wenn der Wert fehlt — mit in-fiction
+              // Begruendung. So merkt man, dass die Herkunft etwas tut.
+              requires: { stat: 'cunning', gte: 2 },
+              lockHintKey: `${C}.s05.p02.i.read.lock`,
+              effects: [{ codex: 'claw' }, { stat: 'cunning', add: 1 }],
+            },
+          ],
           art: { promptId: `${C}.s05.p02`, altKey: `${C}.s05.p02.alt`, mood: 'council' },
         },
         {
