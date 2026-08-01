@@ -181,15 +181,36 @@ export class App {
     }, 10_000)
   }
 
+  /**
+   * Kopfzeile. Links vier Wege IN die Geschichte, rechts abgesetzt zwei, die
+   * hinausfuehren.
+   *
+   * Vorher standen alle sechs als gleich aussehende Textknoepfe nebeneinander —
+   * dabei sind die ersten vier Spielinhalt (Auslegung, Marginalien, Blatt,
+   * Rueckschau) und die letzten zwei Verwaltung. Dass sie identisch aussahen,
+   * war der Fehler: Wer "Profile" neben "Marginalien" sieht, haelt beides fuer
+   * dieselbe Art von Sache.
+   *
+   * Die Verwaltungs-Ecke traegt Symbole statt Text — sie soll erreichbar sein,
+   * aber keine Aufmerksamkeit ziehen. **Mit `aria-label` und `title`**: Ein
+   * Symbol ohne zugaenglichen Namen waere ein Rueckschritt gegenueber der
+   * beschrifteten Fassung, und die Barrierefreiheit ist hier schon nachgewiesen.
+   */
   private toolbar(): HTMLElement {
     const t = this.t
+    const icon = (glyph: string, label: string, on: () => void) =>
+      btn('', on, { class: 'toolbar__icon', 'aria-label': label, title: label, text: glyph })
     return el('nav', { class: 'toolbar', 'aria-label': t.t('ui.menu') },
-      btn(t.t('ui.reading'), () => this.showReading(), { class: 'toolbar__btn' }),
-      btn(t.t('ui.codex'), () => this.openCodex(), { class: 'toolbar__btn' }),
-      btn(t.t('ui.sheet'), () => this.openSheet(), { class: 'toolbar__btn' }),
-      btn(t.t('ui.backlog'), () => this.openBacklog(), { class: 'toolbar__btn' }),
-      btn(t.t('ui.settings'), () => this.openSettings(), { class: 'toolbar__btn' }),
-      btn(t.t('ui.profiles'), () => { this.persist(); this.showTitle() }, { class: 'toolbar__btn' }),
+      el('div', { class: 'toolbar__group' },
+        btn(t.t('ui.reading'), () => this.showReading(), { class: 'toolbar__btn' }),
+        btn(t.t('ui.codex'), () => this.openCodex(), { class: 'toolbar__btn' }),
+        btn(t.t('ui.sheet'), () => this.openSheet(), { class: 'toolbar__btn' }),
+        btn(t.t('ui.backlog'), () => this.openBacklog(), { class: 'toolbar__btn' }),
+      ),
+      el('div', { class: 'toolbar__group toolbar__group--admin' },
+        icon('⚙', t.t('ui.settings'), () => this.openSettings()),
+        icon('☰', t.t('ui.profiles'), () => { this.persist(); this.showTitle() }),
+      ),
     )
   }
 

@@ -260,9 +260,15 @@ export class StoryView {
     // ausserdem in einen leeren Codex fuehren.
     const known = reg.pack.codex
       .filter(c => engine.meta.codex.includes(c.id))
-      .map(c => ({ id: c.id, title: t.t(c.titleKey) }))
+      .map(c => ({ id: c.id, title: t.t(c.titleKey), body: t.t(c.bodyKey) }))
       .filter(c => c.title.length > 3)
       .sort((a, b) => b.title.length - a.title.length)
+
+    // Jeder Begriff wird auf einer Seite HOECHSTENS EINMAL markiert, beim
+    // ersten Vorkommen. Vorher trug jede Wiederholung dieselbe Auszeichnung —
+    // bei einem Ortsnamen, der in einem Absatz dreimal faellt, sieht der
+    // Fliesstext dann aus wie eine Linksammlung und liest sich entsprechend.
+    const used = new Set<string>()
 
     const frag = document.createDocumentFragment()
     for (const part of text.split(/\n{2,}/)) {
@@ -271,15 +277,21 @@ export class StoryView {
       let rest = part.trim()
       let guard = 0
       while (rest && guard++ < 400) {
-        let best: { idx: number; entry: { id: string; title: string } } | undefined
+        let best: { idx: number; entry: { id: string; title: string; body: string } } | undefined
         for (const entry of known) {
+          if (used.has(entry.id)) continue
           const idx = rest.indexOf(entry.title)
           if (idx >= 0 && (!best || idx < best.idx)) best = { idx, entry }
         }
         if (!best) break
+        used.add(best.entry.id)
         if (best.idx > 0) p.append(document.createTextNode(rest.slice(0, best.idx)))
         const mark = btn(best.entry.title, () => this.host.openCodex(best!.entry.id), { class: 'codex-link' })
         mark.setAttribute('aria-label', `${best.entry.title} — ${t.t('ui.codex')}`)
+        // Der erste Satz des Eintrags als Kurzhinweis: Wer nur wissen will,
+        // wer oder was das ist, soll dafuer die Seite nicht verlassen muessen.
+        const teaser = best.entry.body.split(/(?<=[.!?])\s/)[0]?.trim()
+        if (teaser) mark.title = teaser.length > 160 ? teaser.slice(0, 157) + '…' : teaser
         p.append(mark)
         rest = rest.slice(best.idx + best.entry.title.length)
       }

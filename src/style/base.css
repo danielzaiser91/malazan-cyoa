@@ -115,12 +115,25 @@ html, body {
 .shell { max-width: 1180px; margin: 0 auto; padding: .75rem 1rem 3rem; }
 
 .toolbar {
-  display: flex; flex-wrap: wrap; gap: .4rem;
+  display: flex; align-items: center; gap: .4rem;
   position: sticky; top: 0; z-index: 20;
   padding: .5rem 0;
   background: linear-gradient(180deg, var(--bg) 70%, transparent);
 }
+.toolbar__group { display: flex; flex-wrap: wrap; gap: .4rem; }
+/* Die Verwaltung sitzt rechts und bleibt dort, auch wenn links umgebrochen wird. */
+.toolbar__group--admin { margin-left: auto; flex-wrap: nowrap; }
 .toolbar__btn { padding: .35rem .7rem; font-size: .92em; }
+
+/* Symbolknoepfe: quadratisch, ruhig, mit voller Trefferflaeche. Der Name steht
+   im aria-label und im title — sichtbar ist nur das Zeichen. */
+.toolbar__icon {
+  width: 2.1rem; height: 2.1rem; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.05rem; line-height: 1;
+  opacity: .78;
+}
+.toolbar__icon:hover, .toolbar__icon:focus-visible { opacity: 1; }
 
 /* --- Einblendungen ------------------------------------------------------- */
 
