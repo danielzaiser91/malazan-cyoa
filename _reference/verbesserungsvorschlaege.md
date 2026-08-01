@@ -61,11 +61,16 @@ Spieler erinnern."* (Meg Jayanth, 80 Days)
 
 1. **Jede Wahl trägt eine sichtbare Signatur:** was sie kostet, was sie einbringt, was sie
    verschließt. Die Datenstruktur hat `costs` und `risk` — genutzt wird beides selten.
-2. **Folgen sofort zeigen.** Ein Wert, der sich ändert, gehört als kurze Einblendung an die Stelle,
-   an der er sich ändert. Die Ereignis-Schicht (`EffectEvent`) liefert das bereits, die Ansicht
-   nutzt es nur für Klang.
+2. ~~**Folgen sofort zeigen.** Die Ansicht nutzt `EffectEvent` nur für Klang.~~
+   **Berichtigt am 01.08.2026 — das war falsch.** Nachgesehen statt behauptet: `feedback.emit()`
+   erzeugt für **jedes** Ereignis eine sichtbare Einblendung *und* einen Klang, und `risk` steht
+   an **11 von 11** Optionen als Glyph mit Titel und zugänglichem Namen. Beides war schon da.
+   Was wirklich fehlt, ist etwas anderes und schmaler: **`costs` steht an 1 von 11 Optionen,
+   `check` an 1 von 11.** Entscheidungen zeigen also ihr Risiko, kosten aber fast nie etwas.
 3. **Mindestens ein Pfad je Szene, der etwas kostet und trotzdem gut ist.** Ohne diese Kategorie
    gibt es keine interessanten Fehler, sondern nur richtige und falsche Knöpfe.
+   *(Teilweise erledigt: zwei solche Knoten sind gesetzt — der Blick zur Kaiserin und das
+   Sitzenbleiben beim sterbenden Pferd, beide mit `attention` als Preis.)*
 
 ## 3 · Werte, Talente und Gegenstände sind Dekoration
 
