@@ -368,3 +368,7 @@ html, body {
   width: 100%; max-width: 22rem; aspect-ratio: 16 / 9;
   object-fit: cover; border-radius: 8px; border: 1px solid var(--line);
 }
+
+/* Startwerte an der Herkunftskarte — die Wirkung gehoert an die Wahl. */
+.bgcard__stats { display: flex; flex-wrap: wrap; gap: .3rem .7rem; margin-top: .4rem; font-size: .82em; color: var(--fg-quiet); }
+.bgcard__stat b { color: var(--ember); }

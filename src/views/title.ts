@@ -5,10 +5,11 @@
 
 import type { I18n } from '../core/i18n.ts'
 import type { Background, Lang } from '../model/types.ts'
-import { BACKGROUNDS } from '../model/types.ts'
+import { BACKGROUNDS, STAT_IDS } from '../model/types.ts'
 import type { Profile } from '../model/state.ts'
 import { btn, clear, el } from './dom.ts'
 import { GAME_VERSION } from '../core/version.ts'
+import { START_STATS } from '../core/constants.ts'
 import { placeholderDataUri } from '../core/placeholder.ts'
 
 export interface ProfileSlot {
@@ -138,6 +139,17 @@ export class TitleView {
         el('strong', { text: t.t(`bg.${bg}`) }),
         el('span', { class: 'bgcard__desc', text: t.t(`bg.${bg}.desc`) }),
       )
+      // Die Startwerte gehoeren an die Wahl, nicht hinter sie. Vorher war die
+      // Herkunft die einzige der drei Optionen mit echter Wirkung — und die
+      // einzige, deren Wirkung man nicht sehen konnte.
+      const start = START_STATS[bg]
+      const statRow = el('span', { class: 'bgcard__stats' })
+      for (const id of STAT_IDS) {
+        if (!start[id]) continue
+        statRow.append(el('span', { class: 'bgcard__stat' },
+          el('b', { text: String(start[id]) }), ' ', t.t(`stat.${id}`)))
+      }
+      b.append(statRow)
       bgButtons.set(bg, b)
       bgRow.append(b)
     }
