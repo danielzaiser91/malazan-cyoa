@@ -1,5 +1,5 @@
 /**
- * Die Nebenansichten: Marginalien (Codex), Blatt (Charakterbogen), Rückschau
+ * Die Nebenansichten: Marginalien (Codex), Figur (Charakterbogen), Nachlesen
  * und Einstellungen. Alle als Dialog ueber dem Lese-View, alle mit Tastatur
  * bedienbar und mit Fokusfalle.
  */
@@ -10,6 +10,7 @@ import type { Registry } from '../model/registry.ts'
 import type { ProfileSettings } from '../model/state.ts'
 import type { Lang, StatId } from '../model/types.ts'
 import { STAT_IDS } from '../model/types.ts'
+import { sigilGlyph } from './title.ts'
 import { btn, clear, el, focus } from './dom.ts'
 import { GAME_VERSION } from '../core/version.ts'
 
@@ -104,74 +105,176 @@ export function buildCodex(body: HTMLElement, reg: Registry, engine: Engine, t: 
   }
 }
 
+/**
+ * Farbe je Herkunft. Sie traegt das Wappen, die Werte-Balken und den Rand des
+ * Kopfbereichs — so hat jedes Profil auf den ersten Blick ein eigenes Gesicht,
+ * ohne dass ein einziges Bild noetig waere.
+ */
+const BACKGROUND_HUE: Record<string, string> = {
+  marine: '#8C5A3C',
+  sapper: '#6E7679',
+  mage: '#4C4A78',
+}
+
+/** Wappen statt Portraet: Zeichen-Glyph auf der Farbe der Herkunft. */
+function crest(profile: { sigil: string; background: string; name: string }): HTMLElement {
+  const hue = BACKGROUND_HUE[profile.background] ?? '#4C4A78'
+  const box = el('div', { class: 'crest', style: `--crest:${hue}` })
+  box.append(
+    el('span', { class: 'crest__glyph', text: sigilGlyph(profile.sigil) }),
+    el('span', { class: 'crest__initial', text: (profile.name[0] ?? '?').toUpperCase() }),
+  )
+  return box
+}
+
+/**
+ * Reiter. Ein Zustand, eine Darstellung: Der sichtbare Bereich haengt an
+ * `aria-selected`, nicht an einer zweiten Klasse — dieselbe Regel wie bei den
+ * Auswahl-Chips, und aus demselben Grund.
+ */
+function tabs(body: HTMLElement, panels: { id: string; label: string; count?: number; build: (el: HTMLElement) => void }[]): void {
+  const bar = el('div', { class: 'tabs', role: 'tablist' })
+  const host = el('div', { class: 'tabs__body' })
+  const nodes = new Map<string, HTMLElement>()
+
+  for (const panel of panels) {
+    const pane = el('div', { class: 'tabs__pane', role: 'tabpanel', id: `pane-${panel.id}` })
+    panel.build(pane)
+    nodes.set(panel.id, pane)
+    host.append(pane)
+
+    const label = panel.count === undefined ? panel.label : `${panel.label} ${panel.count}`
+    const b = btn(label, () => select(panel.id), {
+      class: 'tabs__tab', role: 'tab', 'aria-selected': 'false', 'aria-controls': `pane-${panel.id}`,
+    })
+    bar.append(b)
+  }
+
+  function select(id: string): void {
+    for (const tab of bar.children) {
+      tab.setAttribute('aria-selected', String(tab.getAttribute('aria-controls') === `pane-${id}`))
+    }
+    for (const [key, pane] of nodes) pane.hidden = key !== id
+  }
+
+  body.append(bar, host)
+  select(panels[0]!.id)
+}
+
+/** Ein Wert als Balken mit Zahl — lesbar auch ohne Farbe. */
+function statRow(name: string, hint: string, value: number, max: number, warn = false): HTMLElement {
+  const row = el('div', { class: `statline${warn ? ' statline--warn' : ''}`, title: hint })
+  row.append(
+    el('span', { class: 'statline__name', text: name }),
+    el('span', { class: 'statline__track' },
+      el('span', { class: 'statline__fill', style: `--v:${Math.max(0, Math.min(1, value / max)) * 100}%` }),
+    ),
+    el('span', { class: 'statline__value', text: String(value) }),
+  )
+  return row
+}
+
 export function buildSheet(body: HTMLElement, reg: Registry, engine: Engine, t: I18n): void {
   const run = engine.run
   const sheetId = engine.currentSheetId
   const stats = engine.activeStats
+  const profile = engine.save.profile
 
-  body.append(el('p', { class: 'sheet__who' },
-    `${t.t('ui.playing')}: `,
-    el('strong', { text: sheetId ? t.t(`sheet.${sheetId}.title`) : t.t('pov.recruit') }),
-  ))
-
-  const grid = el('dl', { class: 'sheet__stats' })
-  for (const id of STAT_IDS as readonly StatId[]) {
-    grid.append(
-      el('dt', { class: 'sheet__statName', title: t.t(`stat.${id}.hint`) }, t.t(`stat.${id}`)),
-      el('dd', { class: 'sheet__statValue' },
-        el('span', { class: 'sheet__bar', style: `--v:${Math.min(10, stats[id] ?? 0)}` }),
-        el('span', { text: String(stats[id] ?? 0) }),
-      ),
-    )
-  }
-  grid.append(
-    el('dt', { class: 'sheet__statName', title: t.t('stat.attention.hint') }, t.t('stat.attention')),
-    el('dd', { class: 'sheet__statValue' },
-      el('span', { class: 'sheet__bar sheet__bar--warn', style: `--v:${Math.min(20, run.attention)}` }),
-      el('span', { text: String(run.attention) }),
+  // --- Kopf: wer, was, wie weit ------------------------------------------
+  const head = el('div', { class: 'sheet__head' })
+  head.append(crest(profile))
+  const who = el('div', { class: 'sheet__who' })
+  who.append(
+    el('h3', { class: 'sheet__name', text: sheetId ? t.t(`sheet.${sheetId}.title`) : profile.name }),
+    el('p', { class: 'sheet__origin', text: sheetId ? t.t('ui.playing') : t.t(`bg.${profile.background}`) }),
+    el('div', { class: 'sheet__facts' },
+      el('span', { class: 'fact' }, el('b', { text: String(run.level) }), ' ', t.t('ui.levelWord')),
+      el('span', { class: 'fact' }, el('b', { text: String(run.xp) }), ' ', t.t('ui.xp')),
+      el('span', { class: 'fact' }, el('b', { text: String(run.coin) }), ' ', t.t('ui.coin')),
+      el('span', { class: 'fact' }, el('b', { text: formatTime(run.playtimeMs) })),
     ),
   )
-  body.append(grid)
+  head.append(who)
+  body.append(head)
 
-  body.append(el('p', { class: 'sheet__line' },
-    `${t.t('ui.level', { n: run.level })} · ${t.t('ui.xp')} ${run.xp} · ${t.t('ui.coin')} ${run.coin} · ` +
-    `${t.t('ui.playtime')} ${formatTime(run.playtimeMs)}`,
-  ))
-
-  body.append(el('h3', { text: t.t('ui.talents') }))
-  if (!run.talents.length) body.append(el('p', { class: 'muted', text: t.t('ui.noItems') }))
-  for (const id of run.talents) {
-    const def = reg.talent(id)
-    if (!def) continue
-    body.append(el('p', { class: 'sheet__talent' },
-      el('strong', { text: t.t(def.titleKey) }), ' — ', t.t(def.effectKey),
-    ))
-  }
-
-  body.append(el('h3', { text: t.t('ui.items') }))
+  // --- Reiter -------------------------------------------------------------
   const itemIds = Object.keys(run.items)
-  if (!itemIds.length) body.append(el('p', { class: 'muted', text: t.t('ui.noItems') }))
-  for (const id of itemIds) {
-    const def = reg.item(id)
-    body.append(el('p', { class: 'sheet__item' },
-      el('strong', { text: def ? t.t(def.titleKey) : id }), ` ×${run.items[id]}`,
-    ))
-  }
+  const activeFlags = Object.entries(run.flags).filter(([, v]) => v).map(([k]) => k)
 
-  // Flags im Klartext — nie als Balken, nie als Herzchen.
-  body.append(el('h3', { text: t.t('ui.flags') }))
-  const active = Object.entries(run.flags).filter(([, v]) => v).map(([k]) => k)
-  if (!active.length) body.append(el('p', { class: 'muted', text: t.t('ui.noFlags') }))
-  for (const flag of active) body.append(el('p', { class: 'sheet__flag', text: t.t(`flag.${flag}`) }))
-
-  body.append(el('h3', { text: t.t('ui.cardsFound', { n: engine.meta.cards.length, total: reg.pack.cards.length }) }))
-  for (const id of engine.meta.cards) {
-    const def = reg.card(id)
-    if (!def) continue
-    body.append(el('p', { class: 'sheet__card' },
-      el('strong', { text: t.t(def.titleKey) }), ' — ', t.t(def.bodyKey),
-    ))
-  }
+  tabs(body, [
+    {
+      id: 'stats',
+      label: t.t('ui.statsTab'),
+      build: pane => {
+        const grid = el('div', { class: 'statgrid' })
+        for (const id of STAT_IDS as readonly StatId[]) {
+          grid.append(statRow(t.t(`stat.${id}`), t.t(`stat.${id}.hint`), stats[id] ?? 0, 10))
+        }
+        pane.append(grid)
+        // Aufmerksamkeit steht abgesetzt: Sie ist kein Wert, den man steigern
+        // will, sondern der Preis fuer Fuegung.
+        pane.append(el('div', { class: 'statgrid statgrid--single' },
+          statRow(t.t('stat.attention'), t.t('stat.attention.hint'), run.attention, 20, true)))
+      },
+    },
+    {
+      id: 'talents',
+      label: t.t('ui.talents'),
+      count: run.talents.length,
+      build: pane => {
+        if (!run.talents.length) { pane.append(el('p', { class: 'muted', text: t.t('ui.noItems') })); return }
+        for (const id of run.talents) {
+          const def = reg.talent(id)
+          if (!def) continue
+          pane.append(el('div', { class: 'card' },
+            el('b', { text: t.t(def.titleKey) }),
+            el('p', { class: 'card__body', text: t.t(def.effectKey) }),
+          ))
+        }
+      },
+    },
+    {
+      id: 'items',
+      label: t.t('ui.items'),
+      count: itemIds.length,
+      build: pane => {
+        if (!itemIds.length) { pane.append(el('p', { class: 'muted', text: t.t('ui.noItems') })); return }
+        for (const id of itemIds) {
+          const def = reg.item(id)
+          pane.append(el('div', { class: 'card' },
+            el('b', { text: def ? t.t(def.titleKey) : id }),
+            el('span', { class: 'card__count', text: `×${run.items[id]}` }),
+          ))
+        }
+      },
+    },
+    {
+      id: 'marks',
+      label: t.t('ui.flags'),
+      count: activeFlags.length,
+      build: pane => {
+        if (!activeFlags.length) { pane.append(el('p', { class: 'muted', text: t.t('ui.noFlags') })); return }
+        // Merkmale im Klartext — nie als Balken, nie als Herzchen.
+        for (const flag of activeFlags) pane.append(el('p', { class: 'sheet__flag', text: t.t(`flag.${flag}`) }))
+      },
+    },
+    {
+      id: 'cards',
+      label: t.t('ui.cards'),
+      count: engine.meta.cards.length,
+      build: pane => {
+        if (!engine.meta.cards.length) { pane.append(el('p', { class: 'muted', text: t.t('ui.noItems') })); return }
+        for (const id of engine.meta.cards) {
+          const def = reg.card(id)
+          if (!def) continue
+          pane.append(el('div', { class: 'card' },
+            el('b', { text: t.t(def.titleKey) }),
+            el('p', { class: 'card__body', text: t.t(def.bodyKey) }),
+          ))
+        }
+      },
+    },
+  ])
 }
 
 export function buildBacklog(

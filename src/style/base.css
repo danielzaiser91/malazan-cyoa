@@ -263,6 +263,74 @@ html, body {
 
 /* --- Blatt --------------------------------------------------------------- */
 
+/* --- Figur-Ansicht ------------------------------------------------------- */
+
+/* Kopf: Wappen links, Kennzahlen rechts. Der farbige Rand kommt aus der
+   Herkunft, damit jedes Profil auf den ersten Blick anders aussieht — ohne
+   dass dafuer ein einziges Bild erzeugt werden muesste. */
+.sheet__head {
+  display: flex; gap: 1rem; align-items: center;
+  padding: .75rem .9rem; margin-bottom: .9rem;
+  border: 1px solid var(--line); border-radius: 10px;
+  background: linear-gradient(100deg, #1a1a2a, var(--panel));
+}
+.sheet__who { min-width: 0; }
+.sheet__name { margin: 0; font-size: 1.25rem; }
+.sheet__origin { margin: .1rem 0 .5rem; color: var(--fg-quiet); font-size: .92em; }
+.sheet__facts { display: flex; flex-wrap: wrap; gap: .5rem .9rem; font-size: .92em; }
+.fact { color: var(--fg-quiet); }
+.fact b { color: var(--fg); font-size: 1.05em; }
+
+/* Wappen: Glyph gross, Initiale klein darunter versetzt. */
+.crest {
+  position: relative; flex: 0 0 auto;
+  width: 68px; height: 68px; border-radius: 10px;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--crest) 70%, #fff 12%), var(--crest));
+  border: 1px solid color-mix(in srgb, var(--crest) 60%, #fff 25%);
+  box-shadow: inset 0 -12px 22px rgba(0, 0, 0, .35);
+}
+.crest__glyph { font-size: 2rem; line-height: 1; color: #f4efe6; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+.crest__initial {
+  position: absolute; right: 5px; bottom: 3px;
+  font-size: .72rem; letter-spacing: .04em; color: rgba(255,255,255,.72);
+}
+
+/* Reiter: nur einer sichtbar. Das ist der eigentliche Zweck — vorher stand
+   alles untereinander und die Ansicht scrollte. */
+.tabs { display: flex; flex-wrap: wrap; gap: .3rem; border-bottom: 1px solid var(--line); margin-bottom: .8rem; }
+.tabs__tab {
+  padding: .35rem .7rem; font-size: .92em;
+  border: 1px solid transparent; border-bottom: none;
+  border-radius: 8px 8px 0 0; background: transparent; color: var(--fg-quiet);
+  margin-bottom: -1px;
+}
+.tabs__tab[aria-selected='true'] {
+  color: var(--fg); background: var(--panel);
+  border-color: var(--line); border-bottom-color: var(--panel);
+}
+.tabs__body { min-height: 12rem; }
+
+.statgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem 1.2rem; }
+.statgrid--single { grid-template-columns: 1fr; margin-top: .9rem; padding-top: .7rem; border-top: 1px solid var(--line); }
+.statline { display: grid; grid-template-columns: 7.5rem 1fr 2ch; align-items: center; gap: .55rem; }
+.statline__name { color: var(--fg-quiet); font-size: .94em; }
+.statline__track { height: 8px; border-radius: 4px; background: #1c1c2c; overflow: hidden; }
+.statline__fill {
+  display: block; height: 100%; width: var(--v);
+  background: linear-gradient(90deg, var(--moon-2), var(--ember));
+  transition: width .5s cubic-bezier(.2,.7,.3,1);
+}
+.statline--warn .statline__fill { background: linear-gradient(90deg, #4a2a2a, var(--bad)); }
+.statline__value { text-align: right; font-variant-numeric: tabular-nums; }
+
+.card {
+  border: 1px solid var(--line); border-left: 3px solid var(--moon-2);
+  border-radius: 6px; padding: .5rem .7rem; margin: .4rem 0; background: #16162400;
+}
+.card__body { margin: .2rem 0 0; color: var(--fg-quiet); font-size: .94em; }
+.card__count { float: right; color: var(--fg-quiet); }
+
 .sheet__stats { display: grid; grid-template-columns: auto 1fr; gap: .3rem .8rem; align-items: center; margin: .5rem 0 1rem; }
 .sheet__statName { color: var(--fg-quiet); }
 .sheet__statValue { display: flex; align-items: center; gap: .5rem; margin: 0; }
