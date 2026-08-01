@@ -31,8 +31,9 @@ const SIGILS: Record<string, string> = {
 const SIGIL_ORDER = ['life', 'death', 'light', 'dark', 'shadow', 'unaligned']
 
 /** Formmotiv je Stimmung — der zweite Blick, der einen Platzhalter absichtlich wirken laesst. */
-const MOTIF: Record<ArtMood, 'columns' | 'rain' | 'rings' | 'haze' | 'arc' | 'horizon' | 'shards' | 'cross' | 'burst' | 'stones'> = {
+const MOTIF: Record<ArtMood, 'columns' | 'rain' | 'rings' | 'haze' | 'arc' | 'horizon' | 'shards' | 'cross' | 'burst' | 'stones' | 'beams'> = {
   siege: 'columns',
+  'close-quarters': 'beams',
   'street-night': 'rain',
   warren: 'rings',
   dream: 'haze',

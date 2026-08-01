@@ -75,6 +75,9 @@ export const AMBIENCE: Record<string, AmbienceBed> = {
   duel: { drones: [87.3, 130.8], noise: 0.08, cutoff: 600, level: 0.06 },
   divine: { drones: [41.2, 61.7, 82.4], noise: 0.1, cutoff: 180, level: 0.09 },
   aftermath: { drones: [58.3, 87.3], noise: 0.14, cutoff: 350, level: 0.05 },
+  // Eng, holzern, gedaempft: tiefe Grundtoene, viel Rauschen fuer die Menge,
+  // niedriger Cutoff, weil ueber allem eine Decke liegt.
+  'close-quarters': { drones: [55.0, 82.4], noise: 0.22, cutoff: 260, level: 0.05 },
 }
 
 export interface AudioSettings {

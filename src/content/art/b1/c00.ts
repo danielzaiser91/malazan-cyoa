@@ -84,7 +84,12 @@ export const art00: ArtPrompt[] = [
   {
     id: `${C}.s04.p03`,
     subject: 'smoke rising into a sky where something enormous and unlit seems to be paying attention',
-    detail: 'no creature, no face, only the sense of scale being wrong',
+    // Das Bild dazu ist gut geworden, obwohl hier eine Aufzaehlung verneinter
+    // Requisiten stand ('no creature, no face'). Das war Glueck: Genau diese
+    // Form liest das Modell als Einkaufsliste. Positiv gesagt trifft es die
+    // Szene ohnehin besser — es soll ja NICHTS zu erkennen sein.
+    detail: 'unbroken cloud and smoke where the mass of it would be, the wrongness of the scale the only '
+      + 'definite thing in the picture',
     mood: 'divine', palette: 'moons-spawn', tier: 'hero',
   },
 

@@ -128,6 +128,9 @@ export const PALETTES: Record<PaletteId, Palette> = {
 export const MOOD_PHRASE: Record<ArtMood, string> = {
   siege: 'siege light, smoke columns, distant fire glow, figures small against ruined walls',
   'street-night': 'narrow lamplit street at night, wet stone, long shadows',
+  // Beschreibt Deckenhoehe, Lichtquelle und Naehe — nicht den Raum selbst.
+  'close-quarters': 'low ceiling pressing down into the frame, one warm light source doing all the work, '
+    + 'bodies close enough to touch, thick air, everything within arm reach',
   warren: 'impossible geometry, light from the wrong direction, air like standing water',
   dream: 'soft edges, dissolving horizon, objects half-remembered',
   // Beschreibt LICHT und soziale Geometrie, nicht den Ort. Die alte Fassung

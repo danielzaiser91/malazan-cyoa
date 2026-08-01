@@ -151,9 +151,23 @@ export const art01: ArtPrompt[] = [
   },
   {
     id: `${C}.s08.p04`,
-    subject: 'an enormous hound seen from below, only shoulder and jaw in frame, the rest out of shot',
-    detail: 'no gore, no snarl, just size and calm',
-    mood: 'divine', palette: 'hoods-grey', tier: 'hero',
+    // Der Hund ist ein Schattenhund und soll gewaltig sein — die Spur davor
+    // ist "breit genug, dass man ihr wie einem Weg folgen konnte", und das
+    // Geraeusch dahinter "kein Schritt, sondern ein Gewicht". Aber die Szene
+    // arbeitet durchweg mit dem, was NICHT zu sehen ist, und der Alt-Text sagt
+    // in beiden Sprachen woertlich "nur Schulter und Kiefer im Bild". Bild und
+    // Alt-Text muessen zusammenpassen, sonst luegt die Bildbeschreibung.
+    //
+    // Der erste Versuch zeigte das ganze Tier ueber einer Mauer. Zwei Ursachen,
+    // beide im Zuschnitt: `tier: 'hero'` bedeutet "wide establishing shot" und
+    // arbeitet gegen jede Naheinstellung, und `architecture` im Stil-Anker hat
+    // die Mauer geliefert, die im Motiv gar nicht steht. Deshalb `standard`
+    // und ein Massstab, den das Modell im Bild selbst hat.
+    subject: 'a view from ground level of one shoulder and one closed jaw of a hound so large that only those two '
+      + 'parts of it fit inside the picture, its eye somewhere above the upper edge, dune grass along the bottom '
+      + 'of the frame for scale',
+    detail: 'coarse wet fur, the animal entirely calm and in no hurry, the sand under it pressed flat and wide',
+    mood: 'divine', palette: 'hoods-grey', tier: 'standard',
   },
   {
     id: `${C}.s08.p05`,
@@ -203,8 +217,16 @@ export const art01: ArtPrompt[] = [
   },
   {
     id: `${C}.s09.p02`,
-    subject: 'a crowded troop deck below the waterline, hammocks slung too close together',
-    mood: 'march', palette: 'hoods-grey', tier: 'standard',
+    // `march` brachte Tageslicht mit und machte aus dem Deck unter der
+    // Wasserlinie eine Hafenszene im Freien. Der Text ist eindeutig: niedriger
+    // als man einen Raum bauen sollte, ein Balken auf Stirnhoehe, zweihundert
+    // Leute, Teer und Salz. Dafuer gab es keine passende Stimmung — jetzt gibt
+    // es `close-quarters`.
+    subject: 'the inside of a ship below the waterline, a ceiling of dark timber beams low enough to touch, '
+      + 'rows of hammocks slung so close that they overlap, a lantern hanging from a beam',
+    detail: 'sea chests and packs wedged under the hammocks, planking on every side, one ladder going up into '
+      + 'the only daylight in the picture',
+    mood: 'close-quarters', palette: 'hoods-grey', tier: 'standard',
   },
   {
     id: `${C}.s09.p03`,

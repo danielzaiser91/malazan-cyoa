@@ -83,6 +83,12 @@ export type Effect =
 /** Stimmungs-Tag der Illustration; steuert Licht und Palette der Bild-Pipeline. */
 export type ArtMood =
   | 'siege'
+  // Enge Innenraeume. Nachgetragen am 01.08.2026: Das Truppendeck unter der
+  // Wasserlinie kam als Hafenszene im Freien zurueck, weil keine der zehn
+  // Stimmungen einen Innenraum zulaesst — `march` bringt Tageslicht mit,
+  // `street-night` eine Strasse. Ueber elf Kapitel kommen Tavernen, Kajueten,
+  // Keller und Kasematten noch oft.
+  | 'close-quarters'
   | 'street-night'
   | 'warren'
   | 'dream'
@@ -94,7 +100,7 @@ export type ArtMood =
   | 'aftermath'
 
 export const ART_MOODS: readonly ArtMood[] = [
-  'siege', 'street-night', 'warren', 'dream', 'council',
+  'siege', 'close-quarters', 'street-night', 'warren', 'dream', 'council',
   'march', 'ruin', 'duel', 'divine', 'aftermath',
 ]
 

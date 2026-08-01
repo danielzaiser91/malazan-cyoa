@@ -146,6 +146,24 @@ describe('Prompt-Vorlage', () => {
     expect(bad).toEqual([])
   })
 
+  // Bewusst eng: NICHT jede Verneinung ist schaedlich. "ohne Dankbarkeit",
+  // "kein Wind, obwohl das Gras sich bewegt", "keiner von beiden ganz da" —
+  // alle drei haben tadellose Bilder ergeben, weil sie eine Haltung, einen
+  // Zustand oder einen Vorgang beschreiben, fuer den es keine positive Fassung
+  // gibt. Ein pauschales Verbot wuerde sie mitreissen.
+  //
+  // Schaedlich ist die AUFZAEHLUNG verneinter Requisiten — die liest das Modell
+  // als Einkaufsliste. "no text, no watermark" erzeugte in vier von sechs
+  // Bildern Text; "no gore, no snarl" stand in dem einen Motiv des Kapitels,
+  // das seinen Bildausschnitt verfehlt hat.
+  it('kein Motivtext zaehlt verneinte Requisiten auf', () => {
+    const list = /\bno\s+\w+\s*,\s*no\s+\w+/i
+    const bad = artPrompts
+      .filter(p => list.test(`${p.subject} ${p.detail ?? ''}`))
+      .map(p => p.id)
+    expect(bad).toEqual([])
+  })
+
   it('jede Stimmung und jede Stufe hat ihre Formulierung', () => {
     for (const m of ART_MOODS) expect(MOOD_PHRASE[m]).toBeTruthy()
     for (const t of ['hero', 'standard', 'filler'] as const) expect(COMPOSITION[t]).toBeTruthy()
