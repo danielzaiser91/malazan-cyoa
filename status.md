@@ -18,7 +18,8 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Task | SP | Stand |
 |---|---|---|---|
-| — | — | — | Nichts. Der nächste Schritt (Kapitel 2) ist durch die eigene Regel aus `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
+| B2 | **Block 2: Kapitel 1 bebildern.** 26 Bilder in einem Lauf (`b1.c00.s05.p02` neu plus 25 von 31 aus Kapitel 1). Lorn-Referenzblatt vorher ergänzt — sie kam im Prolog nicht vor und wäre über elf Kapitel gedriftet. | 2 | Läuft |
+| — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
 
 ### 2 · Queue
 
@@ -50,8 +51,6 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 |---|---|
 | **F1** | **GitHub-Repo anlegen und pushen.** Nach außen gerichtet, deshalb Rückfrage (`MASTER_PROMPT.md` § A1). Lokal ist alles committet, der CI-Workflow liegt bereit. Ohne Remote kein Deploy, kein Live-Test des Versionsbanners, kein Portfolio-Eintrag. |
 | **F2** | **Testrunde Vertical Slice** (Prolog + Kapitel 1) auf http://localhost:5176 — die Abnahme, an der § A9 Kapitel 2 aufhängt. |
-| **F4** | **`b1.c00.s05.p02` ein drittes Mal erzeugen (4,5 Credits).** Der Prompt ist korrigiert; die Frau fehlte im Bild. Sinnvollerweise zusammen mit Block 2. |
-| **F5** | **Block 2 starten:** Kapitel 1, 25 der 31 offenen Bilder, ~76 Credits. Danach Block 3 (die restlichen 6). |
 
 ---
 

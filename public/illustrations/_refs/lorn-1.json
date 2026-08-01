@@ -1,0 +1,12 @@
+{
+  "prompt": "Painted in thick oil on rough canvas, visible brush strokes and palette-knife texture, desaturated and high-contrast. a composed human woman in black imperial leathers, hair bound tight, a plain rust-red sword sheathed at her side, the plainest person in any room she enters. a three-quarter view portrait from the chest up, plain flat background. even soft light, the background a single unbroken tone. single figure, centred, the whole figure inside the frame.",
+  "width": 1344,
+  "height": 768,
+  "seed": 419648685,
+  "disable_pup": true,
+  "output_format": "png",
+  "_char": "lorn",
+  "_view": 1,
+  "_polling": "https://api.eu2.bfl.ai/v1/get_result?id=262c2769-e079-46cc-8fa6-1315d03797c9",
+  "_cost": 3
+}

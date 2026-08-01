@@ -7,8 +7,12 @@
  *
  * Warum ueberhaupt: Ein Charakterblatt als TEXT haelt eine Figur ueber ein
  * paar Bilder zusammen, nicht ueber elf. Referenzbilder tun das — bis zu acht
- * pro Request, und sie kosten keine zusaetzlichen Credits, weil sie nur
- * mitgeschickt werden.
+ * pro Request.
+ *
+ * ⚠️ **Korrektur 31.07.2026:** Hier stand, Referenzen kosteten nichts extra.
+ * Falsch. Gemessen an identischen Requests: 0 Refs = 3 Credits, 1 Ref = 4,5,
+ * 4 Refs = 9 — also 1,5 je Referenzbild, linear. Deshalb steht `--refs` in
+ * `art-gen.mjs` standardmaessig auf 1 und nicht auf allem, was da ist.
  *
  * Bewusst EIN Blickwinkel je Bild statt eines Sheets mit mehreren Ansichten
  * nebeneinander: ein Sheet-Layout laedt Beschriftungen ein, und gegen
