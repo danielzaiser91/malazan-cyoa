@@ -44,6 +44,11 @@ function refsFor(char) {
   return out
 }
 
+// `--ids a,b,c` — die uebliche Form der Nacharbeit. Nach einer QA-Runde steht
+// eine Liste von Ausschuss-Bildern fest; `--stale` waere dafuer zu grob (es
+// nimmt alles, dessen Prompt sich je geaendert hat) und `--id` zu fein.
+const idList = (arg('ids') ?? '').split(',').map(s => s.trim()).filter(Boolean)
+
 function pages() {
   const chapter = arg('chapter')
   const id = arg('id')
@@ -53,6 +58,7 @@ function pages() {
       if (chapter && scene.chapter !== chapter) continue
       for (const page of scene.pages) {
         if (id && page.id !== id) continue
+        if (idList.length && !idList.includes(page.id)) continue
         const art = artById.get(page.art.promptId)
         if (art) out.push({ page, art })
       }
@@ -151,7 +157,8 @@ const key = loadKey()
 const max = Number(arg('max', '25'))
 // Standard: nur was FEHLT. Veraltetes kommt nur auf ausdrueckliche Ansage
 // dazu — `--stale` fuer alle, oder `--id` fuer ein einzelnes.
-const wanted = p => flag('force') || !exists(p) || (flag('stale') && stale(p)) || arg('id') === p.page.id
+const wanted = p => flag('force') || !exists(p) || (flag('stale') && stale(p))
+  || arg('id') === p.page.id || idList.includes(p.page.id)
 const todo = pages().filter(wanted).slice(0, max)
 if (!todo.length) { console.log('  Nichts zu tun.'); process.exit(0) }
 
