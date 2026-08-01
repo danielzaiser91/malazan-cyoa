@@ -5,7 +5,7 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import { artPrompts } from '../../src/content/index.ts'
+import { artPrompts, content } from '../../src/content/index.ts'
 import { buildPrompt, promptHash, COMPOSITION } from '../../src/content/art/prompt.ts'
 import { CHARACTER_SHEETS, CLOSE_ANCHOR, CLOSE_COMPOSITION, FORBIDDEN_PERIOD_MARKERS, MODERATION_TRIGGERS, MOOD_PHRASE, PALETTES, PLACE_SHEETS, REFERENCE_ANCHOR, STATION_SHEETS, STYLE_ANCHOR, WORLD_ANCHOR } from '../../src/content/art/style.ts'
 import { ART_MOODS } from '../../src/model/types.ts'
@@ -221,6 +221,23 @@ describe('Auslieferung', () => {
     expect(a.srcset).toContain('b1.c00.s01.p01.webp 1280w')
     // Ein absoluter Pfad ohne base waere auf GitHub Pages tot.
     expect(illustration('x', '/').src).toBe('/illustrations/x.webp')
+  })
+
+  // Gemeldet am 01.08.2026: "viele Platzhalter existieren noch, warum?" — genau
+  // deshalb. Der Pfad hing an der Seiten-ID, und eine geteilte Seite heisst
+  // `…p01b`, waehrend ihr Bild `…p01.webp` heisst.
+  it('jede Seite findet ihr Bild, auch die zweite Haelfte einer geteilten', () => {
+    const dir = join(import.meta.dirname, '..', '..', 'public', 'illustrations')
+    if (!existsSync(dir)) return
+    const missing: string[] = []
+    for (const book of content.books)
+      for (const chapter of book.chapters)
+        for (const scene of chapter.scenes)
+          for (const page of scene.pages) {
+            const file = illustration(page.art.promptId, '/').src.replace('/illustrations/', '')
+            if (!existsSync(join(dir, file))) missing.push(`${page.id} -> ${file}`)
+          }
+    expect(missing).toEqual([])
   })
 
   it('jedes erzeugte Bild liegt in beiden Groessen vor', () => {

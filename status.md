@@ -18,8 +18,18 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
 
 | # | Task | SP | Stand |
 |---|---|---|---|
-| T5b | **Marginalien-Abdeckung.** Gemessen: nur **9 von 63 Seiten** enthalten überhaupt einen Codex-Begriff. Für „mindestens einer je Seite" braucht es mehr Einträge (Brückenverbrenner, Gewirr, Adjunktin, Itko Kan …) und Beugungsformen als Aliase — Deutsch beugt, `indexOf('Adjunktin')` findet „der Adjunktin" nicht. | 3 | Offen |
-| T6b | **Restliche Punkte aus `_reference/ux-befunde.md`:** M12 Bild und Text teilen sich die Höhe (aktuell bleibt unter dem Bild Leerraum), M13 schmale Zustandszeile in der Kopfleiste (wer seine Werte sehen will, verliert sonst die Seite), M14 Zeilenlänge im Zweispalter gegen die Einstellung gegenprüfen. | 3 | Offen |
+| U1 | **Bildlücken sichtbar machen.** Wo steht noch ein Platzhalter, und warum? Übersicht, die auch künftige Lücken mitzählt — nicht einmalig, sondern als Werkzeug. | 2 | Offen |
+| U2 | **Deutsche Begriffe neu wählen.** „Blatt", „Rückschau", „Die Auslegung" sagen niemandem, was gemeint ist. | 1 | Offen |
+| U3 | **Marginalien-Ansicht umbauen.** Kategorien als Filter oder aufklappbare Abschnitte statt einer überladenen Liste; Bilder zeigen, wo sie zum Eintrag passen. | 3 | Offen |
+| U4 | **Das Blatt neu gestalten.** Porträt, Name, grafische Werte-Darstellung, Reiter statt alles untereinander, Fläche links/rechts nutzen, kein Scrollen. | 3 | Offen |
+| U5 | **Profil-Anlage.** Getroffene Auswahl ist nicht sichtbar markiert. Und: Was bewirken Anrede, Herkunft und Zeichen überhaupt? Wirkung sichtbar machen. | 2 | Offen |
+| U6 | **Optik und Leben im Text.** Farbe für Textstellen, künstlerische Hervorhebung besonderer Passagen, Text-Animation. | 5 | Offen |
+| U7 | **Bild in den Vordergrund.** Nach dem Weiterklick zuerst groß zeigen, dann per Animation an seinen Platz. | 3 | Offen |
+| U8 | **Mehr Entscheidungen, spürbare Folgen.** Es ist ein CYOA — Wahlen sollen häufig kommen, Konsequenzen gut/schlecht/neutral tragen, und jeder Pfad soll sich erzählerisch lohnen. | 5 | Offen |
+| U9 | **Werte, Talente und Gegenstände wirksam machen.** Sie sollen spürbar etwas ändern, nicht nur dastehen. | 5 | Offen |
+| U10 | **`verbesserungsvorschlaege.md`** — den gesamten Code durchgehen, Lücken und Schwächen sammeln, Vorschläge formulieren. | 3 | Offen |
+| U11 | **Vergleich mit erfolgreichen CYOA-Spielen.** Was die gut machen, nach Priorität sortiert in die Vorschläge aufnehmen. | 3 | Offen |
+| T6b | **Rest aus `_reference/ux-befunde.md`:** M12 Bild und Text teilen sich die Höhe, M13 Zustandszeile in der Kopfleiste, M14 Zeilenlänge im Zweispalter gegenprüfen. | 3 | Offen |
 | — | — | — | Kapitel 2 bleibt durch `MASTER_PROMPT.md` § A9 gesperrt: *„Do not start Chapter 2 before this slice is accepted."* |
 
 ### 2 · Queue
@@ -116,6 +126,14 @@ Laufender Arbeitsstand. Wird bei **jeder** Statusänderung aktualisiert.
     bringt Tageslicht mit, `street-night` eine Straße. Das Truppendeck unter der Wasserlinie kam
     deshalb als Hafenszene im Freien zurück. Über elf Kapitel folgen noch Tavernen, Kajüten,
     Keller und Kasematten.
+
+13b. **Zwei meiner Regeln waren Richtlinien, keine Gesetze — korrigiert am 01.08.2026.**
+    (a) „Mindestens ein Marginalien-Begriff je Seite" hat der Nutzer nie verlangt; gemeint war das
+    Gegenteil, nämlich dass ein Wort **nicht mehrfach** markiert wird. Das ist umgesetzt; ein
+    Content-Ausbau nur zum Erfüllen einer erfundenen Quote entfällt.
+    (b) „Eine Wahl spätestens auf Seite 3" war eine Faustregel für die **Häufigkeit** von
+    Entscheidungen, keine Grenze. Die eigentliche Anforderung ist stärker: In einem CYOA sollen
+    Wahlen oft kommen und spürbare Folgen haben — siehe U8.
 
 14. **Bestandsschutz für bezahlte Bilder.** „Fertig" hieß bisher: Datei da **und** Prompt
     unverändert — ein geänderter Baustein machte damit den gesamten Bestand wieder zu Arbeit.

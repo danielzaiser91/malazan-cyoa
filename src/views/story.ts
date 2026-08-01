@@ -76,7 +76,7 @@ export class StoryView {
     // Das echte Bild, mit dem Platzhalter als Rueckfallebene. Beides ist noetig:
     // Es gibt 436 Seiten und deutlich weniger fertige Illustrationen, und eine
     // Seite ohne Bild soll trotzdem etwas zeigen, das zur Stimmung passt.
-    const art = illustration(page.id, import.meta.env.BASE_URL)
+    const art = illustration(page.art.promptId, import.meta.env.BASE_URL)
     this.img.onerror = () => {
       this.img.onerror = null
       this.img.removeAttribute('srcset')

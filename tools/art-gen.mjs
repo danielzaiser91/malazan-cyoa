@@ -83,20 +83,26 @@ function pages() {
  * Damit kostet eine Prompt-Verbesserung erst einmal gar nichts, und die
  * Entscheidung, wofuer man zahlt, bleibt beim Menschen und vor dem Lauf.
  */
-function exists({ page }) {
-  return existsSync(join(RAW, `${page.id}.png`)) && existsSync(join(RAW, `${page.id}.json`))
+// Dateiname = PROMPT-ID, nicht Seiten-ID. Zwei Seiten duerfen sich ein Bild
+// teilen (geteilte Seiten tun das immer), und dann darf es auch nur einmal
+// erzeugt und einmal abgelegt werden. Vorher hing beides an der Seite — die
+// zweite Haelfte suchte eine Datei, die es nie geben wird.
+const rawName = art => art.id
+
+function exists({ art }) {
+  return existsSync(join(RAW, `${rawName(art)}.png`)) && existsSync(join(RAW, `${rawName(art)}.json`))
 }
 
-function stale({ page, art }) {
-  if (!exists({ page })) return false
-  try { return JSON.parse(readFileSync(join(RAW, `${page.id}.json`), 'utf8'))._promptHash !== promptHash(art) } catch { return true }
+function stale({ art }) {
+  if (!exists({ art })) return false
+  try { return JSON.parse(readFileSync(join(RAW, `${rawName(art)}.json`), 'utf8'))._promptHash !== promptHash(art) } catch { return true }
 }
 
-function request({ page, art }) {
+function request({ art }) {
   const req = {
     prompt: buildPrompt(art),
     width: GEN_W, height: GEN_H,
-    seed: seedFrom(page.id) % 2147483647,
+    seed: seedFrom(art.id) % 2147483647,
     disable_pup: true, output_format: 'png',
   }
   // Referenzen der beteiligten Figuren mitschicken — der einzige Grund, warum
@@ -172,11 +178,11 @@ console.log(`  Block: ${todo.length} Bilder · erwartet ${est} Credits
 const jobs = []
 for (const t of todo) {
   const req = request(t)
-  const meta = join(RAW, `${t.page.id}.json`)
+  const meta = join(RAW, `${rawName(t.art)}.json`)
   // Das JSON traegt den Prompt im Klartext, aber NICHT die Referenzbilder —
   // sonst waere jede Datei mehrere Megabyte gross. Die Referenzen liegen
   // ohnehin daneben und sind ueber `_refs` eindeutig.
-  const record = { ...req, _promptHash: promptHash(t.art), _page: t.page.id, _tier: t.art.tier }
+  const record = { ...req, _promptHash: promptHash(t.art), _page: t.page.id, _prompt: t.art.id, _tier: t.art.tier }
   for (const k of Object.keys(record)) if (k.startsWith('input_image')) record[k] = `<${k} aus _refs>`
   writeFileSync(meta, JSON.stringify(record, null, 2) + '\n')
   try {
@@ -194,7 +200,7 @@ for (const t of todo) {
 let ok = 0, failed = 0
 for (const job of jobs) {
   try {
-    await download(await awaitResult(key, job.polling), join(RAW, `${job.page.id}.png`))
+    await download(await awaitResult(key, job.polling), join(RAW, `${rawName(job.art)}.png`))
     console.log(`  ✓ ${job.page.id}`)
     ok++
   } catch (err) {

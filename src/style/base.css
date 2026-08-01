@@ -108,6 +108,24 @@ html, body {
 .btn--quiet { background: transparent; border-color: #2c2c44; color: var(--fg-quiet); }
 .chip { padding: .3rem .7rem; font-size: .9em; }
 .chip--on { background: var(--moon-1); border-color: var(--moon-2); color: #fff; }
+
+/* Die getroffene Wahl sieht man am ARIA-Zustand, nicht an einer zweiten Klasse.
+   Vorher trugen Anrede und Zeichen bei der Profil-Anlage nur `aria-checked` und
+   sahen deshalb ausgewaehlt wie nicht ausgewaehlt gleich aus — man klickte und
+   nichts passierte sichtbar. Ein Zustand, zwei Darstellungen zu pflegen, ist
+   genau die Konstruktion, bei der eine davon vergessen wird. */
+.chip[aria-checked='true'],
+.chip--sigil[aria-checked='true'] {
+  background: var(--moon-1);
+  border-color: var(--ember);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px var(--ember);
+}
+/* Ein Haken vor dem Text macht die Wahl auch ohne Farbe erkennbar — Farbe
+   allein traegt keine Information (dieselbe Regel wie bei den Abzeichen im
+   Flowchart). */
+.chip[role='radio'][aria-checked='true']::before { content: '✓ '; opacity: .85; }
+.chip--sigil[aria-checked='true']::before { content: none; }
 .chip--sigil { font-size: 1.2em; line-height: 1; }
 
 /* --- Schale und Werkzeugleiste ------------------------------------------- */

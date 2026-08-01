@@ -156,7 +156,13 @@ export function placeholderDataUri(input: PlaceholderInput): string {
 }
 
 /**
- * Pfade zur ausgelieferten Illustration einer Seite.
+ * Pfade zur ausgelieferten Illustration.
+ *
+ * Der Dateiname haengt an der **Prompt-ID**, nicht an der Seiten-ID. Beide sind
+ * meistens gleich — aber nicht, wenn eine zu lange Seite geteilt wurde: Die
+ * zweite Haelfte heisst `…p01b` und teilt sich das Bild mit der ersten. Solange
+ * der Pfad an der Seite hing, suchten alle sieben geteilten Haelften eine Datei,
+ * die es nie geben wird, und zeigten den Platzhalter (gemeldet 01.08.2026).
  *
  * Rein und testbar, weil der Rest der Bildlogik in der View sitzt und dort
  * nicht geprueft werden kann. `base` kommt aus `import.meta.env.BASE_URL` und
@@ -166,10 +172,10 @@ export function placeholderDataUri(input: PlaceholderInput): string {
  * Die 640er-Variante erzeugt `tools/art-post.mjs` mit; ohne `srcset` waere sie
  * umsonst gebaut worden.
  */
-export function illustration(pageId: string, base: string): { src: string; srcset: string } {
+export function illustration(promptId: string, base: string): { src: string; srcset: string } {
   const dir = `${base.endsWith('/') ? base : base + '/'}illustrations`
   return {
-    src: `${dir}/${pageId}.webp`,
-    srcset: `${dir}/${pageId}@640.webp 640w, ${dir}/${pageId}.webp 1280w`,
+    src: `${dir}/${promptId}.webp`,
+    srcset: `${dir}/${promptId}@640.webp 640w, ${dir}/${promptId}.webp 1280w`,
   }
 }
