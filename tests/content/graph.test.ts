@@ -198,6 +198,21 @@ describe('9 · Auswahl-Sanitaet', () => {
       expect(n).toBeLessThanOrEqual(600)
     }
   })
+
+  // Eine Kennzeichnung, die nichts bedeutet, ist schlechter als keine: Der
+  // Spieler lernt, dass sie nichts heisst, und liest sie danach nicht mehr.
+  // Gefunden am 01.08.2026 — drei von elf Optionen trugen `costly` und kosteten
+  // nichts.
+  it('was als kostspielig gekennzeichnet ist, kostet auch etwas', () => {
+    const bad: string[] = []
+    for (const scene of allScenes()) {
+      if (scene.exit.type !== 'choice') continue
+      for (const c of scene.exit.choices) {
+        if (c.risk === 'costly' && !c.costs?.length) bad.push(`${scene.id}/${c.id}`)
+      }
+    }
+    expect(bad).toEqual([])
+  })
 })
 
 describe('10 · Pfad-Balance', () => {

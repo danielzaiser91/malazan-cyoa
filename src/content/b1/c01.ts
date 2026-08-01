@@ -86,12 +86,14 @@ export const chapter01: Chapter = {
         type: 'choice',
         choices: [
           { id: 'road', labelKey: `${C}.s01.ch.road`, to: `${C}.s02`, risk: 'safe', outcome: 'progress' },
-          { id: 'quay', labelKey: `${C}.s01.ch.quay`, to: `${C}.s03`, risk: 'costly', outcome: 'lore' },
+          { id: 'quay', labelKey: `${C}.s01.ch.quay`, to: `${C}.s03`, risk: 'costly',
+          costs: [{ attention: 1 }], outcome: 'lore' },
           {
             id: 'girl',
             labelKey: `${C}.s01.ch.girl`,
             to: `${C}.s04`,
             risk: 'costly',
+          costs: [{ attention: 1 }],
             outcome: 'progress',
             requires: { flag: 'recruit.noticed.sorry' },
             lockHintKey: `${C}.s01.ch.girl.lock`,
@@ -249,7 +251,8 @@ export const chapter01: Chapter = {
       exit: {
         type: 'choice',
         choices: [
-          { id: 'search', labelKey: `${C}.s02.ch.search`, to: `${C}.s06`, risk: 'costly', outcome: 'progress' },
+          { id: 'search', labelKey: `${C}.s02.ch.search`, to: `${C}.s06`, risk: 'costly',
+          costs: [{ attention: 1 }], outcome: 'progress' },
           { id: 'hold', labelKey: `${C}.s02.ch.hold`, to: `${C}.s07`, risk: 'safe', outcome: 'progress' },
           {
             id: 'tracks',
