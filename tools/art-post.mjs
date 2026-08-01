@@ -47,7 +47,11 @@ async function processImage(id) {
   const raw = join(RAW, `${id}.png`)
   const big = join(OUT, `${id}.webp`)
   const small = join(OUT, `${id}@640.webp`)
-  if (!flag('force') && existsSync(big) && existsSync(small)) return null
+  // Nicht nur "webp da?", sondern "webp aelter als das Rohbild?". Sonst muss
+  // man nach jedem Nachzieh-Lauf die alten Ausgaben von Hand loeschen — drei
+  // Mal an einem Tag passiert, und beim vierten haette es jemand vergessen.
+  if (!flag('force') && existsSync(big) && existsSync(small)
+    && statSync(big).mtimeMs >= statSync(raw).mtimeMs) return null
 
   const meta = await sharp(raw).metadata()
   if (meta.width !== GEN_W || meta.height !== GEN_H) {

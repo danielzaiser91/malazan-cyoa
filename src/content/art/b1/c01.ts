@@ -6,10 +6,13 @@ export const art01: ArtPrompt[] = [
   // ------------------------------------------------------------------- 1.1
   {
     id: `${C}.s01.p01`,
-    subject: 'a trestle table under a canvas awning in a dusty coastal town square, a queue of fishers and farm folk '
-      + 'in undyed wool waiting to put a mark on a list',
-    station: ['imperialRanks'],
-    detail: 'a clerk with a bound ledger and a reed pen, nets and farm tools leaned against a stone wall, '
+    // Ohne `station`: Das Blatt haengt seine Ausruestung an JEDE Figur im Bild,
+    // und dann wartet eine Schlange aus Bewaffneten darauf, sich zu melden.
+    // Der eine Soldat gehoert ins Motiv, die Abgrenzung ausgeschrieben.
+    subject: 'a trestle table under a canvas awning in a dusty coastal town square, a long queue of fishers and '
+      + 'farm folk barefoot and in undyed wool, waiting to put a mark on a list',
+    detail: 'a clerk with a bound ledger and a reed pen, and beside him the only armoured man in the square, '
+      + 'in a short mail shirt with a round shield at his feet; nets and farm tools leaned against a stone wall, '
       + 'the sea a grey line beyond the tile roofs',
     mood: 'march', palette: 'bone-dust', tier: 'hero',
   },
@@ -22,8 +25,10 @@ export const art01: ArtPrompt[] = [
   },
   {
     id: `${C}.s01.p03`,
-    subject: 'a young woman standing perfectly still in a moving queue, everyone else shifting their weight, she does not',
-    detail: 'plain undyed fisher clothes, empty hands, eyes fixed on the middle distance',
+    subject: 'a young woman standing perfectly still in a moving queue of barefoot fishers and farm folk in undyed wool, '
+      + 'everyone else shifting their weight, she does not',
+    detail: 'plain undyed fisher clothes, empty hands, eyes fixed on the middle distance; '
+      + 'a single armoured soldier far off at the head of the queue',
     mood: 'march', palette: 'hoods-grey', tier: 'standard',
   },
 
